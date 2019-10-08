@@ -19,7 +19,7 @@ int main() {
     int a=1,b=1,n=2;
     for(;n<2019;n++,a=1,b=n-1) {
         for(;b>0;a++,b--) {
-            if(fib(a,b)== true) {
+            if(fib(a,b)) {
                 cout << a << " " << b << endl;
                 return 0;
             }
