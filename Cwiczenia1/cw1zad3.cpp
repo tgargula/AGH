@@ -1,3 +1,8 @@
+/*
+Autor:
+3. Napisać program sprawdzający czy istnieje spójny podciąg ciągu Fibonacciego o zadanej sumie.
+*/
+
 #include <iostream>
 
 using namespace std;

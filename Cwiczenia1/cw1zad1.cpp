@@ -1,3 +1,7 @@
+/*
+Autor:
+1. Napisać program wypisujący elementy ciągu Fibonacciego mniejsze od miliona.
+*/
 #include <iostream>
 
 using namespace std;

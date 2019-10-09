@@ -1,3 +1,8 @@
+/*
+Autor:
+18. Zmodyfikować wzór Newtona aby program z zadania 7 obliczał pierwiastek stopnia 3.
+*/
+
 #include <iostream>
 
 using namespace std;

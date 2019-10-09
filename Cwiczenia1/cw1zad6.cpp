@@ -1,3 +1,8 @@
+/*
+Autor:
+6. Napisać program rozwiązujący równanie x^x=2019 metodą bisekcji.
+*/
+
 #include <iostream>
 #include <cmath>
 

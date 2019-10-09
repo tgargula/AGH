@@ -1,3 +1,8 @@
+/*
+Autor: 
+4. Napisać program obliczający pierwiastek całkowitoliczbowy z liczby naturalnej korzystając z zależności 1+3+5+... = n^2.
+*/
+
 #include <iostream>
 
 using namespace std;
