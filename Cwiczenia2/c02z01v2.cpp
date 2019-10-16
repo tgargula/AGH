@@ -26,18 +26,19 @@ int main() {
     cin >> n;
 
     for(int i=2; fib(i) <= n; i++) {                // Sprawdzamy od 2, bo 1 i 2 wyraz ciągu Fib to 1
-        for(int j=i; fib(i)*fib(j) <= n; j++) {     // j = i, żeby nie powtarzać
+        m = fib(i)*fib(j);
+        for(int j=i; m <= n; j++) {     // j = i, żeby nie powtarzać
             // cout << fib(i) << " " << fib(j) << " ";      TESTY
             // cout << fib(i)*fib(j) << endl;               TESTY
         
-            if(fib(i)*fib(j) == n) mult = true;
+            if(m == n) mult = true;
             if(mult) break;
 
         }
         if(mult) break;
     }
 
-    if(mult == true) cout << "YES" << endl;
+    if(mult) cout << "YES" << endl;
     else cout << "NOPE" << endl;
 
     return 0;
