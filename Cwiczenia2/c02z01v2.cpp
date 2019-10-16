@@ -1,5 +1,3 @@
-// ---WYMAGA OPTYMALIZACJI---
-// Trzeba odpowiednio zdeklarować zmienną, żeby nie liczyć cały czas fib(i)*fib(j)
 // Program sprawdza, czy podana liczba jest iloczynem dowolnych dwóch liczb ciągu Fibbonaciego
 
 #include <iostream>
