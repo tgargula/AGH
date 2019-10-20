@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int a1 = 0, b1 = 1, sum1 = 0, a2 = 1, b2 = 1, sum2 = 1, n;
+int a1, b1, sum1, a2 = 1, b2 = 1, sum2 = 1, n;
 
 void Sum1() {
     int h = b1;
@@ -21,28 +21,26 @@ void Sum2() {
 void FindNext() {
     bool flag = true;
     while(flag) {
+        if (sum2 < n) Sum2();
         n += 1; 
-        a1 = 0; b1 = 1; sum1 = a1+b1;
-        sum2 = a2+b2;
-        cout << "n " << n << endl;
-        while(n != sum2 - sum1 && flag) {
-            if(sum2 - sum1 > n) Sum1(); cout << "sum1 " << sum1 << endl;
-            if(sum2 - sum1 < n) Sum2(); cout << "sum2 " << sum2 <<endl;
-            if(sum2 < sum1) {
-                cout << n; 
-                flag = false;
-            }
+        a1 = 1; b1 = 1; sum1 = 1;
+        // cout << "n " << n << endl;
+        // cout << "sum2 " << sum2 <<endl;
+        while(n != sum2 - sum1 && flag && sum2 > n) {
+            // cout << "sum1 " << sum1 << endl;
+            if(sum2 - sum1 > n) Sum1(); 
+            if(sum2 - sum1 < n) flag = false; 
         }
+            // cout << "sum1 " << sum1 << endl;        
     }
 }
 
 main() {
     cin >> n;
-    while (sum2 < n) {
-        Sum2();
-    }
-    cout << "summ2 " << sum2 << endl;
+    while (sum2 < n) Sum2();
+    // cout << "summ2 " << sum2 << endl;
     FindNext();
+    cout << n << endl;
     // while(b1 < n) {
     //     Sum1();
     // }
