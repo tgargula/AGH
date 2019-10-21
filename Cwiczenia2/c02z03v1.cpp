@@ -31,13 +31,13 @@ int main() {
         i++;
     }
 
-    // for(int j=i-1; j>=0; j--) cout << bin[j];        TEST 1 - wypisuje liczbę w postaci binarnej
+    // for(int j=i-1; j>=0; j--) cout << bin[j];        //TEST 1 - wypisuje liczbę w postaci binarnej
+    // cout << endl;
+    for(int j=0; j<i; j++) {
 
-    for(int j=0; j<i-1; j++, i--) {
-
-        // cout << bin[j] << " " << bin[i-1-j] << endl; TEST 2 - wypisuje sprawdzane pary
+        // cout << bin[j] << " " << bin[i-j-1] << endl; //TEST 2 - wypisuje sprawdzane pary
         
-        if(bin[j] != bin[i-1-j]) {
+        if(bin[j] != bin[i-j-1]) {
             con = false;
             break;
         }   
@@ -45,7 +45,6 @@ int main() {
 
     if(con) cout << "YES" << endl;
     else cout << "NO" << endl;
-
 
     return 0;
 }
