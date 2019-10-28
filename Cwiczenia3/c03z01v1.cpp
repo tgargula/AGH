@@ -10,9 +10,14 @@ niby w treści polecenia jest zalozenie ze ta podstawa nalezy [2,16] ale niema c
 #include<bits/stdc++.h>
 using namespace std;
 
-string Converter(int n, int b, string s = "") {
+string Converter(int n, int b, string s = "", string s1 = "") {
     while(n > 0) {
-        s = to_string(n % b) + s;   cout << n % b << endl;
+        if(n % b > 9) {
+            s1 = char(n % b + 55);
+        } else {
+            s1 = to_string(n % b);
+        }
+        s = s1 + s;   //cout << n % b << endl; cout << char(n % b + 55) << endl;
         n = n / b;
     }
     return s;
