@@ -3,8 +3,7 @@
 using namespace std;
 
 int a, b;
-int x[32], y[32];
-int p, temp, j;
+int p, temp;
 bool digit[16];
 bool flag;
 
@@ -32,7 +31,6 @@ int main() {
     }
     if(flag) cout << p << endl;
     else cout << "Such a base does not exist" << endl;
-
 
     return 0;
 }
