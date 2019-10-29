@@ -1,3 +1,5 @@
+// Program wyznacza wszystkie N-cyfrowe liczby, takie że suma cyfr tej liczby podniesiona do N-tej potęgi jest równa tej liczbie
+
 #include <iostream>
 #include <cmath>
 
