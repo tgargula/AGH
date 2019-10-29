@@ -26,6 +26,8 @@ $ git push origin *branchName* #wysyłamy zmiany na GitHub
 $ git pull #pobierz ostatnią wersję repozytorium
 ```
 
+[więcej poleceń](https://rogerdudler.github.io/git-guide/index.pl.html)
+
 ### VS Code
 ```sh 
 $ g++ Cwiczenia4/c04z02s.cpp -o Cwiczenia4/c04z02s.out #skompiluj plik c04z02s.cpp do pliku c04z02s.out
