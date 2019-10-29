@@ -1,3 +1,5 @@
+// Program wyznacza najmniejszą podstawę 2-16, taką że podane liczby są różnocyfrowe. Jeśli nie istnieje taka podstawa 2-16, to informuje o tym
+
 #include <iostream>
 
 using namespace std;
