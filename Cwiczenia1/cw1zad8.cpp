@@ -28,7 +28,7 @@ int main() {
         // }
     // }
     // cout << "OK - czyli jest pierwsza"; return 0;
-    if(prime) cout << "YES" << endl;
+    if(prime(n)) cout << "YES" << endl;
     else cout << "NO" << endl;
     return 0;
 }
