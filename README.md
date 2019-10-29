@@ -11,13 +11,14 @@ Przykład: zadanie 2 z zestawu 4 zrobione przez Szymona w C++ powinno mieć nazw
 * [VS Code](https://code.visualstudio.com/download)
 * [Git](https://git-scm.com/downloads)
 
-## Potrzebne komendy
-### Git (lub terminal dla Linux)
+## Potrzebne komendy Git (lub terminal dla Linux)
+
 ```sh
 $ git status #status wprowadzonych zmian; branch na, na którym aktualnie jesteśmy; ...
 $ git clone https://github.com/mrrys00/WDI.git #pobieranie repozytorium
 $ git checkout *branchName* #zmień edytowany branch
-$ git checkout -b *beakchName* #dodaj branch
+$ git checkout -b *branchName* #dodaj branch
+$ code . #otwórz VS Code
 $ git add [--all] #dodajemy pliki - wybieramy które lub wszystkie
 $ git commit -m "description" #opisujemy którko wprowadzone zmiany - po polsku lub angielsku jak, kto woli
 $ git push origin *branchName* #wysyłamy zmiany na GitHub
