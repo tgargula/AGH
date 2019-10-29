@@ -25,7 +25,7 @@ $ git commit -m "description" #opisujemy którko wprowadzone zmiany - po polsku 
 $ git push origin *branchName* #wysyłamy zmiany na GitHub
 ```
 
-## VS Code
+### VS Code
 ```sh 
 $ g++ Cwiczenia4/c04z02s.cpp -o Cwiczenia4/c04z02s.out #skompiluj plik c04z02s.cpp do pliku c04z02s.out
 $ ./Cwiczenia4/c04z02s.out #odpal plik zeby go sprawdzic - nie jestem pewny czy tak to ma wygladac :)
