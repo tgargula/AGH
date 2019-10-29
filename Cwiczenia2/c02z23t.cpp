@@ -17,7 +17,7 @@ int main() {
         temp = a;
         while(temp > 0) {
             digit[temp%p] = true;
-            temp /= 10;
+            temp /= p;
         }
         
         temp = b;
