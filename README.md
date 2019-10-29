@@ -23,6 +23,7 @@ $ code . #otwórz VS Code
 $ git add [--all] #dodajemy pliki - wybieramy które lub wszystkie
 $ git commit -m "description" #opisujemy którko wprowadzone zmiany - po polsku lub angielsku jak, kto woli
 $ git push origin *branchName* #wysyłamy zmiany na GitHub
+$ git pull #pobierz ostatnią wersję repozytorium
 ```
 
 ### VS Code
@@ -33,10 +34,11 @@ $ ./Cwiczenia4/c04z02s.out #odpal plik zeby go sprawdzic - nie jestem pewny czy 
 
 ## Zalecany scenariusz korzystania
 
-1. Git otwieramy w folderze do którego chcemy skopiować nasze repozytorium.
+1a. Git otwieramy w folderze do którego chcemy skopiować nasze repozytorium.
 * Linux - wchodzimy terminalem do docelowego folderu
 * Windows - wchodzimy do docelowego folderu, klikamy w folderze prawy klawisz myszy i wybieramy Git Bash Here (lub coś takiego)
 *hint. ja (Szymon) nazwałem swój folder docelowy WDI_lokalne aby odróżnić go od pobranego repozytorium czyli WDI*
+1b. Robimy pull repozytorium jeżeli mamy je na komputerze
 
 2. Pobieramy nasze repozytorium
 
@@ -45,7 +47,6 @@ $ ./Cwiczenia4/c04z02s.out #odpal plik zeby go sprawdzic - nie jestem pewny czy 
 4. Dodajemy nasze ostatnie zmiany do repozytorium
 
 5. Wysyłamy nasze repozytorium na branch inny niż master (ostatni taki branch nazywa się "jakiegokolwiek")
-*hint. po wysłaniu zmian na GitHub polecam usunąć repozytorium z komputera żeby się nie myliło*
 
 ## Dodatkowe informacje
 
