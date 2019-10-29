@@ -8,8 +8,10 @@ Autor:
 
 using namespace std;
 
-int factorial (int n) {
-    int out = 1, i = 1;
+const double pi = 3.141592653;
+
+long long factorial (long long n) {
+    long long out = 1, i = 1;
     while(i<=n) {
         out *=i;
         i++;
@@ -21,11 +23,12 @@ int main() {
     long double x, sum=1;
     long long n=2;
     cin >> x;
-    while(n<=24) {
+    while(x < -pi) x += 2*pi;
+    while(x > pi) x-= 2*pi; 
+    while(n<=20) {
         if(n%4==2) sum -= pow(x,n) / factorial(n);
         else sum += pow(x,n) / factorial(n);
         n+=2;
-        cout << sum << " ";
     }
 
     cout << sum << endl;
