@@ -1,20 +1,38 @@
-// Program wyznacza trójki Pitagorejskie
+// Program wyznacza liczby Smitha
 
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
-int a,b,c;
-const int m = 1000;
+int n, sum1, sum2, t;
 
 int main() {
-    for(a = 1; a < m; a++) {
-        for(b = a; b < m; b++) {
-            c = a;
-            while(c*c < a*a + b*b) c++; 
-            if(c*c == a*a + b*b) cout << a << " " << b << " " << c << endl;
-        } 
+    cout << "hey";
+    cin >> n;
+    cout << "HeY'";
+    sum1 = sum2 = 0;
+    t = n;
+    while(t > 0) {
+        sum1 += t % 10;
+        t /= 10;
     }
 
+    for(int i = 0; i <= sqrt(n); i++) {
+        if(n % i == 0) {
+            t = i;
+            while(t > 0) {
+                sum2 += t % 10;
+                t /= 10;
+            }
+            t = n / i;
+            while(t > 0) {
+                sum2 += t % 10;
+                t /= 10;
+            }
+        }
+    }
+
+    if(sum1 == sum2) cout << "YES";
     return 0;
 }
