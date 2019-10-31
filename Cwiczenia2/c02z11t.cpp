@@ -12,11 +12,8 @@ bool b = false;
 int main() {
     cin >> n;
     A[0] = 2;
-    for(i = 1; i < MAX; i++) {
-        cout << A[i-1] << endl;
-        A[i] = 3 * A[i-1] + 1;
-    }
-    for(i = 1; i < MAX; i++) {
+
+    for(i = 1; i < MAX && A[i-1] <= n; i++) {
         if(n % A[i-1] == 0) {
             b = true;
             break;
