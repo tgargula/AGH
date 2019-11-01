@@ -1,3 +1,5 @@
+// Program wyznacza liczby zaprzyjaźnione
+
 #include <iostream>
 #include <cmath>
 
@@ -8,13 +10,11 @@ const int N = 1000000;
 int divider (int i) {
     int sum = 1;
     int p = 2;
-    while(p <= sqrt(i)) {
-        if(i % p == 0) {
-            sum += p;
-            if(i/p != p) sum += i/p;
-        }
+    while(p < sqrt(i)) {
+        if(i % p == 0) sum += p + i/p;
         p++;
     }
+    if(i % p == 0) sum += p;
     return sum;
 }
 
@@ -24,6 +24,5 @@ int main() {
         sum = divider(i);
         if(sum > i && sum < N && divider(sum) == i) cout << i << " " << sum << endl;
     }
-
     return 0;
 }
