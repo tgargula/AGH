@@ -1,4 +1,8 @@
-// Program sprawdza, czy wczytana liczba jest palindromem oraz czy jej postać binarna jest palindromem
+/*
+3. Napisz program wczytujący liczbę naturalną z klawiatury i odpowiadający na pytanie,
+czy liczba naturalna jest palindromem, a następnie czy jest palindromem w systemie
+dwójkowym.
+*/
 
 #include <iostream>
 #include <cmath>

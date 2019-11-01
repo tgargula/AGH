@@ -1,3 +1,8 @@
+/*
+7. Napisać program wczytujący liczbę naturalną z klawiatury i rozkładający ją na
+iloczyn 2 liczb o najmniejszej różnicy. Np. 30=5*6, 120=10*12.
+*/
+
 #include <iostream>
 #include <cmath>
 

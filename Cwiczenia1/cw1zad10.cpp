@@ -9,10 +9,15 @@ Liczba doskonała - suma jej podzielników mniejszych od niej samej jest jej ró
 using namespace std;
 
 bool IsPrime(int summ){
-    for(int i = 2; i <= (sqrt(summ)) + 1; i++) {
-        if(summ % i == 0) {
-            return false;
-        }
+    if(summ < 2) return false;
+    if(summ == 2 || summ == 3) return true;
+    if(summ % 2 == 0 || summ % 3 == 0) return false;
+    int i = 5;
+    while(i <= sqrt(summ)) {
+        if(summ % i == 0) return false;
+        i += 2;
+        if(summ % i == 0) return false;
+        i += 4;
     }
     return true;
 }
