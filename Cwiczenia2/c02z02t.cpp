@@ -1,3 +1,9 @@
+/*
+2. Napisz program wczytujący liczbę naturalną z klawiatury i odpowiadający na pytanie,
+czy liczba ta jest wielokrotnością dowolnego wyrazu ciągu danego wzorem
+A(n)=n*n+n+1.
+*/
+
 #include <iostream>
 
 using namespace std;

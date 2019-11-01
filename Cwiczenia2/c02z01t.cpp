@@ -1,4 +1,6 @@
-// Program sprawdza, czy podana liczba jest iloczynem dowolnych dwóch liczb ciągu Fibbonaciego
+/*
+1. Napisz program wczytujący liczbę naturalną z klawiatury i odpowiadający na pytanie, czy liczba ta jest iloczynem dowolnych dwóch wyrazów ciągu Fibonacciego.
+*/
 
 #include <iostream>
 #include <cmath>
@@ -24,8 +26,8 @@ int main() {
     cin >> n;
 
     for(int i=2; fib(i) <= n; i++) {                // Sprawdzamy od 2, bo 1 i 2 wyraz ciągu Fib to 1
-        m = fib(i)*fib(j);
         for(int j=i; m <= n; j++) {     // j = i, żeby nie powtarzać
+            m = fib(i)*fib(j);      
             // cout << fib(i) << " " << fib(j) << " ";      TESTY
             // cout << fib(i)*fib(j) << endl;               TESTY
         

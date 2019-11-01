@@ -1,5 +1,4 @@
 /*
-Autor:
 5. Napisać program wyznaczający pierwiastek kwadratowy ze wzoru Newtona.
 */
 #include<bits/stdc++.h>     //jedna biblioteka zastępuje wiele bibliotek (przynajmniej w teorii)
