@@ -20,7 +20,6 @@ bool arrived (int t[N]) {
             }
         }
     }
-    for(int i = 0; i < N; i++) cout << c[i];
     return false;
 }
 
