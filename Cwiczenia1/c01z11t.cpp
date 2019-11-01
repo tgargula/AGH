@@ -1,4 +1,4 @@
-// Program wyznacza liczby zaprzyjaźnione
+// Program wyznacza liczby zaprzyjaźnione mniejsze od 1e6
 
 #include <iostream>
 #include <cmath>
@@ -22,7 +22,7 @@ int main() {
     int sum;
     for(int i = 1; i < N; i++) {
         sum = divider(i);
-        if(sum > i && sum < N && divider(sum) == i) cout << i << " " << sum << endl;
+        if(sum > i && sum < N && i == divider(sum)) cout << i << " " << sum << endl;
     }
     return 0;
 }
