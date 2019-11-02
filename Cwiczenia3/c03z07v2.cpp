@@ -1,3 +1,7 @@
+/*
+7.Napisać program wypełniający tablicę int t[MAX] liczbami naturalnymi 1-1000 i sprawdzającyczy każdy element tablicy zawiera co najmniej jedną cyfrę nieparzystą
+*/
+
 #include <iostream>
 #include <algorithm>
 #include <cmath>
