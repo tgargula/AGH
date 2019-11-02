@@ -1,0 +1,59 @@
+/*
+2.Dana jest tablica int t[MAX][MAX]wypełniona liczbami naturalnymi.
+Proszę napisać funkcję który odpowiada na pytanie, czy w każdym wierszu tablicy występuje co najmniej jedna liczba złożona wyłącznie z nieparzystych cyfr.
+
+UMOWNIE - pierwszay parametr [i] wskazuje nr wiersza, drugi [j] wskazuje nr kolumny
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+const int MAX = 50;
+int tab[MAX][MAX];
+
+bool ifOdd(int n) {        //true - cała liczba z cyfr nieparzystych
+    while(n > 0) {
+        if(n % 2 == 0) return false;
+        n /= 10;
+    }
+    return true;
+}
+
+int main() {
+
+    srand(time(NULL));
+
+
+    bool Not = true; //Not = true - w wierszu niema żadnych pożądanych liczb;
+
+    for(int i = 0; i < MAX; i++) {
+        for(int j = 0; j < MAX; j++) {
+            srand(rand());
+            tab[i][j] = rand() % 1000;
+        }
+    }
+
+    // for(int i = 0; i < MAX; i++) {       TEST - wypisz tablicę
+    //     for(int j = 0; j < MAX; j++) {
+    //         cout << tab[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    for(int i = 0; i < MAX; i++) {
+        Not = true;
+        for(int j = 0; j < MAX; j++, Not) {
+            if(ifOdd(tab[i][j])) {
+                Not = false;
+            }
+        }
+        if(Not) {
+            cout << "NIE"; return 0;
+        }
+    }
+    cout << "TAK";
+
+    //if(ifOdd(555)) cout << "555";     TEST
+
+    return 0;
+}
