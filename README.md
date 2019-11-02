@@ -1,5 +1,5 @@
-# WDI
-**Nasze kody na WDI** :heart:
+# PROGRAMOWANIE
+**Nasze kody na WDI i MD** :heart:
 
 ## Zasada nazywania plików
 Egzekwowane od zestawu nr 4 
