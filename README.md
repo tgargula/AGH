@@ -38,6 +38,7 @@ $ ./Cwiczenia4/c04z02s.out #odpal plik zeby go sprawdzic - nie jestem pewny czy 
 ## Zalecany scenariusz korzystania
 
 *Hint. Warto znać swoje login i hasło na Github*
+*Hint2. Github i Git czasem działać inaczej niż opisałem - wtedy ratuje nas umiejętność czytania i myślenia*
 
 ### Pierwsze pobieranie
 
@@ -45,27 +46,29 @@ $ ./Cwiczenia4/c04z02s.out #odpal plik zeby go sprawdzic - nie jestem pewny czy 
 * Linux - wchodzimy terminalem do docelowego folderu
 * Windows - wchodzimy do docelowego folderu, klikamy w folderze prawy klawisz myszy i wybieramy Git Bash Here (lub coś takiego)
 
-2. Pobieramy nasze repozytorium poleceniem ```sh $ git clone *URL*```
+2. Pobieramy nasze repozytorium poleceniem ```$ git clone *URL*```
 
-3. Zmieniamy branch na inny niż master - ```sh $ git checkout *branchName*``` (lub tworzymy nowy branch w przypadku gdy takiego niema ```sh $ git checkout -b *branchName*```)
+3. Zmieniamy branch na inny niż master - ```$ git checkout *branchName*``` (lub tworzymy nowy branch w przypadku gdy takiego niema ```$ git checkout -b *branchName*```)
 
 ### Update istniejącego lokalnie repo
 
 1. (tak samo jak wyżej)
 
-2. Aktualizujemy repozytorium używając ```sh $ git pull``` 
+2. Aktualizujemy repozytorium używając ```$ git pull``` 
 
-3. Przechodzimy na inny niż master branch ```sh $ git checkout *branchName*``` (lub tworzymy nowy branch w przypadku gdy takiego niema ```sh $ git checkout -b *branchName*``` i w tym scenariuszu to koniec zabawy)
+3. Przechodzimy na inny niż master branch ```$ git checkout *branchName*``` (lub tworzymy nowy branch w przypadku gdy takiego niema ```$ git checkout -b *branchName*``` i w tym scenariuszu to koniec zabawy)
 
-4. Branch, na którego przeszliśmy musimy **bezstratnie** (dla nas i dla wersji pobranej) scalić z pobranymi zmianami. GitHub zapisuje pobrane zmiany w branchu origin/*branchName* a my mamy nasze ewentualne lokalne zmiany na branchu *branchName*. Scalamy je ze sobą poleceniem ```sh $ git merge origin/*branchName*```.  :exclamation: Nie bawić się z tym na branchu master  :exclamation:
+4. Branch, na którego przeszliśmy musimy **bezstratnie** (dla nas i dla wersji pobranej) scalić z pobranymi zmianami. GitHub zapisuje pobrane zmiany w branchu origin/*branchName* a my mamy nasze ewentualne lokalne zmiany na branchu *branchName*. Scalamy je ze sobą poleceniem ```$ git merge origin/*branchName*```.  :exclamation: Nie bawić się z tym na branchu master  :exclamation:
 
 ### Wysyłanie zmian na GitHub
 
-1. Dodajemy nasze ostatnie zmiany do repozytorium poleceniem ```sh $ git add [--all]``` (wybieramy pliki lub dodajemy wszystkie)
+*Hint. Przed wysłaniem warto upewnić się czy ktoś nie dodał swoich zmian na Github żeby nie usunąć jego zmian. Jeśli nie mamy najnowszej wersji trzeba zrobić Update repo opisany powyżej*
 
-2. Opisujemy zmiany ```sh $ git commit -m "description"``` 
+1. Dodajemy nasze ostatnie zmiany do repozytorium poleceniem ```$ git add [--all]``` (wybieramy pliki lub dodajemy wszystkie)
 
-3. Wysyłamy nasze repozytorium na branch inny niż master ```sh $ git push origin *branchName*``` (ostatni taki branch nazywa się "toCoding")
+2. Opisujemy zmiany ```$ git commit -m "description"``` 
+
+3. Wysyłamy nasze repozytorium na branch inny niż master ```$ git push origin *branchName*``` (ostatni taki branch nazywa się "toCoding")
 
 ## Dodatkowe informacje
 
