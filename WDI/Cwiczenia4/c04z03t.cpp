@@ -24,7 +24,7 @@ bool function (int t[MAX][MAX]) {   // Funtion checks if such a row exists that 
             i++;
             if(!b) break;
         }
-        cout << endl;
+        // cout << endl;
         if(i == MAX && b) return true;
     }
     return false;
