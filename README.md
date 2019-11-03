@@ -13,7 +13,7 @@ Przykład: zadanie 2 z zestawu 4 zrobione przez Szymona w C++ powinno mieć nazw
 
 ## Potrzebne komendy 
 
-### Git (lub terminal dla Linux)
+### Git Bash (lub terminal dla Linux)
 ```sh
 $ git status #status wprowadzonych zmian; branch na, na którym aktualnie jesteśmy; ...
 $ git clone https://github.com/mrrys00/WDI.git #pobieranie repozytorium
@@ -23,6 +23,7 @@ $ git add [--all] #dodajemy pliki - wybieramy które lub wszystkie
 $ git commit -m "description" #opisujemy którko wprowadzone zmiany - po polsku lub angielsku jak, kto woli
 $ git push origin *branchName* #wysyłamy zmiany na GitHub
 $ git pull #pobierz ostatnią wersję repozytorium
+$ git merge #zrób merge branchy
 ```
 
 [więcej poleceń](https://rogerdudler.github.io/git-guide/index.pl.html)
@@ -36,19 +37,35 @@ $ ./Cwiczenia4/c04z02s.out #odpal plik zeby go sprawdzic - nie jestem pewny czy 
 
 ## Zalecany scenariusz korzystania
 
-1a. Git otwieramy w folderze do którego chcemy skopiować nasze repozytorium.
+*Hint. Warto znać swoje login i hasło na Github*
+
+### Pierwsze pobieranie
+
+1. Git otwieramy w folderze do którego chcemy skopiować nasze repozytorium.
 * Linux - wchodzimy terminalem do docelowego folderu
 * Windows - wchodzimy do docelowego folderu, klikamy w folderze prawy klawisz myszy i wybieramy Git Bash Here (lub coś takiego)
-*hint. ja (Szymon) nazwałem swój folder docelowy WDI_lokalne aby odróżnić go od pobranego repozytorium czyli WDI*
-1b. Robimy pull repozytorium jeżeli mamy je na komputerze
 
-2. Pobieramy nasze repozytorium
+2. Pobieramy nasze repozytorium poleceniem ```sh $ git clone *URL*```
 
-3. Zmieniamy branch na inny niż master
+3. Zmieniamy branch na inny niż master - ```sh $ git checkout *branchName*``` (lub tworzymy nowy branch w przypadku gdy takiego niema ```sh $ git checkout -b *branchName*```)
 
-4. Dodajemy nasze ostatnie zmiany do repozytorium
+### Update istniejącego lokalnie repo
 
-5. Wysyłamy nasze repozytorium na branch inny niż master (ostatni taki branch nazywa się "jakiegokolwiek")
+1. (tak samo jak wyżej)
+
+2. Aktualizujemy repozytorium używając ```sh $ git pull``` 
+
+3. Przechodzimy na inny niż master branch ```sh $ git checkout *branchName*``` (lub tworzymy nowy branch w przypadku gdy takiego niema ```sh $ git checkout -b *branchName*``` i w tym scenariuszu to koniec zabawy)
+
+4. Branch, na którego przeszliśmy musimy **bezstratnie** (dla nas i dla wersji pobranej) scalić z pobranymi zmianami. GitHub zapisuje pobrane zmiany w branchu origin/*branchName* a my mamy nasze ewentualne lokalne zmiany na branchu *branchName*. Scalamy je ze sobą poleceniem ```sh $ git merge origin/*branchName*```.  :exclamation: Nie bawić się z tym na branchu master  :exclamation:
+
+### Wysyłanie zmian na GitHub
+
+1. Dodajemy nasze ostatnie zmiany do repozytorium poleceniem ```sh $ git add [--all]``` (wybieramy pliki lub dodajemy wszystkie)
+
+2. Opisujemy zmiany ```sh $ git commit -m "description"``` 
+
+3. Wysyłamy nasze repozytorium na branch inny niż master ```sh $ git push origin *branchName*``` (ostatni taki branch nazywa się "toCoding")
 
 ## Dodatkowe informacje
 
