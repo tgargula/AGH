@@ -8,7 +8,7 @@ UMOWNIE - pierwszay parametr [i] wskazuje nr wiersza, drugi [j] wskazuje nr kolu
 #include<bits/stdc++.h>
 using namespace std;
 
-const int MAX = 50;
+const int MAX = 5000;
 int tab[MAX][MAX];
 
 bool ifOdd(int n) {        //true - cała liczba z cyfr nieparzystych
@@ -23,13 +23,12 @@ int main() {
 
     srand(time(NULL));
 
-
     bool Not = true; //Not = true - w wierszu niema żadnych pożądanych liczb;
 
     for(int i = 0; i < MAX; i++) {
         for(int j = 0; j < MAX; j++) {
             srand(rand());
-            tab[i][j] = rand() % 1000;
+            tab[i][j] = rand() % 100000;
         }
     }
 
