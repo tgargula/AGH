@@ -19,7 +19,6 @@ $ git status #status wprowadzonych zmian; branch na, na którym aktualnie jeste�
 $ git clone https://github.com/mrrys00/WDI.git #pobieranie repozytorium
 $ git checkout *branchName* #zmień edytowany branch
 $ git checkout -b *branchName* #dodaj branch
-$ code . #otwórz VS Code
 $ git add [--all] #dodajemy pliki - wybieramy które lub wszystkie
 $ git commit -m "description" #opisujemy którko wprowadzone zmiany - po polsku lub angielsku jak, kto woli
 $ git push origin *branchName* #wysyłamy zmiany na GitHub
@@ -30,6 +29,7 @@ $ git pull #pobierz ostatnią wersję repozytorium
 
 ### VS Code
 ```sh 
+$ code . #otwórz VS Code
 $ g++ Cwiczenia4/c04z02s.cpp -o Cwiczenia4/c04z02s.out #skompiluj plik c04z02s.cpp do pliku c04z02s.out
 $ ./Cwiczenia4/c04z02s.out #odpal plik zeby go sprawdzic - nie jestem pewny czy tak to ma wygladac :)
 ```
