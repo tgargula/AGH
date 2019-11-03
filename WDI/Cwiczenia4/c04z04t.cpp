@@ -41,19 +41,21 @@ int main() {
         for(int j = 0; j < MAX; j++)
             t[j][i] = rand() % N + 1;
 
-    cout << "i \\ j\t\t";
-    for(int i = 0; i < MAX; i++) cout << i << "\t";
-    cout << endl << "\t";
-    for(int i = 0; i <= MAX; i++) cout << "--------";
-    cout << endl;
-    for(int i = 0; i < MAX; i++) {
-        cout << i << "\t|\t";
-        for(int j = 0; j < MAX; j++) {
-            cout << t[j][i] << "\t";
-        }
-        cout << endl;
-    }
-    cout << endl;
+    // cout << "i \\ j\t\t";
+    // for(int i = 0; i < MAX; i++) cout << i << "\t";
+    // cout << endl << "\t";
+    // for(int i = 0; i <= MAX; i++) cout << "--------";
+    // cout << endl;
+    // for(int i = 0; i < MAX; i++) {
+    //     cout << i << "\t|\t";
+    //     for(int j = 0; j < MAX; j++) {
+    //         cout << t[j][i] << "\t";
+    //     }
+    //     cout << endl;
+    // }
+    // cout << endl;
+    //
+    // TEST - prints the matrix in a fancy form
 
     cout << "i\t" << function(t).i << endl;
     cout << "j\t" << function(t).j << endl;
