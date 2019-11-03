@@ -23,7 +23,7 @@ int main() {
 
     srand(time(NULL));
 
-    bool Not = true; //Not = true - w wierszu niema żadnych pożądanych liczb;
+    bool Not = true; //Not = true - w wierszu nie ma żadnych pożądanych liczb;
 
     for(int i = 0; i < MAX; i++) {
         for(int j = 0; j < MAX; j++) {
