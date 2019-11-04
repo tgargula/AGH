@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const int MAX = 15, N = 100;    // N defines the interval of random numbers from -N to N-1
+const int MAX = 15, N = 100;    // N defines the interval of random numbers from -N to N
 
 struct index {
     int i;
@@ -19,7 +19,7 @@ index function (int t[MAX][MAX]) {
     index x,y;
     jmax1 = jmax2 = 0;
     imin1 = -MAX*N - 1;
-    imin2 = MAX*N;
+    imin2 = MAX*N + 1;
     for(int i = 0; i < MAX; i++) {
         sum = 0;
         for(int j = 0; j < MAX; j++) sum += t[j][i];
@@ -33,7 +33,7 @@ index function (int t[MAX][MAX]) {
         if(sum < 0 && sum < jmax1) { jmax1 = sum; x.j = j; }
         if(sum > 0 && sum > jmax2) { jmax2 = sum; y.j = j; }
     }
-    if(imin1 == -MAX*N-1 && imin2 == MAX*N) { x.i = -1; x.j = -1; return x; }
+    if(imin1 == -MAX*N-1 && imin2 == MAX*N+1) { x.i = -1; x.j = -1; return x; }
     if(jmax1 / imin1 > jmax2 / imin2) return x; 
     return y;
 }
@@ -43,7 +43,7 @@ int main() {
     srand(time(NULL));
     for(int i = 0; i < MAX; i++)
         for(int j = 0; j < MAX; j++)
-            t[j][i] = rand() % (2*N) - N;
+            t[j][i] = rand() % (2*N + 1) - N;
 
     // cout << "i \\ j\t\t";
     // for(int i = 0; i < MAX; i++) cout << i << "\t";
