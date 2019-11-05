@@ -105,7 +105,7 @@ void BottomUpMerge(int A[], int iLeft, int iRight, int iEnd, int B[])
     } 
 }
 
-void BottomUpMergeSort(int A[], int n, int B[MAX])
+void BottomUpMergeSort(int A[], int B[MAX], int n)
 {
     for (int width = 1; width < n; width = 2 * width)
     {
@@ -130,7 +130,7 @@ int main() {
     // int n; cin >> n;
     // cout << Factorial(n);
     RandomArray();
-    BottomUpMergeSort(tab, MAX, tab2);
+    BottomUpMergeSort(tab, tab2, MAX);
 
     for(int i = 0; i < MAX; i++) {
         cout << tab[i] << " ";
