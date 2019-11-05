@@ -2,7 +2,8 @@
 
 using namespace std;
 
-const int MAX = 17000;
+const int MAX = 17;
+int tab[MAX], tab2[MAX];
 
 //Czy liczba jest pierwsza
 bool IfPrime(int n) {
@@ -83,11 +84,57 @@ void EratostenesSieve() {
     }
 }
 
+//Merge sort
+void CopyArray(int B[], int A[], int n)
+{
+    for(int i = 0; i < n; i++)
+        A[i] = B[i];
+}
+
+void BottomUpMerge(int A[], int iLeft, int iRight, int iEnd, int B[])
+{
+    int i = iLeft, j = iRight;
+    for (int k = iLeft; k < iEnd; k++) {
+        if (i < iRight && (j >= iEnd || A[i] <= A[j])) {
+            B[k] = A[i];
+            i = i + 1;
+        } else {
+            B[k] = A[j];
+            j = j + 1;    
+        }
+    } 
+}
+
+void BottomUpMergeSort(int A[], int n, int B[MAX])
+{
+    for (int width = 1; width < n; width = 2 * width)
+    {
+        for (int i = 0; i < n; i = i + 2 * width)
+        {
+            BottomUpMerge(A, i, min(i+width, n), min(i+2*width, n), B);
+        }
+        CopyArray(B, A, n);
+
+    }
+}
+
+//Generowanie randomowej tablicy
+void RandomArray() {
+    srand(time(NULL));
+    for(int i = 0; i < MAX; i++) {
+        tab[i] = rand() % 100;
+    }
+}
 
 int main() {
     // int n; cin >> n;
     // cout << Factorial(n);
-    
+    RandomArray();
+    BottomUpMergeSort(tab, MAX, tab2);
+
+    for(int i = 0; i < MAX; i++) {
+        cout << tab[i] << " ";
+    }
     
     return 0;
 }
