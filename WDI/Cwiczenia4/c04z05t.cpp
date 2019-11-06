@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const int MAX = 15, N = 100;    // N defines the interval of random numbers from -N to N
+const int MAX = 5, N = 100;    // N defines the interval of random numbers from -N to N
 
 struct index {
     int i;
@@ -34,6 +34,8 @@ index function (int t[MAX][MAX]) {
         if(sum > 0 && sum > jmax2) { jmax2 = sum; y.j = j; }
     }
     if(imin1 == -MAX*N-1 && imin2 == MAX*N+1) { x.i = -1; x.j = -1; return x; }
+    if(imin1 == -MAX*N-1) return y;
+    if(imin2 == MAX*N+1) return x;
     if(jmax1 / imin1 > jmax2 / imin2) return x; 
     return y;
 }
@@ -45,24 +47,28 @@ int main() {
         for(int j = 0; j < MAX; j++)
             t[j][i] = rand() % (2*N + 1) - N;
 
-    // cout << "i \\ j\t\t";
-    // for(int i = 0; i < MAX; i++) cout << i << "\t";
-    // cout << endl << "\t";
-    // for(int i = 0; i <= MAX; i++) cout << "--------";
-    // cout << endl;
-    // for(int i = 0; i < MAX; i++) {
-    //     cout << i << "\t|\t";
-    //     for(int j = 0; j < MAX; j++) {
-    //         cout << t[j][i] << "\t";
-    //     }
-    //     cout << endl;
-    // }
-    // cout << endl;
+    cout << "i \\ j\t\t";
+    for(int i = 0; i < MAX; i++) cout << i << "\t";
+    cout << endl << "\t";
+    for(int i = 0; i <= MAX; i++) cout << "--------";
+    cout << endl;
+    for(int i = 0; i < MAX; i++) {
+        cout << i << "\t|\t";
+        for(int j = 0; j < MAX; j++) {
+            cout << t[j][i] << "\t";
+        }
+        cout << endl;
+    }
+    cout << endl;
     
     // TEST - prints the matrix in a fancy form
-
-    cout << "i\t" << function(t).i << endl;
-    cout << "j\t" << function(t).j << endl;
+    int a = function(t).i;
+    int b = function(t).j;
+    if(a > -1 && b > -1) {
+        cout << "i\t" << a << endl;
+        cout << "j\t" << b << endl;
+    }
+    else cout << "Such a pair does not exist" << endl;
 
     return 0;
 }
