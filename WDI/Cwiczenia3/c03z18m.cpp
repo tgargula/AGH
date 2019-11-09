@@ -1,36 +1,39 @@
 /*
-18.Funkcja wyznacza różnicę pomiędzy wartością maksymalną a minimalną.Ile minimalnie porównań trzeba wykonać?
+18.Funkcja wyznacza różnicę pomiędzy wartością maksymalną a minimalną. Ile minimalnie porównań trzeba wykonać?
 */
 
-#include <iostream>
-#include <algorithm>
-#include <cmath>
-#include <cstdlib>
 #include<bits/stdc++.h>
 
 using namespace std;
 
 const int N=10;
 
+void Difference(int tab[], int MIN, int MAX) {
+    for(int i = 0; i < N; i++){
+        if(tab[i] < MIN) MIN=tab[i];
+        else if(tab[i] > MAX) MAX=tab[i];
+    }
+
+    cout<<MAX-MIN<<endl;
+}
+
 int main(){
     int tab[N];
-    int temp=0;
-    int MAX=0;
-    int MIN=2147483647;
+    int MAX = 0, MIN = 2147483647;
+
     srand(time(NULL));
 
-    for(int i=0;i<N;i++){
+    for(int i = 0; i < N; i++) {
         srand(rand());
-        tab[i] = rand() / 1234567;
-        temp=tab[i];
-        if(temp<MIN) MIN=temp;
-        if(temp>MAX) MAX=temp;
+        tab[i] = rand() % 12;
     }
 
-    for(int i=0;i<N;i++) {
+    Difference(tab, MIN, MAX);
+
+    for(int i = 0; i < N; i++) {
         cout << tab[i] << " ";
     }
-    cout << endl;
-    cout<<MAX-MIN<<endl;
-    cout<<"2N Panie Garku";
+
+    cout << '\n' << "2N-1 Panie Garku" << endl;
+    return 0;
 }

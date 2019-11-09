@@ -1,7 +1,8 @@
-#include <iostream>
-#include <algorithm>
-#include <cmath>
-#include <cstdlib>
+/*
+1.Dana jest tablica int t[MAX][MAX]. Proszę napisać funkcję wypełniającą tablicę liczbami naturalnymi po spirali
+*/
+
+#include<bits/stdc++.h>
 
 using namespace std;
 

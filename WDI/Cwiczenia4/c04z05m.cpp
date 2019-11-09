@@ -1,3 +1,7 @@
+/*
+5.Poprzednie zadanie z tablicą wypełnioną liczbami całkowitymi
+*/
+
 #include <iostream>
 #include <algorithm>
 #include <cmath>
