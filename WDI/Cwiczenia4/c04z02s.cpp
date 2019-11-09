@@ -19,25 +19,8 @@ bool ifOdd(int n) {        //true - cała liczba z cyfr nieparzystych
     return true;
 }
 
-int main() {
-
-    srand(time(NULL));
-
+int Checker() {
     bool Not = true; //Not = true - w wierszu nie ma żadnych pożądanych liczb;
-
-    for(int i = 0; i < MAX; i++) {
-        for(int j = 0; j < MAX; j++) {
-            srand(rand());
-            tab[i][j] = rand() % 100000;
-        }
-    }
-
-    // for(int i = 0; i < MAX; i++) {       TEST - wypisz tablicę
-    //     for(int j = 0; j < MAX; j++) {
-    //         cout << tab[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
 
     for(int i = 0; i < MAX; i++) {
         Not = true;
@@ -51,8 +34,27 @@ int main() {
         }
     }
     cout << "TAK";
+    return 0;
+}
 
-    //if(ifOdd(555)) cout << "555";     TEST
+void RandomArray() {
+    srand(time(NULL));
+    for(int i = 0; i < MAX; i++) {
+        for(int j = 0; j < MAX; j++) {
+            srand(rand());
+            tab[i][j] = rand() % 100000;
+        }
+    }
+}
 
+int main() {
+    RandomArray();
+    // for(int i = 0; i < MAX; i++) {       TEST - wypisz tablicę
+    //     for(int j = 0; j < MAX; j++) {
+    //         cout << tab[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+    Checker();
     return 0;
 }

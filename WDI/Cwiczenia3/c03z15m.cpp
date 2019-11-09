@@ -12,19 +12,27 @@ Wyznaczyć wartości prawdopodobieństwa dla N z zakresu 20-40.
 //n to liczba dni w roku
 //k to liczba osób
 
+const int N = 365;
+
 using namespace std;
 
-double prob(double n, double k){
-double ilo=1;
-for(double i=0;i<k;i++){
-ilo*=(1-i/n);
+double Prob (double k) {
+    double ilo = 1;
+    for(double i = 0; i < k; i++) {
+        ilo *= (1 - i / N);
+    }
+    return 1 - ilo;
 }
-return 1-ilo;
+
+void ProperRange() {
+    double k = 20;
+    while( k < 41 ) {
+        cout << Prob(k) << endl;
+        k ++ ;
+    }
 }
 
 int main(){
-double n,k;
-cin>>n;
-cin>>k;
-cout<<prob(n,k);
+    ProperRange();
+    return 0;
 }

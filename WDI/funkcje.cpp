@@ -6,7 +6,7 @@ const int MAX = 17;
 int tab[MAX], tab2[MAX];
 
 //Czy liczba jest pierwsza
-bool IfPrime(int n) {
+bool Prime(int n) {
     if(n < 2) return false;
     if(n == 2 || n == 3) return true;
     if(n % 2 == 0 || n % 3 == 0) return false;
@@ -120,9 +120,16 @@ void BottomUpMergeSort(int A[], int B[MAX], int n)
 
 //Generowanie randomowej tablicy
 void RandomArray() {
-    srand(time(NULL));
-    for(int i = 0; i < MAX; i++) {
+    srand(time(NULL));                  //aby otrzymać takie same wartości w tablicy za każdym razem wystarczy zakomentować linijkę srand(time(NULL)); 
+    for(int i = 0; i < MAX; i++) {      //lub zmienić początkowy seed na inny niż NULL
         tab[i] = rand() % 100;
+    }
+}
+
+//Wypisywanie tablicy
+void WriteArray() {
+    for(int i = 0; i < MAX; i++) {
+        cout << tab[i] << " ";
     }
 }
 
@@ -130,11 +137,13 @@ int main() {
     // int n; cin >> n;
     // cout << Factorial(n);
     RandomArray();
-    BottomUpMergeSort(tab, tab2, MAX);
 
-    for(int i = 0; i < MAX; i++) {
-        cout << tab[i] << " ";
-    }
+    for(int i = 0; i < 10; i ++) {WriteArray(); cout << endl;}
+    // BottomUpMergeSort(tab, tab2, MAX);
+
+    // for(int i = 0; i < MAX; i++) {
+    //     cout << tab[i] << " ";
+    // }
     
     return 0;
 }
