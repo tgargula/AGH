@@ -29,8 +29,8 @@ main() {
             t[i] = t[i] / 10;
         }
         if(flag == true) {
-            cout << "OK! - znaczy istnieje"; return 0;
+            cout << "OK"; return 0;
         }
     }
-    cout << "FUCK OFF! - znaczy nie istnieje"; return 0;
+    cout << "NOT"; return 0;
 }

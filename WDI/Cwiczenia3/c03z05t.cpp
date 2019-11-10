@@ -6,10 +6,10 @@
 using namespace std;
 
 const int PREC = 2050;
-int tab[PREC], e[PREC];
-int p;
 
 int main() {
+    int tab[PREC], e[PREC];
+    int p;
 
     tab[0] = 1; e[0] = 1;
     for(int i = 1; i < PREC; i++) {

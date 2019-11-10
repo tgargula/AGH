@@ -2,13 +2,14 @@
 
 using namespace std;
 
-int n, temp, p, tab[32], i;
-
 int main() {
+    int n;
+    int tab[32];
+    int i;
     cin >> n;
     
-    for(p = 2, i = 0; p <= 16; p++) {
-        temp = n;
+    for(int p = 2; p <= 16; p++) {
+        int temp = n;
         for(i = 0; temp > 0; i++) {
             tab[i] = temp%p;
             temp /= p;
