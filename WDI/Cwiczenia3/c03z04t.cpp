@@ -5,11 +5,11 @@
 using namespace std;
 
 const int MAX = 2568; //1000! ma 2568 cyfr; dla większych silni trzeba zwiększyć odpowiednio MAX
-int n, p;
-int tab[MAX];
-bool b = false;
 
 int main() {
+    int n, p;
+    int tab[MAX];
+    bool b = false;
     cin >> n;
 
     for(int i = 1; i < MAX; i++) tab[i] = 0;
