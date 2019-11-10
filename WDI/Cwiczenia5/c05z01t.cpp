@@ -19,10 +19,11 @@ void Input(rational &a, rational &b) {          // We can also change this funct
 }
 
 int GCD(int x, int y) {     // Greatest Common Divisor - NWD; Euclidean algorithm
-    do {
+    x = abs(x);
+    while(x != y) {
         if(x > y) x -= y;
         else y -= x;
-    }   while(x != y);
+    }
     return x;
 }
 
@@ -31,9 +32,12 @@ int LCD(int x, int y) {     // Lowest Common denominator - NWW
 }
 
 void CancelingDown (rational &a) {
-    int d = GCD(a.num, a.den);
-    a.num /= d;
-    a.den /= d;
+    if(a.num == 0) a.den = 1;
+    else {
+        int d = GCD(a.num, a.den);
+        a.num /= d;
+        a.den /= d;
+    }
 }
 
 void Output(rational a) {
@@ -46,6 +50,7 @@ rational Addition (rational a, rational b) {
     a.num *= c.den / a.den;
     b.num *= c.den / b.den;
     c.num = a.num + b.num;
+    CancelingDown(c);
     return c;
 }
 
@@ -55,6 +60,7 @@ rational Substraction (rational a, rational b) {
     a.num *= c.den / a.den;
     b.num *= c.den / b.den;
     c.num = a.num - b.num;
+    CancelingDown(c);
     return c;
 }
 
@@ -78,8 +84,12 @@ rational Division (rational a, rational b) {
 
 rational Exponentation (rational a, int n) {
     CancelingDown(a);
-    a.num *= n;
-    a.den *= n;
+    int temp1 = a.num;
+    int temp2 = a.den;
+    for(int i = 1; i < n; i++) {
+        a.num *= temp1;
+        a.den *= temp2;
+    }
     return a;
 }
 
