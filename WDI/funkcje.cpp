@@ -122,6 +122,7 @@ void BottomUpMergeSort(int A[], int B[MAX], int n)
 void RandomArray() {
     srand(time(NULL));                  //aby otrzymać takie same wartości w tablicy za każdym razem wystarczy zakomentować linijkę srand(time(NULL)); 
     for(int i = 0; i < MAX; i++) {      //lub zmienić początkowy seed na inny niż NULL
+        srand(rand());
         tab[i] = rand() % 100;
     }
 }

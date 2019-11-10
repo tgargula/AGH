@@ -29,7 +29,7 @@ main() {
             t[i] = t[i] / 10;
         }
         if(flag == true) {
-            cout << "FUCK OFF!"; return 0;
+            cout << "NOT"; return 0;
         }
     }
     cout << "OK"; return 0;
