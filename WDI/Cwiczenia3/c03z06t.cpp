@@ -5,11 +5,11 @@
 using namespace std;
 
 const int MAX = 1000;
-int tab[MAX];
-int i,m;
 
 int main() {
-    i = 0;
+    int tab[MAX];
+    int i = 0
+    int m;
     do {
         cin >> tab[i];
         i++;
