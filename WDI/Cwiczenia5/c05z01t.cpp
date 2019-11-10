@@ -80,6 +80,7 @@ rational Exponentation (rational a, int n) {
     CancelingDown(a);
     a.num *= n;
     a.den *= n;
+    return a;
 }
 
 void Menu() {
