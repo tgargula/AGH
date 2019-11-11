@@ -3,14 +3,14 @@
 using namespace std;
 
 struct ulamek {
-	int l;
-	int m;
+	long long l;
+	long long m;
 };
 
 void skracanieQ(ulamek& u) {
-	int a = abs(u.l);
-	int b = abs(u.m);
-	int c;
+	long long a = abs(u.l);
+	long long b = abs(u.m);
+	long long c;
 	while (b != 0) {
 		c = a % b;
 		a = b;
@@ -55,12 +55,12 @@ ulamek dzielenieQ(ulamek a, ulamek b) {
 ulamek potegowanieQ(ulamek a, ulamek potega) {
 	ulamek wynik;
 	if (potega.l * potega.m < 0) {
-		int temp = a.l;
+		long long temp = a.l;
 		a.l = a.m;
 		a.m = temp;
+		potega.l = abs(potega.l);
+		potega.m = abs(potega.m);
 	}
-	potega.l = abs(potega.l);
-	potega.m = abs(potega.m);
 	wynik.l = pow(a.l, double(potega.l)/potega.m);
 	wynik.m = pow(a.m, double(potega.l)/potega.m);
 	skracanieQ(wynik);
@@ -72,7 +72,8 @@ void wypisywanieQ(ulamek a) {
 }
 
 void wczytywanieQ(ulamek& a) {
-	cin >> a.l >> a.m;
+	char slash;
+	cin >> a.l >> slash >> a.m;
 }
 
 int main() {
