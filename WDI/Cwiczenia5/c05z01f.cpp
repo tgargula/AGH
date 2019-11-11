@@ -58,9 +58,9 @@ ulamek potegowanieQ(ulamek a, ulamek potega) {
 		int temp = a.l;
 		a.l = a.m;
 		a.m = temp;
-		potega.l = abs(potega.l);
-		potega.m = abs(potega.m);
 	}
+	potega.l = abs(potega.l);
+	potega.m = abs(potega.m);
 	wynik.l = pow(a.l, double(potega.l)/potega.m);
 	wynik.m = pow(a.m, double(potega.l)/potega.m);
 	skracanieQ(wynik);
