@@ -6,7 +6,7 @@ const int N = 15;
 
 bool Istnienia (int t[N], int p, int sum) {
     if (sum == 0) return true;
-    if (p == N or sum < 0) return false;
+    if (p == N) return false;
     return (Istnienia(t,p+1,sum-t[p]) or Istnienia(t,p+1,sum)) or Istnienia(t,p+1,sum+t[p]);  
 }
 
