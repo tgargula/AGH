@@ -7,16 +7,16 @@ using namespace std;
 const int n = 4;
 int t[n]; 
 
-int Sums (int ti, int ctr, int maxS) {
-    if (ctr == 0 && ti > 1) {
+int Sums (int ti, int x, int y) {
+    if (x == 0 && ti > 1) {
         for(int i = 1; i < ti; i++) cout << t[i] << " + ";
         cout << t[ti] << endl;
     }
     else {
         ti++;
-        for(int i = min(ctr,maxS); i > 0; i--) {
+        for(int i = min(x,y); i > 0; i--) {
             t[ti] = i;
-            Sums(ti,ctr-i,i);
+            Sums(ti,x-i,i);
         }
     }
 }
