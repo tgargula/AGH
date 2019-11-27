@@ -4,10 +4,10 @@ using namespace std;
 long long maxi = 0;
 
 long long Fibonacci(long long n) {
-    if (n == 0) {
-        return 0;
-    }
     if (n == 1) {
+        return 1;
+    }
+    if (n == 2) {
         return 1;
     }
     if (Fibonacci(n - 1) + Fibonacci(n - 2) > maxi) {
