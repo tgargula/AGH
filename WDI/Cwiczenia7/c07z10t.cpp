@@ -1,5 +1,3 @@
-//Nie działa
-
 #include <iostream>
 
 using namespace std;
@@ -8,7 +6,7 @@ const int N=10;
 
 int n_ki (int t[N], int n, int m, int p) {   // n_ki (t,2,12,0)
     int sum = 0;
-    if(n == 0 and m == 1) { 
+    if(n == 0 and m == 1) {
         return 1;
     }
     else if(n == 0 and m != 1) { 
