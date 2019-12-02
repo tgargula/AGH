@@ -1,3 +1,5 @@
+//Funkcja zlicza, ile istnieje n-ek o podanym iloczynie
+
 #include <iostream>
 
 using namespace std;
