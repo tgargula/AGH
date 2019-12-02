@@ -2,16 +2,17 @@
 
 using namespace std;
 
-void HanoiTowers (int n, char a, char b, char c) {
+int HanoiTowers (int n, char a, char b, char c, int &sum) {
     if(n>0) {
-        HanoiTowers(n-1,a,c,b);
-        cout << a << " -> " << c << endl;
-        HanoiTowers(n-1,b,a,c);
+        HanoiTowers(n-1,a,c,b, sum);
+        cout << a << " -> " << c << endl; sum++;
+        HanoiTowers(n-1,b,a,c, sum);
     }
+    return sum;
 }
 
 int main() {
-    int n; cin >> n;
-    HanoiTowers(n,'A','B','C');
+    int n, sum = 0; cin >> n;
+    cout << HanoiTowers(n,'A','B','C', sum) << endl;
     return 0;
 }
