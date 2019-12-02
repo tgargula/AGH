@@ -37,10 +37,10 @@ bool marchOfKing (int t[N][N], int w, int k, int last, int corner) { //marchOfKi
 }
 
 bool directions (int t[N][N], int w, int k) {
-    return marchOfKing(t,w,k,10,1) or
-           marchOfKing(t,w,k,10,2) or
-           marchOfKing(t,w,k,10,3) or
-           marchOfKing(t,w,k,10,4);
+    return marchOfKing(t,w,k,10,1) or   // 1 - punkt (N-1, N-1)
+           marchOfKing(t,w,k,10,2) or   // 2 - punkt ( 0 , N-1)
+           marchOfKing(t,w,k,10,3) or   // 3 - punkt ( 0 ,  0 )
+           marchOfKing(t,w,k,10,4);     // 4 - punkt (N-1,  0 )
 }
 
 int main() {

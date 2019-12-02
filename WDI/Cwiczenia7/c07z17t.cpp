@@ -23,20 +23,12 @@ void output(int t[N][N]) {
 
 bool marchOfKing (int t[N][N], int w, int k, int last) { //marchOfKing(t,w,k,INT32_MAX)
     if (k == N or w == N) return false;
-<<<<<<< HEAD
-    if (t[w][k] >= last) return false;
-    if (w == N-1 and k == N-1) return true;
-    return marchOfKing(t, w+1, k, t[w][k]) or
-           marchOfKing(t, w+1, k+1, t[w][k]) or
-           marchOfKing(t, w, k+1, t[w][k]);
-=======
     int temp = t[w][k]; while(temp >= 10) temp /= 10;  
     if (temp >= last) return false;
     if (w == N-1 and k == N-1) return true;
     return marchOfKing(t, w+1, k, t[w][k]%10) or
            marchOfKing(t, w+1, k+1, t[w][k]%10) or
            marchOfKing(t, w, k+1, t[w][k]%10);
->>>>>>> 7f0d03b7ad46740b19058dbdc05c29ecc000c86b
 }
 
 int main() {
@@ -47,8 +39,4 @@ int main() {
     int w, k; cin >> w >> k;
     if(marchOfKing(t,w,k,INT32_MAX)) cout << "YES" << endl;
     return 0;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 7f0d03b7ad46740b19058dbdc05c29ecc000c86b
