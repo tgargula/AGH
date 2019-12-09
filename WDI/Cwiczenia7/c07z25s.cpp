@@ -7,7 +7,7 @@ const int N = 7;
 int t[N];
 
 void RandomArray() {
-    // srand(time(NULL)); 
+    srand(time(NULL)); 
     for(int i = 0; i < N; i++) {
         srand(rand());
         t[i] = rand() % 100;
@@ -40,7 +40,7 @@ int Droga(int t[N], int pozycja, int kroki, bool &dotarl) {
     for(int i = 2; i <= sqrt(t[pozycja]); i++) {
         // if(Pierwsza(i)) cout << "pierwsza " << i << endl;
         if(Pierwsza(i) and t[pozycja] % i == 0 and pozycja + i < N) {
-            cout << "korki " << kroki << " i " << i << endl;
+            cout << "kroki " << kroki << " i " << i << endl;
             Droga(t, pozycja + i, kroki, dotarl);
             kroki++; 
         }

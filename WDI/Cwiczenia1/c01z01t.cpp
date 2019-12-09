@@ -9,7 +9,7 @@ using namespace std;
 const int s = 1000000;
 
 int main() {
-    int a=27,b=6,c;
+    int a=1,b=1,c;
     while(a<s) {
         cout << a << " ";
         c = a+b;
