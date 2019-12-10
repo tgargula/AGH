@@ -27,7 +27,7 @@ void set (node *&tab, int n, int value) {
     int i = 0;
     while ( tab->next != NULL and i < n ) {
         i++;
-        tab = tab->next;
+        tab = tab->next; //imo tab powinno caly czas wskazywac na pierwszy element a tu bym zrobil kopie i szedl kopia po elementach az do n
     }
     if ( i == n ) tab->v = value;
 }
