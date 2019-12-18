@@ -21,13 +21,13 @@ void output(node *m) {
     }
 }
 
-void reverse(node *f, node *&rev) {
-
+void reverse(node *&f) {
+    node *rev = new node;
     while(f->next != NULL) {
         insertFirst(rev,f->v);
         f = f->next;
     }
-
+    f = rev;
 }
 
 int main() {
@@ -35,7 +35,7 @@ int main() {
     for(int i = 10; i>0; i--) insertFirst(f,i);
     node *rev = new node;
     output(f);
-    reverse(f,rev);
-    output(rev);
+    reverse(f);
+    output(f);
     return 0;
 }
