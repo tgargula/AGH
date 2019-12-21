@@ -15,27 +15,40 @@ void insertFirst (node *&f, int x) {
 }
 
 void output(node *m) {
-    while(m->next != NULL) {
-        cout << m->v << endl;
+    while(m != NULL) {
+        cout << m->v << " ";
         m = m->next;
     }
+    cout << endl;
 }
 
-void reverse(node *&f) {
-    node *rev = new node;
-    while(f->next != NULL) {
-        insertFirst(rev,f->v);
-        f = f->next;
+node *reverseList (node *head) {
+    if(head == NULL or head->next == NULL) return head;
+    
+    node *prev = head;
+    node *curr = head->next;
+    node *foll = head->next;
+
+    prev->next = NULL;
+
+    while(curr != NULL) {
+        foll = foll->next;
+        curr->next = prev;
+        prev = curr;
+        curr = foll;
     }
-    f = rev;
+
+    return prev;
 }
 
 int main() {
-    node *f = new node;
-    for(int i = 10; i>0; i--) insertFirst(f,i);
-    node *rev = new node;
-    output(f);
-    reverse(f);
-    output(f);
+    node *head = new node;
+
+    for(int i = 1; i <= 10; i++) insertFirst(head,i);
+
+    output(head);
+    output(reverseList(head));
+
+
     return 0;
 }
