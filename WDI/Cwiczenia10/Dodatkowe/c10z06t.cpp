@@ -53,7 +53,7 @@ void Function (node *&f, int key) {
     if(f == NULL) { insertFirst(f,key); return; }
     if (f->v == key) { deleteFirst(f); return; }
     
-    // Suppose that we have sorted list
+    // Assuming that we have sorted list
     node *prev;
     node *curr = f;
     do {

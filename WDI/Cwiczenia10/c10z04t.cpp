@@ -49,6 +49,5 @@ int main() {
     output(head);
     output(reverseList(head));
 
-
     return 0;
 }

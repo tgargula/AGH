@@ -23,7 +23,6 @@ void output(node *m) {
 }
 
 void deleteEverySecond (node *f) {
-    int ctr = 1;
     node *r = f;
     while(r->next->next != NULL) {
         node *h = r->next;
@@ -43,5 +42,7 @@ int main() {
     deleteEverySecond(f);
 
     output(f);
+
+    return 0;
 
 }
