@@ -98,7 +98,8 @@ bool IsMovePossible(char GameField[8][8], int whoseMove, coordinates move) {    
     if(GameField[move.xS][move.yS] == 'W' and whoseMove % 2 != 0 /*black try to move white*/) {cout << "black try to move white" << '\n'; return false;}
     if(GameField[move.xS][move.yS] == 'B' and whoseMove % 2 != 1 /*white try to move black*/) {cout << "white try to move black" << '\n'; return false;} 
     if((whoseMove % 2 == 0 and move.xS >= move.xD) or (whoseMove % 2 == 1 and move.xS <= move.xD)) {cout << "try to back or try to not move" << '\n'; return false;}
-    if(move.xD == move.xS + 1 and (move.yD == move.yS + 1 or move.yD == move.yS - 1)) return true;
+    if((move.xD == move.xS + 1 and (move.yD == move.yS + 1 or move.yD == move.yS - 1)) /*one field move for white and one field move for black*/
+    or (move.xD == move.xS - 1 and (move.yD == move.yS + 1 or move.yD == move.yS - 1))) return true;
     if(move.xS % 2 == move.xD % 2 and move.yS % 2 == move.yD % 2 and whoseMove % 2 == 0) {
         return RecursiveJumpsPossibilityWhite(GameField, move.xS, move.yS, move.xS, move.yS, move.xD, move.yD, jumpPossibiilityFlag);
     } else if(move.xS % 2 == move.xD % 2 and move.yS % 2 == move.yD % 2 and whoseMove % 2 == 1) {
