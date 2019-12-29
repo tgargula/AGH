@@ -6,6 +6,8 @@ using namespace std;
 
 
 int main() {
-    Menu();
+    while(true) {
+        Menu();
+    }
     return 0;
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include "jumpingPawnsFunctions.hpp"
 
 #ifndef userInterface_hpp
 #define userInterface_hpp
@@ -35,6 +36,14 @@ void PrintGameField(char GameField[8][8]) {
     cout << "X" << '\n'; 
 }
 
+void WhoseMove(int whoseMove) {
+    if(whoseMove %2 == 0) {
+            cout << "White move ..." << '\n';
+        } else {
+            cout << "Black move ..." << '\n';
+        }
+}
+
 void testPrintGameField(char GameField[8][8]) {
     cout << "X ";
     for(int i = 0; i < 8; i++) cout << (char)(i + 65) << " ";
@@ -50,5 +59,11 @@ void testPrintGameField(char GameField[8][8]) {
     for(int i = 0; i < 8; i++) cout << (char)(i + 65) << " ";
     cout << "X" << '\n';
 }
+
+    void testPrintPawns(pawnsCordinates Pawns[16]) {
+        for(int i = 0; i < 16; i++) {
+            cout << "x = " << Pawns[i].x << " y = " << Pawns[i].y << endl;
+        } 
+    }
 
 #endif
