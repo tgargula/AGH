@@ -55,7 +55,7 @@ bool IsPossibleToMoveForward(char GameField[8][8], pawnsCordinates Pawns[16], in
                 hint = "Possible move: " + CoordinatesTranslationToString(Pawns[i].x, Pawns[i].y) + " --> " + CoordinatesTranslationToString(Pawns[i].x + 1, Pawns[i].y - 1);
                 return true;
             }
-            if(Pawns[i].x + 1 < 8 and (Pawns[i].y + 1 >= 0 and GameField[Pawns[i].x + 1][Pawns[i].y + 1] == 'N'))  {
+            if(Pawns[i].x + 1 < 8 and (Pawns[i].y + 1 < 8 and GameField[Pawns[i].x + 1][Pawns[i].y + 1] == 'N'))  {
                 hint = "Possible move: " + CoordinatesTranslationToString(Pawns[i].x, Pawns[i].y) + " --> " + CoordinatesTranslationToString(Pawns[i].x + 1, Pawns[i].y + 1);
                 return true;
             }
@@ -64,7 +64,7 @@ bool IsPossibleToMoveForward(char GameField[8][8], pawnsCordinates Pawns[16], in
                 hint = "Possible move: " + CoordinatesTranslationToString(Pawns[i].x, Pawns[i].y) + " --> " + CoordinatesTranslationToString(Pawns[i].x + 2, Pawns[i].y - 2);
                 return true;
             }
-            if(Pawns[i].x + 2 < 8 and (Pawns[i].y + 2 >= 0 and GameField[Pawns[i].x + 2][Pawns[i].y + 2] == 'N' and GameField[Pawns[i].x + 1][Pawns[i].y + 1] != 'N'))  {
+            if(Pawns[i].x + 2 < 8 and (Pawns[i].y + 2 < 8 and GameField[Pawns[i].x + 2][Pawns[i].y + 2] == 'N' and GameField[Pawns[i].x + 1][Pawns[i].y + 1] != 'N'))  {
                 hint = "Possible move: " + CoordinatesTranslationToString(Pawns[i].x, Pawns[i].y) + " --> " + CoordinatesTranslationToString(Pawns[i].x + 2, Pawns[i].y + 2);
                 return true;
             }
@@ -77,7 +77,7 @@ bool IsPossibleToMoveForward(char GameField[8][8], pawnsCordinates Pawns[16], in
                 hint = "Possible move: " + CoordinatesTranslationToString(Pawns[i].x, Pawns[i].y) + " --> " + CoordinatesTranslationToString(Pawns[i].x - 1, Pawns[i].y - 1);
                 return true;
             }
-            if(Pawns[i].x - 1 >= 0 and (Pawns[i].y + 1 >= 0 and GameField[Pawns[i].x - 1][Pawns[i].y + 1] == 'N'))  {
+            if(Pawns[i].x - 1 >= 0 and (Pawns[i].y + 1 < 8 and GameField[Pawns[i].x - 1][Pawns[i].y + 1] == 'N'))  {
                 hint = "Possible move: " + CoordinatesTranslationToString(Pawns[i].x, Pawns[i].y) + " --> " + CoordinatesTranslationToString(Pawns[i].x - 1, Pawns[i].y + 1);
                 return true;
             }
@@ -86,7 +86,7 @@ bool IsPossibleToMoveForward(char GameField[8][8], pawnsCordinates Pawns[16], in
                 hint = "Possible move: " + CoordinatesTranslationToString(Pawns[i].x, Pawns[i].y) + " --> " + CoordinatesTranslationToString(Pawns[i].x - 2, Pawns[i].y - 2);
                 return true;
             }
-            if(Pawns[i].x - 2 >= 0 and (Pawns[i].y + 2 >= 0 and GameField[Pawns[i].x - 2][Pawns[i].y + 2] == 'N' and GameField[Pawns[i].x - 1][Pawns[i].y + 1] != 'N'))  {
+            if(Pawns[i].x - 2 >= 0 and (Pawns[i].y + 2 < 8 and GameField[Pawns[i].x - 2][Pawns[i].y + 2] == 'N' and GameField[Pawns[i].x - 1][Pawns[i].y + 1] != 'N'))  {
                 hint = "Possible move: " + CoordinatesTranslationToString(Pawns[i].x, Pawns[i].y) + " --> " + CoordinatesTranslationToString(Pawns[i].x - 2, Pawns[i].y + 2);
                 return true;
             }
