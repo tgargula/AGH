@@ -52,7 +52,7 @@ void function (node *&f, node *&a, node *&b) {
     }
 }
 
-int main() {
+void test() {
     node * f = NULL;
     for (int i = -15; i <= 25; i++) insertFirst(f,i);
 
@@ -66,6 +66,11 @@ int main() {
     output(b);
     output(f);
 
-    return 0;
+}
 
+int main() {
+    
+    test();
+
+    return 0;
 }

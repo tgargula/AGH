@@ -12,64 +12,64 @@ using namespace std;
 
 struct node {
     int v;
-    node *next;
+    node * next;
 };
 
 void insertFirst (node *&f, int x) {
-    node *r = new node;
+    node * r = new node;
     r->v = x;
     r->next = f;
     f = r;
 }
 
-void output(node *m) {
-    while(m != NULL) {
+void output (node * m) {
+    while (m != NULL) {
         cout << m->v << " ";
         m = m->next;
     }
     cout << endl;
 }
 
-void deleteFirst(node *&f) {
-    node *r = f;
+void deleteFirst (node *&f) {
+    node * r = f;
     f = f->next;
     delete r;
 }
 
-void deleteKey(node *&f) {
-    node *r = f->next;
+void deleteKey (node *&f) {
+    node * r = f->next;
     f->next = f->next->next;
     delete r;
 }
 
-void insertKey(node *&f, int key) {
-    node *n = new node;
+void insertKey (node *&f, int key) {
+    node * n = new node;
     n->v = key;
     n->next = f->next;
     f->next = n;
 }
 
 void Function (node *&f, int key) {
-    if(f == NULL) { insertFirst(f,key); return; }
+    if (f == NULL) { insertFirst(f,key); return; }
     if (f->v == key) { deleteFirst(f); return; }
     
-    // Assuming that we have sorted list
-    node *prev;
-    node *curr = f;
+    // Assuming that f is a sorted list
+    node * prev;
+    node * curr = f;
     do {
         prev = curr;
         curr = curr->next;
-    }   while(curr != NULL and curr->v < key);
+    }   while (curr != NULL and curr->v < key);
 
-    if ( curr->v == key ) { deleteKey(prev); return; }
+    if (curr->v == key) { deleteKey(prev); return; }
     
     insertKey(prev, key);
 }
 
-int main() {
-    node *f = NULL;
+void test() {
+    node * f = NULL;
 
-    for(int i = 20; i > 0; i-=2) insertFirst(f,i);
+    for (int i = 20; i > 0; i-=2) insertFirst(f,i);
 
     output(f);
 
@@ -80,7 +80,11 @@ int main() {
     Function(f,5);
     
     output(f);
+}
 
+int main() {
+    
+    test();
 
     return 0;
 }

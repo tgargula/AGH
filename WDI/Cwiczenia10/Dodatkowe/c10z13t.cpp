@@ -31,7 +31,7 @@ void output (node * f) {
     cout << endl;
 }
 
-bool con (int x) {
+bool condition (int x) {
     int ctr = 0;
     while (x > 0) {
         if (x %2 == 1) ctr++;
@@ -43,7 +43,7 @@ bool con (int x) {
 void function (node *&f) {
     node * curr = f;
     while (curr != NULL) {
-        if (con(curr->v)) {
+        if (condition(curr->v)) {
             node * r = curr;
 
             if (curr->next != NULL) curr->next->prev = curr->prev;
@@ -56,12 +56,17 @@ void function (node *&f) {
     }
 }
 
-int main() {
+void test() {
     node * f = NULL;
     for(int i = 0; i <= 10; i++) insertFirst(f,i); 
     output(f);
     function(f);
     output(f);
+}
+
+int main() {
     
+    test();
+
     return 0;
 }

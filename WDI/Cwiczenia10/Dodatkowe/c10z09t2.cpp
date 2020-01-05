@@ -52,10 +52,9 @@ void function (node * f) {
         else F = F->next;
         i++;
     }
-
 }
 
-int main() {
+void test() {
     node * f = NULL;
     insertFirst(f,5); insertFirst(f,1); insertFirst(f,4); insertFirst(f,2); insertFirst(f,3); insertFirst(f,3);
     output(f);
@@ -63,7 +62,7 @@ int main() {
     output(f);
 
     node * s = NULL;
-    for(int i = 1; i < 5; i++) insertFirst(s,i);
+    for (int i = 1; i < 5; i++) insertFirst(s,i);
 
     output(s);
     function(s);
@@ -74,6 +73,11 @@ int main() {
     output(t);
     function(t);
     output(t);
+}
+
+int main() {
+    
+    test();
 
     return 0;
 

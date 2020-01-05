@@ -1,10 +1,14 @@
+/*
+4. Proszę napisać funkcję, która dla podanej listy odwraca kolejność jej elementów.
+*/
+
 #include <iostream>
 
 using namespace std;
 
 struct node {
     int v;
-    node *next;
+    node * next;
 };
 
 void insertFirst (node *&f, int x) {
@@ -14,7 +18,7 @@ void insertFirst (node *&f, int x) {
     f = r;
 }
 
-void output(node *m) {
+void output(node * m) {
     while(m != NULL) {
         cout << m->v << " ";
         m = m->next;
@@ -22,16 +26,16 @@ void output(node *m) {
     cout << endl;
 }
 
-node *reverseList (node *head) {
-    if(head == NULL or head->next == NULL) return head;
+node * reverseList (node * head) {
+    if (head == NULL or head->next == NULL) return head;
     
-    node *prev = head;
-    node *curr = head->next;
-    node *foll = head->next;
+    node * prev = head;
+    node * curr = head->next;
+    node * foll = head->next;
 
     prev->next = NULL;
 
-    while(curr != NULL) {
+    while (curr != NULL) {
         foll = foll->next;
         curr->next = prev;
         prev = curr;
@@ -41,13 +45,18 @@ node *reverseList (node *head) {
     return prev;
 }
 
-int main() {
-    node *head = new node;
+void test() {
+    node * head = new node;
 
-    for(int i = 1; i <= 10; i++) insertFirst(head,i);
+    for (int i = 1; i <= 10; i++) insertFirst(head,i);
 
     output(head);
     output(reverseList(head));
+}
+
+int main() {
+    
+    test();
 
     return 0;
 }

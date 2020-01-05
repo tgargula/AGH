@@ -28,7 +28,7 @@ void output (node * f) {
     cout << endl;
 }
 
-bool con (int x) {
+bool condition (int x) {
     int ctr = 0;
     while (x > 0) {
         if (x % 8 == 5) ctr++;
@@ -49,7 +49,7 @@ void function (node *&head) {
     node * curr = head->next;
     node * prev = head;
     while (curr != NULL) {
-        if (con(curr->v)) {
+        if (condition(curr->v)) {
             curr = curr->next;
             rearrange(prev,head);
         }
@@ -60,7 +60,7 @@ void function (node *&head) {
     }
 }
 
-int main() {
+void test() {
     node * f = NULL;
     insertFirst(f,45); insertFirst(f,13); insertFirst(f,4); insertFirst(f,5);
     /*
@@ -72,6 +72,11 @@ int main() {
     output(f);
     function(f);
     output(f);
+}
+
+int main() {
+    
+    test();
 
     return 0;
 }

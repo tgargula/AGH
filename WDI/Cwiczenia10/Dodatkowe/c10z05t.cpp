@@ -1,22 +1,46 @@
+/*
+5. Liczby naturalne reprezentowane jak poprzednim zadaniu.
+Proszę napisać funkcję dodającą dwie takie liczby.
+W wyniku dodawania dwóch liczb powinna powstać nowa lista.
+*/
+
 #include <iostream>
 
 using namespace std;
 
 struct node {
     int v;
-    node *next;
+    node * next;
 };
 
-node *reverseList (node *head) {
-    if(head == NULL or head->next == NULL) return head;
+void insertNumber (node *&f, int x) {
+    do {
+        node * r = new node;
+        r->v = x % 10;
+        x /= 10;
+        r->next = f;
+        f = r;
+    } while (x > 0);
+}
+
+void output (node * f) {
+    while(f != NULL) {
+        cout << f->v;
+        f = f->next;
+    }
+    cout << " ";
+}
+
+node * reverseList (node * head) {
+    if (head == NULL or head->next == NULL) return head;
     
-    node *prev = head;
-    node *curr = head->next;
-    node *foll = head->next;
+    node * prev = head;
+    node * curr = head->next;
+    node * foll = head->next;
 
     prev->next = NULL;
 
-    while(curr != NULL) {
+    while (curr != NULL) {
         foll = foll->next;
         curr->next = prev;
         prev = curr;
@@ -26,99 +50,65 @@ node *reverseList (node *head) {
     return prev;
 }
 
-void output (node *f) {
-    if(f->v == 0) f = f->next;
-    while(f != NULL) {
-        cout << f->v;
-        f = f->next;
-    }
-    cout << " ";
-}
+node * sum (node * f1, node * f2) {
+    if (f1 == NULL) return f2;
+    if (f2 == NULL) return f1;
 
-void insertLast (node *&f, int x) {
-    node *r = new node;
-    r->v = x;
-    r->next = NULL;
+    node * rev1 = reverseList(f1);
+    node * rev2 = reverseList(f2);
+    node * REVSUM = new node;
+    node * curr = REVSUM;
+    node * prev = NULL;
+    short p = 0;
 
-    if( f == NULL ) { f = r; return; }
+    while (rev1 != NULL and rev2 != NULL) {
+        curr->v = rev1->v + rev2->v + p;
+        p = (curr->v / 10);
+        curr->v %= 10;
 
-    node *prev = f;
-    node *curr = f;
-    while(curr != NULL ) {
         prev = curr;
+        curr->next = new node;
         curr = curr->next;
+        rev1 = rev1->next;
+        rev2 = rev2->next;
     }
     
-    prev->next = r;
+    if (rev1 == NULL and rev2 == NULL) {
+        if (p == 0) prev->next = NULL;
+        else {
+            curr->v = 1;
+            curr->next = NULL;
+        }
+    }
+
+    else if (rev1 == NULL) {
+        curr->v = rev2->v + p;
+        curr->next = rev2->next;
+    }
+
+    else {
+        curr->v = rev1->v + p;
+        curr->next = rev1->next;
+    }
+    
+    return reverseList(REVSUM);
 }
 
-node *sum (node *f, node *s) {
-    if (f == NULL) return s;
-    if (s == NULL) return f;
+void printSolution (node * f, node * s) {
+    output(f); cout << "+ "; output(s); cout << "= "; output(sum(f,s)); cout << endl;
+}
 
-    node *rf = reverseList(f);
-    node *rs = reverseList(s);
+void test() {
+    node * f = NULL;
+    node * s = NULL;
 
-    node *RSUM = new node;
-    node *rsum = RSUM;
-    node *prev_rsum = NULL;
-
-    int p = 0;
-    while(rf != NULL and rs != NULL) {
-        rsum->v = rf->v + rs->v + p;
-        p = (rsum->v / 10);
-        rsum->v %= 10;
-
-        prev_rsum = rsum;
-        rsum->next = new node;  // I don't know why but it did not work without it
-        rsum = rsum->next;
-        rf = rf->next;
-        rs = rs->next;
-    }
-    
-    if(rf == NULL and rs == NULL) {
-        if(p == 0) {
-            prev_rsum->next = NULL;
-        }
-        else {
-            rsum->v = 1;
-        }
-    }
-
-    else if(rf == NULL) {
-        while(rs != NULL) {
-            rsum->v = rs->v + p;
-            p = 0;
-
-            rsum->next = new node;
-            rsum = rsum->next;
-            rs = rs->next;
-        }
-    }
-
-    else if(rs == NULL) {
-        while(rf != NULL) {
-            rsum->v = rf->v + p;
-            p = 0;
-            
-            rsum->next = new node;
-            rsum = rsum->next;
-            rf = rf->next;
-        }
-    }
-    
-    return reverseList(RSUM);
+    insertNumber(f,123); insertNumber(s,952);
+    printSolution(s,f);
 }
 
 int main() {
-    node *f = NULL;
-    node *s = NULL;
-
-    insertLast(f,9); insertLast(f,4); insertLast(f,1);
-
-    insertLast(s,9); insertLast(s,9); insertLast(s,5);
-
-    output(f); cout << "+ "; output(s); cout << "= "; output(sum(f,s));
+    
+    test();
 
     return 0;
 }

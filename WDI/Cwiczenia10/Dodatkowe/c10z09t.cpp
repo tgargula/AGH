@@ -43,7 +43,7 @@ void function (node * f) {
     }
 }
 
-int main() {
+void test() {
     node * f = NULL;
     insertFirst(f,5); insertFirst(f,1); insertFirst(f,4); insertFirst(f,2); insertFirst(f,3); insertFirst(f,3);
     output(f);
@@ -62,6 +62,11 @@ int main() {
     output(t);
     function(t);
     output(t);
+}
+
+int main() {
+    
+    test();
 
     return 0;
 

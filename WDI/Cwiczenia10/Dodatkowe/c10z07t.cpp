@@ -13,19 +13,19 @@ using namespace std;
 
 struct node {
     string s;
-    node *next;
+    node * next;
 };
 
-void output (node *f) {
-    while(f != NULL) {
+void output (node * f) {
+    while (f != NULL) {
         cout << f->s << " ";
         f = f->next;
     }
     cout << endl;
 }
 
-bool lex(string a, string b) {
-    if ( a == b ) return false;
+bool lexicographicalOrder(string a, string b) {
+    if (a == b) return false;
     for (int i = 0; i < min(a.size(),b.size()); i++) {
         if(char(a[i]) > char(b[i])) return false;
         if(char(a[i]) < char(b[i])) return true;
@@ -33,14 +33,14 @@ bool lex(string a, string b) {
     return a.size() < b.size() ? true : false;
 }
 
-void insertFirst(node *&f, string s) {
+void insertFirst (node *&f, string s) {
     node * r = new node;
     r->s = s;
     r->next = f;
     f = r;
 }
 
-void insert(node * f, string s) {
+void insertToTheMiddle (node * f, string s) {
     node * r = new node;
     r->s = s;
     r->next = f->next;
@@ -55,7 +55,7 @@ bool insertString (node *&f, string s) {
 
     node * prev = NULL;
     node * F = f;
-    while (f != NULL and lex(f->s, s)) {
+    while (f != NULL and lexicographicalOrder(f->s, s)) {
         prev = f;
         f = f->next;
     }
@@ -65,7 +65,7 @@ bool insertString (node *&f, string s) {
         return true;
     }
     if (f == NULL or f->s != s) { 
-        insert(prev,s);
+        insertToTheMiddle(prev,s);
         f = F;
         return true;
     }
@@ -75,11 +75,11 @@ bool insertString (node *&f, string s) {
     }
 }
 
-int main() {
-    // if(!lex("ab","ab")) cout << 1; else cout << 0;
-    // if(!lex("slonce","hello")) cout << 1; else cout << 0;
-    // if(lex("hello","slonce")) cout << 1; else cout << 0;
-    // if(!lex("abcde","abc")) cout << 1; else cout << 0;
+void test() {
+    if(!lexicographicalOrder("ab","ab")) cout << 1; else cout << 0;
+    if(!lexicographicalOrder("slonce","hello")) cout << 1; else cout << 0;
+    if(lexicographicalOrder("hello","slonce")) cout << 1; else cout << 0;
+    if(!lexicographicalOrder("abcde","abc")) cout << 1; else cout << 0;
 
     node * f = NULL;
     insertFirst(f,"there");
@@ -103,8 +103,11 @@ int main() {
     if (insertString(s,"kenobi")) cout << 1; else cout << 0;
 
     cout << " "; output(s);
+}
 
-
-
+int main() {
+    
+    test();
+    
     return 0;
 }

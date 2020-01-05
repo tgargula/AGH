@@ -1,3 +1,10 @@
+/*
+11. Proszę napisać funkcję, która otrzymując jako parametr wskazujący
+na początek listy jednokierunkowej, usuwa z niej wszystkie elementy,
+w których wartość klucza w zapisie trójkowym ma większą ilość jedynek
+niż dwójek.
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -22,7 +29,7 @@ void output (node * f) {
     cout << endl;
 }
 
-bool con (int x) {
+bool condition (int x) {
     int one, two;
     one = two = 0;
     while (x > 0) {
@@ -46,27 +53,31 @@ void deleteFirst (node *&f) {
     delete r;
 }
 
-void function (node *&f) {
+void function (node *&F) {
     node * prev = NULL;
-    node * F = f;
+    node * f = F;
 
     while (f != NULL) {
-        if (con(f->v)) {
+        if (condition(f->v)) {
             if (prev == NULL) { F = F->next; deleteFirst(f); }
             else deleteNode(prev);
         }
         prev = f;
         f = f->next;
     }
-
-    f = F;
 }
 
-int main() {
+void test() {
     node * f = NULL;
     insertFirst(f,2); insertFirst(f,1); insertFirst(f,113); insertFirst(f,13);
     output(f);
     function(f);
     output(f);
+}
 
+int main() {
+
+    test();
+
+    return 0;
 }

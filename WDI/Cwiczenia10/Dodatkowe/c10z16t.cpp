@@ -29,48 +29,49 @@ void output (node * f) {
     cout << endl;
 }
 
-void deleteFirst(node *&f) {
-    node * r = f;
-    f = f->next;
+void deleteNode (node *&f, node * prev, node *&t, int &ctr) {
+    node * r;
+    if(prev == NULL) {
+        r = f;
+        f = f->next;
+        t = f;
+    }
+    else {
+        r = prev->next;
+        prev->next = prev->next->next;
+    }
     delete r;
+    ctr++;
 }
 
-void deleteNode(node * prev) {
-    node * r = prev->next;
-    prev->next = prev->next->next;
-    delete r;
-}
-
-int function (node *&t) {
+int function (node *&f) {
     node * prev = NULL;
     int ctr = 0;
-    node * f = t;
+    node * t = f;
     while (t->next != NULL) {
         if (t->v == t->next->v) {
-            while (t->next != NULL and t->v == t->next->v) {
-                if(prev == NULL) { deleteFirst(t); f = t; }
-                else deleteNode(prev);
-                ctr++;
-            }
-            if(prev == NULL) { deleteFirst(t); f = t; }
-            else deleteNode(prev);
-            ctr++;
+            while (t->next != NULL and t->v == t->next->v) deleteNode(f,prev,t,ctr);
+            deleteNode(f,prev,t,ctr);
         }
         else {
             prev = t;
             t = t->next;
         }
     }
-    t = f;
     return ctr;
 }
 
-int main() {
+void test() {
     node * f = NULL;
     insertFirst(f,7); insertFirst(f,6); insertFirst(f,6); insertFirst(f,3); insertFirst(f,2); insertFirst(f,2); insertFirst(f,1); insertFirst(f,1); insertFirst(f,1);
     output(f); 
-    cout << function(f) << endl;
+    cout << function(f) << " element(s) deleted" << endl;
     output(f);
+}
+
+int main() {
+    
+    test();
 
     return 0;
 }

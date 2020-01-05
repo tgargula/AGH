@@ -11,17 +11,17 @@ using namespace std;
 
 struct node {
     int v;
-    node *next;
+    node * next;
 };
 
 void insertFirst (node *&f, int x) {
-    node *r = new node;
+    node * r = new node;
     r->v = x;
     r->next = f;
     f = r;
 }
 
-void output(node *m) {
+void output (node * m) {
     while(m != NULL) {
         cout << m->v << " ";
         m = m->next;
@@ -29,10 +29,10 @@ void output(node *m) {
     cout << endl;
 }
 
-void deleteNode(node *&prev, node *&curr) {
-    node *r = curr;
+void deleteNode (node *&prev, node *&curr) {
+    node * r = curr;
 
-    if(prev == NULL) {  // The first node is deleted
+    if (prev == NULL) {
         curr = curr->next;
     }   
     else {
@@ -43,11 +43,11 @@ void deleteNode(node *&prev, node *&curr) {
 }
 
 void function (node *&f) {
-    if(f == NULL) return;
-    node *curr = f;
-    node *prev = NULL;
-    while(curr->next != NULL) {
-        if((curr->next->v) % (curr->v) == 0) deleteNode(prev,curr);
+    if (f == NULL) return;
+    node * curr = f;
+    node * prev = NULL;
+    while (curr->next != NULL) {
+        if ((curr->next->v) % (curr->v) == 0) deleteNode(prev,curr);
         else {
             prev = curr;
             curr = curr->next;
@@ -55,8 +55,7 @@ void function (node *&f) {
     }
 }
 
-
-int main() {
+void test() {
     node *f = NULL;
     insertFirst(f,80);
     insertFirst(f,75);
@@ -72,6 +71,11 @@ int main() {
     function(f);
 
     output(f);
+}
+
+int main() {
+    
+    test();
 
     return 0;
 }

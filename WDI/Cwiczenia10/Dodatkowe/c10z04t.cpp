@@ -1,18 +1,24 @@
+/*
+4. Dana jest niepusta lista reprezentująca liczbę naturalną.
+Kolejne elementy listy przechowują kolejne cyfry.
+Proszę napisać funkcję zwiększającą taką liczbę o 1.
+*/
+
 #include <iostream>
 
 using namespace std;
 
 struct node {
     int v;
-    node *next;
+    node * next;
 };
 
-node *reverseList (node *head) {
+node * reverseList (node * head) {
     if(head == NULL or head->next == NULL) return head;
     
-    node *prev = head;
-    node *curr = head->next;
-    node *foll = head->next;
+    node * prev = head;
+    node * curr = head->next;
+    node * foll = head->next;
 
     prev->next = NULL;
 
@@ -26,8 +32,8 @@ node *reverseList (node *head) {
     return prev;
 }
 
-void output (node *f) {
-    while(f != NULL) {
+void output (node * f) {
+    while (f != NULL) {
         cout << f->v;
         f = f->next;
     }
@@ -35,15 +41,15 @@ void output (node *f) {
 }
 
 void insertLast (node *&f, int x) {
-    node *r = new node;
+    node * r = new node;
     r->v = x;
     r->next = NULL;
 
-    if( f == NULL ) { f = r; return; }
+    if (f == NULL) { f = r; return; }
 
-    node *prev = f;
-    node *curr = f;
-    while(curr != NULL ) {
+    node * prev = f;
+    node * curr = f;
+    while (curr != NULL) {
         prev = curr;
         curr = curr->next;
     }
@@ -52,27 +58,27 @@ void insertLast (node *&f, int x) {
 }
 
 void addOne (node *&f) {
-    node *one = new node;
+    node * one = new node;
     one->v = 1;
     one->next = NULL;
 
-    if(f == NULL) {    
+    if (f == NULL) {    
         f = one;
         return;
     }
 
-    node *REV = reverseList(f);
-    node *rev = REV;
-    node *prev = NULL;
+    node * REV = reverseList(f);
+    node * rev = REV;
+    node * prev = NULL;
     rev->v++;
-    while(rev != NULL and rev->v == 10) {
+    while (rev != NULL and rev->v == 10) {
         rev->v = 0;
         prev = rev;
         rev = rev->next;
-        if(rev != NULL) rev->v++;
+        if (rev != NULL) rev->v++;
     }
     
-    if(rev == NULL) {
+    if (rev == NULL) {
         prev->v = 0;
         prev->next = one;
     }
@@ -80,29 +86,32 @@ void addOne (node *&f) {
     f = reverseList(REV);
 }
 
-int main() {
-    node *f = NULL;
+void test() {
+    node * f = NULL;
 
-    for(int i = 1; i <= 9; i++) insertLast(f,i);
+    for (int i = 1; i <= 9; i++) insertLast(f,i);
 
     output(f);
     addOne(f); output(f);
     addOne(f); output(f);
 
-    node *o = NULL;
+    node * o = NULL;
 
     output(o);
     addOne(o); output(o);
 
-    node *s = NULL;
+    node * s = NULL;
 
     insertLast(s,9); insertLast(s,8);
 
     output(s);
     addOne(s); output(s);
     addOne(s); output(s);
+}
 
+int main() {
 
+    test();
 
     return 0;
 }

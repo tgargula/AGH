@@ -1,3 +1,12 @@
+/*
+28. Lista reprezentuje wielomian o współczynnikach całkowitych.
+Elementy w liście ułożone są według rosnących potęg. Proszę napisać
+funkcję  obliczającą różnicę dwóch dowolnych wielomianów. Wielomiany
+reprezentowane są przez wyżej opisane listy. Procedura powinna zwracać
+wskaźnik do nowo utworzonej listy  reprezentującej wielomian wynikowy.
+Listy wejściowe powinny pozostać niezmienione.
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -15,7 +24,7 @@ void insertFirst (node *&f, int x) {
 }
 
 void output (node * f) {
-    while(f != NULL) {
+    while (f != NULL) {
         cout << f->v << " ";
         f = f->next;
     }
@@ -26,25 +35,25 @@ node * sumOfPolynomials (node * f, node * s) {
     if (f == NULL) return s;
     if (s == NULL) return f;
     
-    node * sum = new node;
-    node * SUM = sum;
-    node * sump = NULL;
+    node * SUM = new node;
+    node * curr = SUM;
+    node * prev = NULL;
     
     while (f != NULL and s != NULL) {
-        sum->v = f->v + s->v;
-        sum->next = new node;
-        sump = sum;
-        sum = sum->next;
+        curr->v = f->v + s->v;
+        //curr->next = new node;
+        prev = curr;
+        curr = curr->next;
         f = f->next;   
         s = s->next;
     }
-    if(f == NULL) sump->next = s;
-    else sump->next = f;
+    if (f == NULL) prev->next = s;
+    else prev->next = f;
 
     return SUM;
 }
 
-int main() {
+void test() {
     node * f = NULL;
     node * s = NULL;
     insertFirst(f,1); insertFirst(f,2); insertFirst(f,3); insertFirst(f,4);
@@ -53,12 +62,20 @@ int main() {
     output(f);
     output(s);
     output(sumOfPolynomials(f,s));
+    output(f);
+    output(s);
 
     node * a = NULL;
     insertFirst(a,4); insertFirst(a,5); insertFirst(a,7);
 
     output(a);
     output(sumOfPolynomials(a,a));
+
+}
+
+int main() {
+    
+    test();
 
     return 0;
 }
