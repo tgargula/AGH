@@ -24,24 +24,23 @@ void ChangePawns(pawnsCordinates Pawns[16], coordinates move) {
     }
 }
 
-gameData IsWinner(char GameField[8][8], gameData &dataForGame) {
+void IsWinner(char GameField[8][8], gameData &dataForGame) {
     if(dataForGame.whoseMove < 24) {
         dataForGame.endFlag = true;
-        return dataForGame;
+
     }
     bool blackWinFlag = true, whiteWinFlag = true;
     for(int w = 0; w < 8; w++) {
-        if(GameField[7 - w % 2][w] != 'B') whiteWinFlag = false;
-        if(GameField[1 - w % 2][w] != 'W') blackWinFlag = false;
+        if(GameField[6 + w % 2][w] != 'W') whiteWinFlag = false;
+        if(GameField[0 + w % 2][w] != 'B') blackWinFlag = false;
     }
     if(blackWinFlag and whiteWinFlag) {
-        dataForGame.endFlag = false; dataForGame.whoWins = "DRAW!"; return dataForGame;
+        dataForGame.endFlag = false; dataForGame.whoWins = "DRAW!";
     } else if(whiteWinFlag) {
-        dataForGame.endFlag = false; dataForGame.whoWins = "White WIN!"; return dataForGame;
+        dataForGame.endFlag = false; dataForGame.whoWins = "White WIN!";
     } else if(blackWinFlag) {
-        dataForGame.endFlag = false; dataForGame.whoWins = "Black WIN!"; return dataForGame;
+        dataForGame.endFlag = false; dataForGame.whoWins = "Black WIN!";
     }
-    return dataForGame;
 }
 
 //PLAYER MOVE GROUP
@@ -177,12 +176,14 @@ int Game8vs8() {
     dataForGame.whoWins = "";
     StartField8vs8(GameField, Pawns);
 
+    // testWinGame(GameField, Pawns);
     // testPrintGameField(GameField);
     // testPrintPawns(Pawns);
 
     while(dataForGame.endFlag and endGameflag) {
         PlayerMove(GameField, Pawns, dataForGame.whoseMove, endGameflag );
         IsWinner(GameField, dataForGame);
+        if(!dataForGame.endFlag) cout << dataForGame.whoWins << '\n' << endl;
         // testPrintPawns(Pawns);
         dataForGame.whoseMove++;
     }

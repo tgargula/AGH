@@ -33,8 +33,16 @@ void TranslationStringInBigInteger() {
 
 }
 
+struct singleNodePointer {
+    int value;
+    singleNodePointer *next;
+};
 
-
+struct doubleNodePointer {
+    int value;
+    doubleNodePointer *prev;
+    doubleNodePointer *next;
+};
 
 /* MATH */
 
@@ -210,6 +218,11 @@ bigInteger MultiplicationBigInt(bigInteger first, bigInteger second) {
 
 /* TASKS HELPERS */
 
+int RandomInteger(int min = 0, int max = 100) {
+    srand(time(NULL));
+    return (rand() % (max - min) + min); 
+}
+
 /* Input random integers in default range [0,99] to array */
 void RandomIntArray(int Array[], int range = 100) {
     srand(time(NULL)); 
@@ -285,6 +298,79 @@ void EratostenesSieve(int range = 1000000) {
 
 
 /* POINTERS */
+/*One Direction Lists*/
+void insertFirst(singleNodePointer *&first, int val = RandomInteger()) {
+    singleNodePointer *newFirst = new singleNodePointer;
+    newFirst->value = val;
+    newFirst->next = first;
+    first = newFirst;
+}
+
+void insertLast(singleNodePointer *&first, int val = RandomInteger()) {
+    singleNodePointer *newLast = new singleNodePointer;
+    singleNodePointer *currentLast = NULL, *nextCurrLast = first;
+    newLast->value = val;
+    newLast->next = NULL;
+
+    while(nextCurrLast != NULL) {
+        currentLast = nextCurrLast;
+        nextCurrLast = nextCurrLast->next;
+    }
+    if(currentLast != NULL) currentLast->next = newLast;
+    else first = newLast;
+}
+
+void insertByOrder(singleNodePointer *first, int position, int val = RandomInteger()) { /*position=0 - 1st position*/
+    if(position <= 0) {insertFirst(first, val); return;}
+    int posFinder = 0;
+    singleNodePointer *prevNode = NULL; singleNodePointer *nextNode = NULL;
+    while(nextNode != NULL and posFinder < position) {
+
+    }
+    if(posFinder < position) insertLast(first, val);
+}
+
+void deleteFirst(singleNodePointer *&first) {
+
+}
+
+void deleteLast(singleNodePointer *first) {
+
+}
+
+void deleteByValue(singleNodePointer *first, int val) {
+
+}
+
+void deleteByOrder(singleNodePointer *first, int position) {
+
+}
+
+bool belong(singleNodePointer *first, int val) {
+
+}
+
+void listReversion(singleNodePointer *first) {
+
+}
+
+void connectLastElementToFirst(singleNodePointer *first) {
+
+}
+
+bool hasListCycle(singleNodePointer *first) {
+
+}
+
+void printChain(singleNodePointer *first) {
+
+}
+
+void createChain() {
+
+}
+
+/*Two Direction Lists*/
 
 
 
