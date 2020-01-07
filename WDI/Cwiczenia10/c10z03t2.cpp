@@ -3,7 +3,6 @@
 listę. Do funkcji należy przekazać wskazania na pierwsze elementy obu list,
 funkcja powinna zwrócić wskazanie do scalonej listy.
 - funkcja iteracyjna (merge1);
-- funkcja rekurencyjna (merge2)
 
 Wersja z wartownikiem na początku
 */
