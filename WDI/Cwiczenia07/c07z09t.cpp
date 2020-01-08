@@ -7,62 +7,57 @@ using namespace std;
 
 const int MAX = 11;
 
-inline short sign (int mainRow) { return mainRow %2 == 0 ? 1 : -1; }
+inline short sign (int selectedRow) { return selectedRow %2 == 0 ? 1 : -1; }
 
-int determinantOfTheMatrix (int det[MAX][MAX], int size) {
-    int mainDeterminant = 0;
-    if (size == 1) return det[0][0];
+int determinantOfTheMatrix (int matrix[MAX][MAX], int size) {
+    int determinant = 0;
+    if (size == 1) return matrix[0][0];
 
-    for (int mainRow = 0; mainRow < size; mainRow++) {
-        int newDet[MAX][MAX];
-        int mainI, mainJ, newI, newJ; mainI = newI = 0;
-        while (mainI < size) {
-            newJ = 0; mainJ = 1;
-            if (mainI == mainRow) { mainI++; continue; }
-            while (mainJ < size) {
-                newDet[newI][newJ] = det[mainI][mainJ];
-                mainJ++; newJ++;
-            }
-            mainI++; newI++;
+    // Due to the Laplace expansion along the 0th column
+    for (int selectedRow = 0; selectedRow < size; selectedRow++) {
+        int newMatrix[MAX][MAX];
+        for (int i = 0, newI = 0; i < size; i++, newI++) {
+            if (i == selectedRow) { newI--; continue; }
+            for (int j = 1; j < size; j++) newMatrix[newI][j-1] = matrix[i][j];
         }
 
-        mainDeterminant += sign(mainRow) * det[mainRow][0] * determinantOfTheMatrix(newDet,size-1);
+        determinant += sign(selectedRow) * matrix[selectedRow][0] * determinantOfTheMatrix(newMatrix,size-1);
     }
 
-    return mainDeterminant;
+    return determinant;
 }
 
-void insertRandomMatrix (int det[MAX][MAX], int size) {
+void insertRandomMatrix (int matrix[MAX][MAX], int size) {
     srand(time(NULL));
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             srand(rand());
-            det[i][j] = rand() % 21 - 10;
-            cout << det[i][j] << "\t";
+            matrix[i][j] = rand() % 11 - 5;
+            cout << matrix[i][j] << "\t";
         }
         cout << endl;
     }
 
     clock_t time;
     time = clock();
-    cout << "det = " << determinantOfTheMatrix(det,size) << " (" << (float)(clock() - time)/CLOCKS_PER_SEC << " seconds)\n\n";
+    cout << "det = " << determinantOfTheMatrix(matrix,size) << " (" << (float)(clock() - time)/CLOCKS_PER_SEC << " seconds)\n\n";
 }
 
 void test() {
-    int det[MAX][MAX];
+    int matrix[MAX][MAX];
 
-    for(int size = 2; size <= 11; size++) insertRandomMatrix(det,size);
+    for(int size = 2; size <= 11; size++) insertRandomMatrix(matrix,size);
     
     int size = 5;
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            if (i == j) det[i][j] = 1;
-            else det[i][j] = 0;
-            cout << det[i][j] << " ";
+            if (i == j) matrix[i][j] = 1;
+            else matrix[i][j] = 0;
+            cout << matrix[i][j] << " ";
         }
         cout << endl;
     }
-    cout << "det = " << determinantOfTheMatrix(det,size) << "\n\n";
+    cout << "det = " << determinantOfTheMatrix(matrix,size) << "\n\n";
 }
 
 int main() {
