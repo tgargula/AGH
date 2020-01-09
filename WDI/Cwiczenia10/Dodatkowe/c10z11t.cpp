@@ -38,7 +38,7 @@ bool condition (int x) {
         x /= 3;
     }
 
-    return two < one ? true : false;
+    return two < one;
 }
 
 void deleteNode (node * prev) {
