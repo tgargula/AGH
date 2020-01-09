@@ -1,0 +1,16 @@
+{
+    "EN": {
+        "chooseLanguage": "Choose your language: ",
+        "chooseExistingLanguage": "Choose existing language",
+        "typeCorrectGamemode": "Type correct gamemode",
+        "tooMuchTriesExit": "You've tried choose game params too much times. Exiting game ...",
+        "whiteMove": "Waiting for white move ...",
+        "blackMove": "Waiting for black move ..."
+    },
+    "PL": {
+        "typeCorrectGamemode": "Wybierz poprawny tryb rozgrywki"
+    },
+    "DE": {
+        "typeCorrectGamemode": ""
+    }
+}
