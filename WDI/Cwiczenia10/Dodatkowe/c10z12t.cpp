@@ -34,7 +34,7 @@ bool condition (int x) {
         if (x % 8 == 5) ctr++;
         x /= 8;
     }
-    return ctr %2 == 0 ? true : false;
+    return ctr %2 == 0;
 }
 
 void rearrange (node * prev, node *&head) {

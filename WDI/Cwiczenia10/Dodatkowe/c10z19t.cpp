@@ -19,18 +19,18 @@ void insertFirst (node *&f, int x) {
     f = r;
 }
 
-bool isCycle (node *f) {
-    if (f == NULL) return false;
+bool hasCycle (node * f) {
+    if (f == NULL or f->next == NULL) return false;
     node * a, * b;
     a = f;
-    b = f->next;
-    while (b != NULL and b != a) {
+    b = f;
+    do {
         a = a->next;
         b = b->next;
         if (b != NULL) b = b->next;
-    }
+    } while (b != NULL and b != a);
 
-    return a == b ? true : false;
+    return a == b;
 }
 
 void makeCycle (node * f) {
@@ -48,7 +48,7 @@ void output (node * f) {
 }
 
 void check (node * f) {
-    if (isCycle(f)) cout << "YES" << endl;
+    if (hasCycle(f)) cout << "YES" << endl;
     else cout << "NO" << endl;
 }
 

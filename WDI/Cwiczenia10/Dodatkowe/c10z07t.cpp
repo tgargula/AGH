@@ -30,7 +30,7 @@ bool lexicographicalOrder(string a, string b) {
         if(char(a[i]) > char(b[i])) return false;
         if(char(a[i]) < char(b[i])) return true;
     }
-    return a.size() < b.size() ? true : false;
+    return a.size() < b.size();
 }
 
 void insertFirst (node *&f, string s) {

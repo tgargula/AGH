@@ -37,7 +37,7 @@ bool condition (int x) {
         if (x %2 == 1) ctr++;
         x /= 2;
     }
-    return ctr %2 == 1 ? true : false;
+    return ctr %2 == 1;
 }
 
 void function (node *&f) {

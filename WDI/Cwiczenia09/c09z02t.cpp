@@ -1,39 +1,52 @@
-/// Funkcje do implementacji tablicy rzadkiej
+// Funkcje do implementacji tablicy rzadkiej
 
 #include <iostream>
 
 using namespace std;
 
 struct node {
-    int v;
-    node *next;
+    int value;
+    int address;
+    node * next;
 };
 
+const int defaultValue = 0;
+
 void init (node *&tab) {
-    // nie wiem, o co dokładnie chodzi, pomóżcie xd
+
 }
 
-int value (node *tab, int n) {
-    int i = 0;
-    while (tab->next != NULL and i < n) {
-        i++;
-        tab = tab->next;
+int value (node * sparseTable, int address, int value) {
+    while (sparseTable != NULL and sparseTable->address < address) sparseTable = sparseTable->next;
+    return (sparseTable != NULL and sparseTable->address == address) ? sparseTable->value : defaultValue;
+}
+
+void set (node *&sparseTable, int address, int value) {
+    node * prev = NULL;
+    node * curr = sparseTable;
+    while (curr != NULL and curr->address < address) {
+        prev = curr;
+        curr = curr->next;
     }
-    if ( i == n ) return tab->v;
-    else return -1;
-}
 
-void set (node *&tab, int n, int value) {
-    int i = 0;
-    while ( tab->next != NULL and i < n ) {
-        i++;
-        tab = tab->next;
+    node * r = new node;
+    r->value = value;
+    r->address = address;
+    if (prev == NULL) {
+        r->next = sparseTable;
+        sparseTable = r;
     }
-    if ( i == n ) tab->v = value;
+    else {
+        r->next = curr;
+        prev->next = r;
+    }
 }
 
-
+void test() {
+    
+}
 
 int main() {
+
     return 0;
 }

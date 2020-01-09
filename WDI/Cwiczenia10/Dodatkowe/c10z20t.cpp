@@ -19,19 +19,18 @@ void insertFirst (node *&f, int x) {
     f = r;
 }
 
-bool isCycle (node * f) {
-    if (f == NULL) return false;
+bool hasCycle (node * f) {
+    if (f == NULL or f->next == NULL) return false;
     node * a, * b;
     a = f;
-    b = f->next;
-    while (b != NULL and b != a) {
+    b = f;
+    do {
         a = a->next;
         b = b->next;
         if (b != NULL) b = b->next;
-    }
+    } while (b != NULL and b != a);
 
-    if (a == b) return true;
-    return false;
+    return a == b;
 }
 
 void makeCycle (node * f) {
@@ -50,14 +49,12 @@ void output (node * f) {
 
 int elemInCycle (node * f) {
     node * a, * b;
-    a = f;
-    b = f->next;
+    a = b = f;
     
-    while (b != NULL and b != a) {      // when a == b, then we are sure that we are inside the cycle
+    do {
         a = a->next;
-        b = b->next;
-        if (b != NULL) b = b->next;
-    }
+        b = b->next->next;
+    } while (a != b);
 
     int ctr = 0;
     do {
@@ -69,7 +66,7 @@ int elemInCycle (node * f) {
 }
 
 void check (node * f) {
-    if (isCycle(f)) {
+    if (hasCycle(f)) {
         cout << "There are " << elemInCycle(f) << " elements in the cycle." << endl;
     }
     else cout << "The list has no cycle." << endl;
