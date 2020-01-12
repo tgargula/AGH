@@ -20,13 +20,38 @@ bool Possible(int t[N][N], int i, int r, int c, int &nr, int &nc) {
     return nc >= 0 and nc < N and nr >= 0 and nr < N and t[nr][nc] == 0;
 }
 
-void Knight_Jump (int t[N][N], int r, int c, int n) {
+// void Knight_Jump (int t[N][N], int r, int c, int n) {
+//     t[r][c] = n;
+//     if(n == N*N) Output(t);
+//     else {
+//         for(int i = 0; i < 8; i++) {
+//             int nr, nc;
+//             if(Possible(t,i,r,c,nr,nc)) Knight_Jump(t,nr,nc,n+1);
+//         }
+//     }
+//     t[r][c] = 0;
+// }
+
+// void Knight_Jump (int t[N][N], int r, int c, int n) {
+//     t[r][c] = n;
+//     if(n == N*N) Output(t);
+//     else {
+//         for(int i = 0; i < 8; i++) {
+//             int nr, nc;
+//             if(Possible(t,i,r,c,nr,nc)) Knight_Jump(t,nr,nc,n+1);
+//         }
+//     }
+//     t[r][c] = 0;
+// }
+
+void Knight_Jump (int t[N][N], int r, int c, int n, bool b) { //Knight_Jump(t,0,0,0,false)
+    if(b) return;
     t[r][c] = n;
-    if(n == N*N) Output(t);
+    if(n == N*N) { Output(t); b = true; return; }
     else {
         for(int i = 0; i < 8; i++) {
             int nr, nc;
-            if(Possible(t,i,r,c,nr,nc)) Knight_Jump(t,nr,nc,n+1);
+            if(Possible(t,i,r,c,nr,nc)) Knight_Jump(t,nr,nc,n+1,b);
         }
     }
     t[r][c] = 0;
@@ -34,6 +59,6 @@ void Knight_Jump (int t[N][N], int r, int c, int n) {
 
 int main() {
     static int t[N][N];
-    Knight_Jump(t,0,0,1);
+    Knight_Jump(t,0,0,1,false);
     return 0;
 }
