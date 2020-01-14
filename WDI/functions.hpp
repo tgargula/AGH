@@ -233,7 +233,7 @@ void RandomIntArray(int Array[], int arraySize, int range = 100) {
 }
 /*experimental*/
 void RandomIntArrayExperimental(int Array[], int range = 100) {
-    srand(time(NULL));
+    srand(time(NULL)); cout << *(&Array + 1) - Array <<endl;
     for(int i = 0; i < *(&Array + 1) - Array; i++) {
         srand(rand()); 
         Array[i] = rand() % range;
