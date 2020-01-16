@@ -2,6 +2,7 @@
 #include <math.h>
 #include <cstdlib>
 #include <time.h>
+#include <unistd.h>
 
 #ifndef functions_hpp
 #define functions_hpp
@@ -465,7 +466,7 @@ bool belong(node *first, int val) {
     return false;
 }
 
-node * listRverse(node *first) {
+node * listReverse(node *first) {
     if(first == NULL or first->next == NULL) return first;
 
     node *prevElem = first, *currElem = first->next, *nextElem = first->next;
@@ -481,6 +482,54 @@ node * listRverse(node *first) {
     return prevElem;
 }
 
+bool hasListCycle(node *first) {
+    if(first == NULL) return false;
+    if(first->next == first) return true;
+    node *fasterFirst = first;
+    while(first->next != NULL and fasterFirst->next != NULL) {
+        first = first->next; fasterFirst = fasterFirst->next;
+        if(fasterFirst->next == NULL) return false;
+        else fasterFirst = fasterFirst->next;
+        if(first == fasterFirst) return true;
+    }
+    return false;
+}
+
+// bool isListCycle(node *first) {
+//     node *findLast = first;
+//     while(findLast->next != NULL) {
+//         if(findLast->next == first) return true;
+//         findLast = findLast->next;
+//     }
+//     return false;
+// }
+
+int listLength(node *first) {
+    if(hasListCycle(first)) {
+        cout << "cycle list" << endl; return 1234567;
+    }
+    if(first == NULL) return 0;
+    if(first->next == NULL) return 1;
+    int length = 1;
+    while(first->next != NULL) {
+        first = first->next;
+        length++;
+    }
+    return length;
+}
+
+void createRandomCycle(node *first, int startCycleElem) {
+    if(listLength(first) < 2) return;
+    node *lastElem = first, *startCycle = first;
+    while(startCycleElem > 0 and lastElem->next != NULL) {
+        lastElem = lastElem->next; startCycle = startCycle->next; startCycleElem--;
+    }
+    while(lastElem->next != NULL) {
+        lastElem = lastElem->next;
+    }
+    lastElem->next = startCycle;
+}
+
 void connectLastElementToFirst(node *first) {
     node *findLast = NULL, *help = first;
     while(help != NULL) {
@@ -488,41 +537,6 @@ void connectLastElementToFirst(node *first) {
         help = help->next;
     }
     if(findLast != NULL) findLast->next = first;
-}
-
-bool hasListCycle(node *first) {
-    node *findLast = first;
-    while(findLast->next != NULL) {
-        if(findLast->next == first) return true;
-        findLast = findLast->next;
-    }
-    return false;
-}
-
-void printListElements(node *first, bool addresses = false) {
-    if(first == NULL) return;
-
-    if(!hasListCycle(first)) {
-        if(addresses) cout << &first << "->";
-        while(first != NULL) {
-            cout << first->value << " ";
-            if(addresses and first->next != NULL) cout << first->next << "->";
-            first = first->next;
-        }
-        cout << endl;
-    } else {
-        node *goAlongList = first; 
-        if(addresses) cout << &first << "->";
-        cout << goAlongList->value << " ";
-        goAlongList = goAlongList->next;
-        if(addresses) cout << &first << "->";
-        while(goAlongList != first) {
-            cout << goAlongList->value << " ";
-            if(addresses and goAlongList->next != first) cout << goAlongList->next << "->";
-            goAlongList = goAlongList->next;
-        }
-        cout << endl;
-    }
 }
 
 node * createList(int numberOfElements = 10, bool regular = true, int range = 10000) {
@@ -552,6 +566,76 @@ node * createCycleList(int numberOfElements = 10) {
     connectLastElementToFirst(first);
     return first;
 }
+
+node * createListWithCycle(int numberOfElements = 10, int startCycleElem = 0) {
+    node *first = new node;
+    first->value = numberOfElements;
+    for(int i = 1; i < numberOfElements; i++) {
+        insertFirst(first, numberOfElements-i);
+    }
+    if(startCycleElem == 0) startCycleElem = RandomInteger(0, listLength(first));
+    createRandomCycle(first, startCycleElem);
+    return first;
+}
+
+int countElemsInCycle(node *first) {
+    if(first == NULL) return 0;
+    if(first == first->next) return 1;
+    node *fasterFirst = first->next;
+    while(fasterFirst != NULL and fasterFirst != first) {
+        first = first->next; fasterFirst = fasterFirst->next;
+        if(fasterFirst != NULL) fasterFirst = fasterFirst->next;
+    }
+    if(fasterFirst == NULL) {
+        cout << "no cycle" << endl; return 0;
+    }
+
+    int length = 1; fasterFirst = first->next;
+    while(fasterFirst != first) {
+        fasterFirst = fasterFirst->next; length++;
+    }
+    return length;
+
+    // else {
+    //     node *counter = first->next; int length = 1;
+    //     while(counter != first) {
+    //         counter = counter->next; cout << counter->value << " " << counter->next << endl;
+    //         usleep(2000000);
+    //         length++; cout << length << " " << endl;
+    //     } 
+    //     return length;
+    // }
+    return 0;
+}
+
+int countElemsBeforeCycle(node *first) {
+    if(first == NULL or first == first->next) return 0;
+        
+}
+
+void printListElements(node *first, bool addresses = false) {       /*No cycle lists*/
+    if(first == NULL) return;
+    if(addresses) cout << &first << "->";
+    while(first != NULL) {
+        cout << first->value << " ";
+        if(addresses and first->next != NULL) cout << first->next << "->";
+        first = first->next;
+    }
+    cout << endl;
+    // node *goAlongList = first; 
+    // if(addresses) cout << &first << "->";
+    // cout << goAlongList->value << " ";
+    // goAlongList = goAlongList->next;
+    // if(addresses) cout << &first << "->";
+    // while(goAlongList != first) {
+    //     cout << goAlongList->value << " ";
+    //     if(addresses and goAlongList->next != first) cout << goAlongList->next << "->";
+    //     goAlongList = goAlongList->next;
+    // }
+    // cout << endl;
+}
+
+
 
 /*Two Direction Lists*/
 

@@ -20,9 +20,23 @@ using namespace std;
 // }
 
 int main() {
-    int t[5]; cout << *(&t + 1) - t << endl;
-    RandomIntArrayExperimental(t, 10);
-    PrintIntArrayExperimental(t);
+    node *first = createListWithCycle(10, 5);
+    if(hasListCycle(first)) cout << "has cycle" << endl;
+    cout << countElemsInCycle(first) << endl;
+    // node *first = createList(10);
+    // first->value = NULL;
+    // // cout << first->value << endl;
+    // printListElements(first, true);
+    // first->value = 15;
+    // printListElements(first, true);
+    // node *first = createCycleList(5);
+    // node *first = createListWithCycle(15);
+    // if(hasListCycle(first)) cout << "has Cycle" << endl;
+    // cout << listLength(first) << endl;
+    // printListElements(first);
+    // int t[5]; cout << *(&t + 1) - t << endl;
+    // RandomIntArrayExperimental(t, 10);
+    // PrintIntArrayExperimental(t);
     // singleNodePointer *first = createList();
     // singleNodePointer *first = createCycleList(100);
     // printListElements(first);
