@@ -21,7 +21,10 @@ using namespace std;
 
 int main() {
     node *first = createListWithCycle(10, 5);
-    if(hasListCycle(first)) cout << "has cycle" << endl;
+    cout << first->value << endl;
+    // printListElements(first);
+    // if(hasListCycle(first)) cout << "has cycle" << endl;
+    cout << countElemsBeforeCycle(first) << endl;
     cout << countElemsInCycle(first) << endl;
     // node *first = createList(10);
     // first->value = NULL;

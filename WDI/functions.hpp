@@ -519,15 +519,21 @@ int listLength(node *first) {
 }
 
 void createRandomCycle(node *first, int startCycleElem) {
-    if(listLength(first) < 2) return;
+    // if(listLength(first) < 2) return;
+    // cout << "start make cycle" << endl;
+    // usleep(1000000);
+    if(hasListCycle(first)){ return;}
     node *lastElem = first, *startCycle = first;
     while(startCycleElem > 0 and lastElem->next != NULL) {
+        // cout << lastElem->next << " last" << endl;
         lastElem = lastElem->next; startCycle = startCycle->next; startCycleElem--;
     }
     while(lastElem->next != NULL) {
+        // cout << lastElem->next << " last" << endl;
         lastElem = lastElem->next;
     }
-    lastElem->next = startCycle;
+    lastElem->next = startCycle; 
+    return;
 }
 
 void connectLastElementToFirst(node *first) {
@@ -573,8 +579,10 @@ node * createListWithCycle(int numberOfElements = 10, int startCycleElem = 0) {
     for(int i = 1; i < numberOfElements; i++) {
         insertFirst(first, numberOfElements-i);
     }
+    cout << "OK 1" << endl;
     if(startCycleElem == 0) startCycleElem = RandomInteger(0, listLength(first));
-    createRandomCycle(first, startCycleElem);
+    cout << startCycleElem << " " << "OK2 " << endl;
+    createRandomCycle(first, startCycleElem); cout << "OK3" << endl;
     return first;
 }
 
@@ -594,7 +602,7 @@ int countElemsInCycle(node *first) {
     while(fasterFirst != first) {
         fasterFirst = fasterFirst->next; length++;
     }
-    return length;
+    return length; cout << length << " 2" << endl;
 
     // else {
     //     node *counter = first->next; int length = 1;
@@ -605,12 +613,43 @@ int countElemsInCycle(node *first) {
     //     } 
     //     return length;
     // }
-    return 0;
+}
+
+int cycleListReverseWithCount(node *first) {
+    if(first == NULL or first->next == first) return 0;
+
+    node *prevElem = first, *currElem = first->next;
+    if(currElem->next == first) return 0;
+    if(currElem->next == currElem) return 1;
+
+    node *nextElem = first->next;
+    prevElem->next = NULL;
+
+    int result = 0;
+    while(currElem != NULL) {
+        nextElem = nextElem->next;
+        currElem->next = prevElem;
+        prevElem = currElem;
+        currElem = nextElem;
+        result++; // cout << result << endl;
+    }
+    
+    // while(nextElem != NULL) {
+    //     currElem->next == first;
+    //     first = currElem;
+    //     currElem = nextNode;
+    //     nextNode = nextNode->next;
+        
+    //     cout << "reversion" << endl;
+    // }
+    // currentNode->next = first;
+    return result; cout << result << "1 " << endl;
 }
 
 int countElemsBeforeCycle(node *first) {
-    if(first == NULL or first == first->next) return 0;
-        
+    int result = (0 - countElemsBeforeCycle(first) + cycleListReverseWithCount(first))/2;
+    cout << result << endl;
+    return result;
 }
 
 void printListElements(node *first, bool addresses = false) {       /*No cycle lists*/
