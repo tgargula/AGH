@@ -2,7 +2,7 @@
 
 import json
 
-string = input('Input a code: ')
+string = input('Input a string: ')
 
 dictionary = {}
 
