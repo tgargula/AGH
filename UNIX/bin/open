@@ -1,0 +1,50 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+CONFIG="$HOME/bin/.$SCRIPTNAME.config"
+
+function matchWithExtensionAndOpen {
+	code=`cat $CONFIG | grep $1 | awk '{print $3}'`
+	COMMAND=` echo $code | cut -d: -f 1`
+	EXT=`echo $code | cut -d: -f 2-`
+	EXT=${EXT//:/' \'}
+
+	for i in $EXT; do
+		if [[ `echo "$2" | grep $i$` ]]; then
+			echo "Opening '$2' using $COMMAND..."
+			$COMMAND "$2" &
+			exit
+		fi
+	done
+}
+
+if (( $# == 0 )) || [[ -d $1 ]]; then
+	if [[ $1 ]]; then
+		FILE=$1
+	else
+		FILE="./"
+	fi
+	PROGRAM=`cat $HOME/bin/.$SCRIPTNAME.config | grep DIRECTORY | awk '{print $3}' | awk -F: '{print $1}'`
+	echo "Opening "$FILE" using $PROGRAM..."
+	$PROGRAM $FILE &
+	exit
+fi
+
+if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
+	cat $HOME/bin/.$SCRIPTNAME.help
+	exit
+fi
+
+if [[ ! -f $1 ]]; then
+	echo "The argument is not a file nor a directory"
+	exit 1
+fi
+
+TYPES="PDF SPREADSHEET DOCUMENT IMAGE VIDEO MUSIC LATEX CODE TEXT DATABASE PRESENTATION MATH"
+for i in $TYPES; do
+	matchWithExtensionAndOpen $i "$1"
+done
+
+echo "We cannot associate the extention of the file: '$1'"
+echo "Unable to open"
+exit 2

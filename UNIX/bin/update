@@ -1,0 +1,60 @@
+#!/bin/bash
+
+if (( $# == 0 )) || [[ $1 == '-y' ]]; then
+	sudo apt-get update
+	sudo apt-get -y dist-upgrade
+	sudo apt-get -y autoremove
+	echo -n "Updating database..."
+	sudo updatedb
+	echo
+	exit
+fi
+
+if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
+	cat ~/bin/.$SCRIPTNAME.help
+	exit
+fi
+
+if [[ $1 == '--no-dist' ]]; then
+	sudo apt-get update
+	sudo apt-get -y upgrade
+	sudo apt-get -y autoremove
+	echo -n "Updating database..."
+	sudo updatedb
+	echo
+	exit
+fi
+
+if [[ $1 == '-i' ]]; then
+	sudo apt-get update
+	echo -n "Do you want to make dist-upgrade? [Y/n]: "
+	read answer
+	if [[ $answer != 'N' && $answer != 'n' ]]; then
+		sudo apt-get dist-upgrade
+	else
+		echo -n "Do you want to make upgrade instead? [Y/n]: "
+		read answer
+		if [[ $answer != 'N' && $answer != 'n' ]]; then
+			sudo apt-get upgrade
+		fi
+	fi
+	
+	echo -n "Do you want to make autoremove? [Y/n]: "
+	read answer
+	if [[ $answer != 'N' && $answer != 'n' ]]; then
+		sudo apt-get autoremove
+	fi
+
+	echo -n "Do you want to update database? [Y/n]: "
+	read answer
+	if [[ $answer != 'N' && $answer != 'n' ]]; then
+		echo -n "Updating database..."
+		sudo updatedb
+		echo
+	fi
+	exit
+fi
+
+echo "The argument has not been recognised."
+exit 1
+

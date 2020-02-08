@@ -1,0 +1,8 @@
+Usage: google [-h] [-?] [--help] [SEARCH]
+
+Easy Google search engine using Firefox Browser.
+Not every sign is supported (e.g. '+'). Special signs should be input with backslash '\'.
+If no argument is delivered opens Google main site.
+
+Options:
+ -h,-?,--help	display this help and exit

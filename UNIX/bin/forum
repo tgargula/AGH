@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+
+
+if (( $# == 0 )); then
+	/usr/bin/firefox https://forum.iiet.pl/index.php &
+	exit
+elif [[ $1 == D17 ]]; then
+	/usr/bin/firefox https://forum.iiet.pl/viewtopic.php\?f=578\&t=30657 &
+	exit
+elif [[ $1 == C2 ]]; then
+	/usr/bin/firefox https://forum.iiet.pl/viewtopic.php\?f=579\&t=30658 &
+	exit
+elif [[ $1 == exam ]]; then
+	/usr/bin/firefox https://forum.iiet.pl/viewtopic.php\?f=578\&t=30754 &
+	exit
+elif [[ $1 == '-h' || $1 == '--help' || $1 == '-?' ]]; then
+	cat ~/bin/.$SCRIPTNAME.help
+	exit
+else
+	echo "An error occurred. Use -h, -? or --help option for help"
+	exit 1
+fi

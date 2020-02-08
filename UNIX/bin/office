@@ -1,0 +1,29 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+
+if (( $# == 0 )); then
+	/usr/bin/firefox https://www.office.com/\?omkt\=pl-pl\&auth\=1 &
+	exit
+fi
+
+if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
+	cat $HOME/bin/.$SCRIPTNAME.help
+	exit
+fi
+
+if [[ $1 == 'word' ]]; then
+	/usr/bin/firefox https://www.office.com/launch/word/?omkt\=pl-pl\&auth\=1 &
+	exit
+fi
+if [[ $1 == 'power' || $1 == 'powerpoint' ]]; then
+	/usr/bin/firefox https://www.office.com/launch/powerpoint\?omkt\=pl-pl\&auth\=1 &
+	exit
+fi
+if [[ $1 == 'excel' ]]; then
+	/usr/bin/firefox https://www.office.com/launch/excel\?omkt\=pl-pl\&auth\=1 &
+	exit
+fi
+
+echo "Argument not recognised."
+exit 1

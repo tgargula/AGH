@@ -1,0 +1,16 @@
+Usage:	office [ excel | power (powerpoint) | word ] [-h] [-?] [--help]
+
+Opens Microsoft Office 365 Online on the main page using Firefox Browser.
+
+KEY WORDS:
+ excel			Microsoft Excel
+ power, powerpoint	Microsoft PowerPoint
+ word			Microsoft Word
+
+Options:
+ -h,-?,--help	display this help and exit
+
+
+Exit status:
+ 0	if OK
+ 1	if argument not recognised

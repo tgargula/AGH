@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+
+if (( $# == 0 )); then
+	/usr/bin/firefox https://www.google.com &
+	exit
+fi	
+
+if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
+	cat ~/bin/.$SCRIPTNAME.help
+	exit
+fi
+
+adrress=$1
+shift
+
+while [[ $1 ]]; do
+	adrress="$adrress+$1"
+	shift
+done
+
+/usr/bin/firefox https://www.google.com/search\?q=$adrress &
