@@ -14,7 +14,7 @@ utworzyć folder o nazwie ~/bin/ (ew. ~/.local/bin)* oraz skonfigurować
 zmienną $PATH, co można zrobić dodając poniższy kawałek kodu do pliku ~/.bashrc
 
 	# set PATH so it includes user's private bin if it exists
-	if [[ ! `cat $PATH | grep $HOME/bin` ]] && [[ -d "$HOME/bin" ]]; then
+	if [[ ! `echo $PATH | grep $HOME/bin` ]] && [[ -d "$HOME/bin" ]]; then
 		PATH="$PATH:$HOME/bin"
 	fi
 
