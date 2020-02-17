@@ -59,6 +59,7 @@ if (( $# == 0 )); then
 	echo -n "Type a message: "
 	read message
 	git commit -m "$message"
+	git pull origin $BRANCHNAME
 	git push origin $BRANCHNAME
 	exit
 fi

@@ -47,6 +47,6 @@ done
 
 if [[ -f $1 ]]; then
 	echo "The extension has not been recognised. Trying to open using xdg-open command..."
-	xdg-open $1
+	xdg-open "$1"
 	exit 
 fi
