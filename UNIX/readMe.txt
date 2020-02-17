@@ -14,13 +14,19 @@ utworzyć folder o nazwie ~/bin/ (ew. ~/.local/bin)* oraz skonfigurować
 zmienną $PATH, co można zrobić dodając poniższy kawałek kodu do pliku ~/.bashrc
 
 	# set PATH so it includes user's private bin if it exists
-	if [[ ! `cat $PATH | grep $HOME/bin` ]] && [[ -d "$HOME/bin" ]]; then
+	if [[ ! `echo $PATH | grep $HOME/bin` ]] && [[ -d "$HOME/bin" ]]; then
 		PATH="$PATH:$HOME/bin"
 	fi
 
 * - jeśli wolicie trzymać te skrypty w folderze ~/.local/bin, to trzeba odpowiednio
 skonfigurować powyższy kod
 
+(Skrypt "open" działa, gdy folder z tym skryptem znajduje się w zmiennej $PATH wcześniej
+od folderu /bash/bin lub, gdy stworzy się dodatkowo alias o tej nazwie, który odnosi się
+do tego skryptu. Jest to spowodowane tym, że istnieje komenda open w bashu,
+jednak wg mnie jest 1) nie tak często używana, 2) istnieje dokładnie ta sama komenda
+o nazwie openvt. Stwierdziłem więc, że przeciążę tę nazwę. Swoją drogą bardzo podobnie
+do "mojego" skryptu open działa komenda xdg-open.)
 
 Dodałem jeszcze plik .bash_aliases (plik ukryty) z aliasami. Żeby działały u Was,
 trzeba ten plik umieścić w folderze domowym na Waszym Linuksie.
