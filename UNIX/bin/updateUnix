@@ -1,0 +1,20 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+DIR=`cat .$SCRIPTNAME.config | grep DIR | awk '{print $3}' | cut -d/ -f 2-`
+REPONAME=`cat .$SCRIPTNAME.config | grep ADDRESS | awk '{print $3}' | awk -F/ '{print $NF}' | awk -F. '{print $1}'`
+
+if (( $# == 0 )); then
+	cp -vr $HOME/bin/ $HOME/.bash_aliases $HOME/$DIR/$REPONAME/UNIX
+	cd $HOME/$DIR/$REPONAME/UNIX
+	git add ./* ./.bash_aliases
+	exit
+fi
+
+if [[ $1 == '--help' ]]; then
+	cat .$SCRIPTNAME.help
+	exit
+fi
+
+echo "The argument is not recognised."
+exit 1

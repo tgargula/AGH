@@ -1,10 +1,11 @@
 #!/bin/bash
 
 SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+BROWSER=`cat $HOME/bin/.browser.config | grep BROWSER | awk '{print $3}'`
 
 
 if (( $# == 0 )); then
-	/usr/bin/firefox https://youtube.com &
+	$BROWSER https://youtube.com &
 	exit
 fi
 
@@ -14,32 +15,32 @@ if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
 fi
 
 if [[ $1 == '--history' ]]; then
-	/usr/bin/firefox https://youtube.com/feed/history &
+	$BROWSER https://youtube.com/feed/history &
 	exit
 fi
 
 if [[ $1 == '--library' ]]; then
-	/usr/bin/firefox https://youtube.com/feed/library
+	$BROWSER https://youtube.com/feed/library
 	exit
 fi
 
 if [[ $1 == '--wish-list' ]]; then
-	/usr/bin/firefox https://youtube.com/playlist\?list=WL
+	$BROWSER https://youtube.com/playlist\?list=WL
 	exit
 fi
 
 if [[ $1 == '--liked' ]]; then
-	/usr/bin/firefox https://www.youtube.com/playlist\?list=LLtmsxtpzZH1WoPHluyoc5NQ
+	$BROWSER https://www.youtube.com/playlist\?list=LLtmsxtpzZH1WoPHluyoc5NQ
 	exit
 fi
 
 if [[ $1 == '--trending' ]]; then
-	/usr/bin/firefox https://youtube.com/feed/trending
+	$BROWSER https://youtube.com/feed/trending
 	exit
 fi
 
 if [[ $1 == '--subscriptions' || $1 == '-s' ]]; then
-	/usr/bin/firefox https://youtube.com/feed/subscriptions
+	$BROWSER https://youtube.com/feed/subscriptions
 	exit
 fi
 
@@ -51,4 +52,4 @@ while [[ $1 ]]; do
 	shift
 done
 
-/usr/bin/firefox https://www.youtube.com/results\?search_query=$adrress &
+$BROWSER https://www.youtube.com/results\?search_query=$adrress &

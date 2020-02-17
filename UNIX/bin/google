@@ -1,9 +1,10 @@
 #!/bin/bash
 
 SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+BROWSER=`cat $HOME/bin/.browser.config | grep BROWSER | awk '{print $3}'`
 
 if (( $# == 0 )); then
-	/usr/bin/firefox https://www.google.com &
+	$BROWSER https://www.google.com &
 	exit
 fi	
 
@@ -20,4 +21,4 @@ while [[ $1 ]]; do
 	shift
 done
 
-/usr/bin/firefox https://www.google.com/search\?q=$adrress &
+$BROWSER https://www.google.com/search\?q=$adrress &

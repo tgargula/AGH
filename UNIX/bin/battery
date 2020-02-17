@@ -26,7 +26,7 @@ if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
 	exit
 fi
 
-if [[ $1 == '-i' ]]; then
+if [[ $1 == '-i' || $1 == '--info' ]]; then
 	echo "Current battery status:"; echo
 	echo "%BAT	REM	 STATUS"
 	acpi | awk '{print $4$5,$3}' | awk -F, '{print ($1"\t"$2"\t"$3)}'; echo

@@ -45,6 +45,8 @@ for i in $TYPES; do
 	matchWithExtensionAndOpen $i "$1"
 done
 
-echo "We cannot associate the extention of the file: '$1'"
-echo "Unable to open"
-exit 2
+if [[ -f $1 ]]; then
+	echo "The extension has not been recognised. Trying to open using xdg-open command..."
+	xdg-open $1
+	exit 
+fi

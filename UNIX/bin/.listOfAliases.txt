@@ -14,12 +14,14 @@ Browser commands:
  fb, facebook	A	Facebook
  forum		S	IET Forum
  geogebra	A	GeoGebra
+ github		A	Our repository on GitHub	 
  gmail		A	Gmail
  google		S	Google
  mail		A	AGH Mail
  ms, messenger	A	Facebook Messenger
  office		S	Microsoft Office Online
  powerpoint	A	Microsoft Office PowerPoint Online
+ udemy		A	Udemy
  usos		A	USOS AGH
  wiki		A	WIKI IET AGH
  wolfram	A	Wolfram Alpha
@@ -42,12 +44,13 @@ Git commands:
  COMMAND	TYPE	DESCRIPTION
  pushCode	S	add chosen files to git & commit & push to GitHub
  toCode		S	download a current repository from GitHub
+ updateUnix	S	update all Unix scripts and aliases
 
 
 System commands:
  
  COMMAND	TYPE	DESCRIPTION
- backup		SR	do the Backup (if Windows, then root priv. needed)	
+ backup		S	do the Backup (if Windows, then root priv. needed)	
  battery	S	save the battery status (it is also set in cron demon)
  off		S	save date & shut the computer down
  suspend	A	works like: off --suspend

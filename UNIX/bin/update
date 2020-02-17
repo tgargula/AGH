@@ -55,6 +55,11 @@ if [[ $1 == '-i' ]]; then
 	exit
 fi
 
+if [[ $1 == '--menu' || $1 == '-m' ]]; then
+	/usr/bin/mintupdate &
+	exit
+fi
+
 echo "The argument has not been recognised."
 exit 1
 

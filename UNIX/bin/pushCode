@@ -50,6 +50,7 @@ REPODIR=$DIR/$REPONAME
 
 if (( $# == 0 )); then
 	cd $REPODIR
+	git pull origin $BRANCHNAME
 	git status
 	displayOptions
 	read options

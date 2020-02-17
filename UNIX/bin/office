@@ -1,9 +1,10 @@
 #!/bin/bash
 
 SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+BROWSER=`cat $HOME/bin/.browser.config | grep BROWSER | awk '{print $3}'`
 
 if (( $# == 0 )); then
-	/usr/bin/firefox https://www.office.com/\?omkt\=pl-pl\&auth\=1 &
+	$BROWSER https://www.office.com/\?omkt\=pl-pl\&auth\=1 &
 	exit
 fi
 
@@ -13,15 +14,15 @@ if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
 fi
 
 if [[ $1 == 'word' ]]; then
-	/usr/bin/firefox https://www.office.com/launch/word/?omkt\=pl-pl\&auth\=1 &
+	$BROWSER https://www.office.com/launch/word/?omkt\=pl-pl\&auth\=1 &
 	exit
 fi
 if [[ $1 == 'power' || $1 == 'powerpoint' ]]; then
-	/usr/bin/firefox https://www.office.com/launch/powerpoint\?omkt\=pl-pl\&auth\=1 &
+	$BROWSER https://www.office.com/launch/powerpoint\?omkt\=pl-pl\&auth\=1 &
 	exit
 fi
 if [[ $1 == 'excel' ]]; then
-	/usr/bin/firefox https://www.office.com/launch/excel\?omkt\=pl-pl\&auth\=1 &
+	$BROWSER https://www.office.com/launch/excel\?omkt\=pl-pl\&auth\=1 &
 	exit
 fi
 
