@@ -6,3 +6,7 @@ If no argument is delivered opens Google main site.
 
 Options:
  -h,-?,--help	display this help and exit
+ docs		open Google Docs
+ forms		open Google Forms
+ slides		open Google Slides
+ sheets		open Google Sheets

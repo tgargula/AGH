@@ -13,6 +13,26 @@ if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
 	exit
 fi
 
+if [[ $1 == 'docs' ]]; then
+	$BROWSER https://docs.google.com/document/u/0/ &
+	exit
+fi
+
+if [[ $1 == 'sheet' ]]; then
+	$BROWSER https://docs.google.com/spreadsheets/u/0/ &
+	exit
+fi
+
+if [[ $1 == 'slides' ]]; then
+	$BROWSER https://docs.google.com/presentation/u/0/ &
+	exit
+fi
+
+if [[ $1 == 'forms' ]]; then
+	$BROWSER https://docs.google.com/forms/u/0/ &
+	exit
+fi
+
 adrress=$1
 shift
 
