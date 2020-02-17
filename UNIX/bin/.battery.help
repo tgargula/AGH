@@ -4,7 +4,7 @@ Saves battery status info (if no options are specified).
 
 Options:
  -h,-?,--help	display this help and exit
- -i		just show current battery status without saving
+ -i,--info	just show current battery status without saving
 
 Exit status:
  0	if OK

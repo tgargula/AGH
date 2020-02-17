@@ -8,6 +8,12 @@ if (( $# == 0 )); then
 	cp -vr $HOME/bin/ $HOME/.bash_aliases $HOME/$DIR/$REPONAME/UNIX
 	cd $HOME/$DIR/$REPONAME/UNIX
 	git add ./* ./.bash_aliases
+	git status
+	echo -n "Commit? [y/N] "
+	read answer
+	if [[ $answer == 'y' || $answer == 'Y' ]]; then
+		git commit
+	fi
 	exit
 fi
 
