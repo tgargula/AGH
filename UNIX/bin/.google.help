@@ -2,19 +2,27 @@ Usage: google [OPTIONS] [SEARCH]
 
 Easy Google search engine using Firefox Browser.
 Special signs should be input with backslash '\' (eg. \&)
-Remember that Google search commands do work (eg. site:website.com)
+Google search operators such as: AND, OR, intitle:, "", -, etc. do work
+If you want to write query with quotemarks, you can use the option -q
+or write like this: '"QUERY"'.
 If no argument is delivered opens Google main site.
+
 
 Options:
  -f, -v		search in Videos
  -g, -i		search in Images
  -h,-?,--help	display this help and exit
- -q		add quotes to search exact queries (can be combined with -i or -v)
+ -q		add quotemarks to search exact queries (can be combined with -i or -v)
+
+Long options:
+ --filetype	specify filetype of the query
+ --site		specify the site
 
 
 Google apps: 
  calendar	Google Caledar
  docs		Google Docs
+ drive		Google Drive
  forms		Google Forms
  maps		Google Maps 
  photos		Google Photos
@@ -26,3 +34,5 @@ Google apps:
 Exit status:
  0	if OK
  1	if the option is detected but not recognised
+ 2	if there is no second argument in --site option
+ 3	if there is no second argument in --filetype option
