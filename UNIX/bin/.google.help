@@ -1,4 +1,4 @@
-Usage: google [OPTIONS] [SEARCH]
+Usage: google [OPTIONS] {LONGOPTION ARG} [SEARCH]
 
 Easy Google search engine using Firefox Browser.
 Special signs should be input with backslash '\' (eg. \&)
