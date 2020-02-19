@@ -13,6 +13,6 @@ elif [[ $1 == '-s' || $1 == '--suspend' ]]; then
 elif [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
 	cat ~/bin/.$SCRIPTNAME.help
 else
-	echo "Error: argument not recognised. Exit code: 1"
+	echo >&2 "Error: argument not recognised. Exit code: 1"
 	exit 1
 fi

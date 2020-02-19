@@ -33,5 +33,5 @@ if [[ $1 == '-i' || $1 == '--info' ]]; then
 	exit
 fi
 
-echo "The argument is not recognised"
+echo >&2 "The argument is not recognised"
 exit 1

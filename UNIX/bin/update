@@ -60,6 +60,6 @@ if [[ $1 == '--menu' || $1 == '-m' ]]; then
 	exit
 fi
 
-echo "The argument has not been recognised."
+echo >&2 "The argument has not been recognised."
 exit 1
 

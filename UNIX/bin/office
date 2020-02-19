@@ -26,5 +26,5 @@ if [[ $1 == 'excel' ]]; then
 	exit
 fi
 
-echo "Argument not recognised."
+echo >&2 "Argument not recognised."
 exit 1

@@ -74,5 +74,5 @@ if [[ $1 == '-v' ]]; then
 	exit
 fi
 
-echo "The argument is not recognised."
+echo >&2 "The argument is not recognised."
 exit 1

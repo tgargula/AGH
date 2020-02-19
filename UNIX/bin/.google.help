@@ -1,12 +1,28 @@
-Usage: google [-h] [-?] [--help] [SEARCH]
+Usage: google [OPTIONS] [SEARCH]
 
 Easy Google search engine using Firefox Browser.
-Not every sign is supported (e.g. '+'). Special signs should be input with backslash '\'.
+Special signs should be input with backslash '\' (eg. \&)
+Remember that Google search commands do work (eg. site:website.com)
 If no argument is delivered opens Google main site.
 
 Options:
+ -f, -v		search in Videos
+ -g, -i		search in Images
  -h,-?,--help	display this help and exit
- docs		open Google Docs
- forms		open Google Forms
- slides		open Google Slides
- sheets		open Google Sheets
+ -q		add quotes to search exact queries (can be combined with -i or -v)
+
+
+Google apps: 
+ calendar	Google Caledar
+ docs		Google Docs
+ forms		Google Forms
+ maps		Google Maps 
+ photos		Google Photos
+ sheets		Google Sheets
+ slides		Google Slides
+ translate	Google Translate
+
+
+Exit status:
+ 0	if OK
+ 1	if the option is detected but not recognised

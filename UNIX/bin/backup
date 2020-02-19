@@ -66,14 +66,13 @@ if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
 fi
 
 if [[ ! $mounted ]]; then
-	echo; echo "The external drive is not mounted."
-	echo; echo " Try:	backup [-h] [-?] [--help] for help"; echo
+	echo; echo >&2 "The external drive is not mounted."
+	echo; echo >&2 " Try:	backup [-h] [-?] [--help] for help"; echo
 	exit 1
 fi
 
 
 if [[ $1 == '--linux' ]] || (( $# == 0 )); then
-
 	doBackup "$backupDIR"/Linux "$HOME/*" backup.tar.gz
 fi
 
@@ -98,5 +97,5 @@ if [[ $1 == '--windows' || $1 == '-w' ]]; then
 	fi
 fi
 
-echo "An error occurred. Exit code: 2"
+echo >&2 "An error occurred. Exit code: 2"
 exit 2

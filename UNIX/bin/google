@@ -3,42 +3,101 @@
 SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
 BROWSER=`cat $HOME/bin/.browser.config | grep BROWSER | awk '{print $3}'`
 
+function replaceSymbols {
+	modifiedString=$1
+	modifiedString=${modifiedString//%/%25}
+	modifiedString=${modifiedString//+/%2B}
+	modifiedString=${modifiedString//#/%23}
+	modifiedString=${modifiedString//&/%26}
+	modifiedString=${modifiedString//" "/%20}
+}
+
 if (( $# == 0 )); then
 	$BROWSER https://www.google.com &
 	exit
-fi	
+elif (( $# == 1 )); then
+	if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
+		cat ~/bin/.$SCRIPTNAME.help
+		exit
+	fi
 
-if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
-	cat ~/bin/.$SCRIPTNAME.help
-	exit
+        if [[ $1 == 'calendar' ]]; then
+                $BROWSER https://calendar.google.com/calendar/r &
+                exit
+        fi
+
+	if [[ $1 == 'docs' ]]; then
+		$BROWSER https://docs.google.com/document/u/0/ &
+		exit
+	fi
+	
+	if [[ $1 == 'forms' ]]; then
+		$BROWSER https://docs.google.com/forms/u/0/ &
+		exit
+	fi
+	
+	if [[ $1 == 'maps' ]]; then
+		$BROWSER https://www.google.com/maps &
+		exit
+	fi
+	
+	if [[ $1 == 'photos' ]]; then
+		$BROWSER https://photos.google.com/ &
+		exit
+	fi
+
+	if [[ $1 == 'sheet' ]]; then
+		$BROWSER https://docs.google.com/spreadsheets/u/0/ &
+		exit
+	fi
+
+	if [[ $1 == 'slides' ]]; then
+		$BROWSER https://docs.google.com/presentation/u/0/ &
+		exit
+	fi
+
+	if [[ $1 == 'translate' ]]; then
+		$BROWSER https://translate.google.pl/ &
+		exit
+	fi
 fi
 
-if [[ $1 == 'docs' ]]; then
-	$BROWSER https://docs.google.com/document/u/0/ &
-	exit
-fi
-
-if [[ $1 == 'sheet' ]]; then
-	$BROWSER https://docs.google.com/spreadsheets/u/0/ &
-	exit
-fi
-
-if [[ $1 == 'slides' ]]; then
-	$BROWSER https://docs.google.com/presentation/u/0/ &
-	exit
-fi
-
-if [[ $1 == 'forms' ]]; then
-	$BROWSER https://docs.google.com/forms/u/0/ &
-	exit
-fi
-
-adrress=$1
-shift
-
-while [[ $1 ]]; do
-	adrress="$adrress+$1"
+if [[ `echo $1 | grep ^-` ]]; then
+	option=$1
 	shift
+fi
+
+for i in $*; do
+	replaceSymbols $i
+
+	if [[ $i == `echo $1 | awk '{print $1}'` ]]; then
+		address="$modifiedString"
+	else
+		address="$address+$modifiedString"
+	fi
 done
 
-$BROWSER https://www.google.com/search\?q=$adrress &
+if [[ $option ]]; then
+	flag=false
+	
+	if [[ `echo $option | grep q` ]]; then
+		address="\"$address\""
+		flag=true
+	fi
+
+	if [[ `echo $option | grep g` || `echo $option | grep i` ]]; then
+		address="$address&tbm=isch"
+		flag=true
+	
+	elif [[ `echo $option | grep f` || `echo $option | grep v` ]]; then
+		address="$address&tbm=vid"
+		flag=true
+	fi
+	
+	if [[ $flag == false ]]; then
+		echo >&2 "Option was not recognised."
+		exit 1
+	fi
+fi
+
+$BROWSER https://www.google.com/search\?q=$address &

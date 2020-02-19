@@ -46,7 +46,7 @@ sudo echo -n
 
 if [[ $option == '-m' ]]; then
 	if [[ $mounted ]]; then
-		echo "Error: Windows is already mounted. Exit code: 2"
+		echo >&2 "Error: Windows is already mounted. Exit code: 2"
 		exit 2
 	fi
 
@@ -61,7 +61,7 @@ fi
 
 if [[ $option == '-u' ]]; then
 	if [[ ! $mounted ]]; then
-		echo "Error: Windows is not mounted. Unable to unmount. Exit code: 3"
+		echo >&2 "Error: Windows is not mounted. Unable to unmount. Exit code: 3"
 		if [[ -d /media/$USER/Windows ]]; then
 			rm -fr /media/$USER/Windows
 		fi
@@ -76,5 +76,5 @@ if [[ $option == '-u' ]]; then
 	exit
 fi
 
-echo "An error occurred. Exit code: 1"
+echo >&2 "An error occurred. Exit code: 1"
 exit 1

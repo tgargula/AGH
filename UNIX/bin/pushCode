@@ -69,5 +69,5 @@ if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
 	exit
 fi
 
-echo "Argument was not recognised."
+echo >&2 "Argument was not recognised."
 exit 1
