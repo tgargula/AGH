@@ -12,6 +12,7 @@ Options:
  -f, -v		search in Videos
  -g, -i		search in Images
  -h,-?,--help	display this help and exit
+ -m		search in Google Maps
  -q		add quotemarks to search exact queries (can be combined with -i or -v)
 
 Long options:
@@ -36,3 +37,4 @@ Exit status:
  1	if the option is detected but not recognised
  2	if there is no second argument in --site option
  3	if there is no second argument in --filetype option
+ 4	if the long option is not recognised

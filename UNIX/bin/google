@@ -78,7 +78,7 @@ while [[ `echo $1 | grep ^-` ]]; do
 			if [[ $1 ]]; then
 				site=$1
 			else
-				echo >&2 "No argument was specified after --site option"
+				echo >&2 "No argument was specified after --site option..."
 				exit 2
 			fi
 			shift
@@ -89,10 +89,13 @@ while [[ `echo $1 | grep ^-` ]]; do
 			if [[ $1 ]]; then
 				filetype=$1
 			else
-				echo >&2 "No argument was specified in --filetype option"
+				echo >&2 "No argument was specified in --filetype option..."
 				exit 3
 			fi
 			shift
+		else
+			echo >&2 "Unrecognised long option..."
+			exit 4
 		fi
 	fi
 done
@@ -143,10 +146,14 @@ if [[ $shortOption ]]; then
 	elif [[ `echo $shortOption | grep f` || `echo $shortOption | grep v` ]]; then
 		address="$address&tbm=vid"
 		flag=true
+	
+	elif [[ `echo $shortOption | grep m` ]]; then
+		$BROWSER https://www.google.com/maps/place/$address &
+		exit
 	fi
 	
 	if [[ $flag == false ]]; then
-		echo >&2 "Option was not recognised."
+		echo >&2 "Option was not recognised..."
 		exit 1
 	fi
 fi
