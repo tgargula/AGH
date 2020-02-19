@@ -126,7 +126,7 @@ done
 
 
 if [[ $shortOption ]]; then
-	flag=""
+	flag=false
 	
 	if [[ `echo $shortOption | grep q` ]]; then
 		address="\"$address\""
