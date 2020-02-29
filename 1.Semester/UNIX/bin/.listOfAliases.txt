@@ -1,0 +1,66 @@
+List of all set-by-user shortcuts.
+
+Type A:	aliases
+Type S: scripts (they may have some options; try: -h, --help or -? to learn)
+Type R: need root privileges (sudo command included)
+
+
+Browser commands:
+
+ COMMAND	TYPE	DESCRIPTION
+ f, firefox	A	open Firefox Browser (Google site on default)
+ 
+ excel		A	Microsoft Office Excel Online
+ fb, facebook	A	Facebook
+ forum		S	IET Forum
+ geogebra	A	GeoGebra
+ github		A	Our repository on GitHub	 
+ gmail		A	Gmail
+ google		S	Google
+ mail		A	AGH Mail
+ ms, messenger	A	Facebook Messenger
+ office		S	Microsoft Office Online
+ powerpoint	A	Microsoft Office PowerPoint Online
+ udemy		A	Udemy
+ usos		A	USOS AGH
+ wiki		A	WIKI IET AGH
+ wolfram	A	Wolfram Alpha
+ word		A	Microsoft Office Word Online
+ yt, youtube	S	YouTube
+
+
+Application commands:
+
+ COMMAND	TYPE	DESCRIPTON
+ latex		A	open Gummi Editor for LaTeX
+ open		S	open files/directories from terminal
+ spotify	A	Spotify
+ steam		A	Steam
+ thunderbird	A	Mozilla Thunderbird
+
+
+Git commands:
+
+ COMMAND	TYPE	DESCRIPTION
+ pushCode	S	add chosen files to git & commit & push to GitHub
+ toCode		S	download a current repository from GitHub
+ updateUnix	S	update all Unix scripts and aliases
+
+
+System commands:
+ 
+ COMMAND	TYPE	DESCRIPTION
+ backup		S	do the Backup (if Windows, then root priv. needed)	
+ battery	S	save the battery status (it is also set in cron demon)
+ off		S	save date & shut the computer down
+ suspend	A	works like: off --suspend
+ update		SR	update & upgrade the system
+ windows	SR	mount/unmount Windows
+
+
+Miscellaneous commands:
+
+ COMMAND	TYPE	DESCRIPTION
+ shortcuts	A	display this message
+ vpnagh		AR	connect to AGH-server
+

@@ -1,0 +1,181 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+BROWSER=`cat $HOME/bin/.browser.config | grep BROWSER | awk '{print $3}'`
+
+
+
+### Google apps section ###
+
+if (( $# == 0 )); then
+	$BROWSER https://www.google.com &
+	exit
+elif (( $# == 1 )); then
+	if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
+		cat ~/bin/.$SCRIPTNAME.help
+		exit
+	fi
+
+        if [[ $1 == 'calendar' ]]; then
+                $BROWSER https://calendar.google.com/calendar/r &
+                exit
+        fi
+
+	if [[ $1 == 'docs' ]]; then
+		$BROWSER https://docs.google.com/document/u/0/ &
+		exit
+	fi
+
+	if [[ $1 == 'drive' ]]; then
+		$BROWSER https://drive.google.com/drive/u/0/my-drive &
+		exit
+	fi
+	
+	if [[ $1 == 'forms' ]]; then
+		$BROWSER https://docs.google.com/forms/u/0/ &
+		exit
+	fi
+
+	if [[ $1 == 'mail' ]]; then
+		$BROWSER https://mail.google.com/mail/u/0/ &
+		exit
+	fi
+
+	if [[ $1 == 'maps' ]]; then
+		$BROWSER https://www.google.com/maps &
+		exit
+	fi
+	
+	if [[ $1 == 'photos' ]]; then
+		$BROWSER https://photos.google.com/ &
+		exit
+	fi
+
+	if [[ $1 == 'sheets' ]]; then
+		$BROWSER https://docs.google.com/spreadsheets/u/0/ &
+		exit
+	fi
+
+	if [[ $1 == 'slides' ]]; then
+		$BROWSER https://docs.google.com/presentation/u/0/ &
+		exit
+	fi
+
+	if [[ $1 == 'translate' ]]; then
+		$BROWSER https://translate.google.pl/ &
+		exit
+	fi
+fi
+
+
+
+### Options section ###
+
+while [[ `echo $1 | grep ^-` ]]; do
+	if [[ `echo $1 | grep ^-[^-]` && ! $ifShortoption ]]; then
+		ifShortOption=true
+		shortOption="$shortOption$1"
+		shift
+	else
+		if [[ `echo $1 | grep ^--site$` && ! $ifSite ]]; then
+			ifSite=true
+			shift
+			if [[ $1 ]]; then
+				site=$1
+			else
+				echo >&2 "No argument was specified after --site option..."
+				exit 2
+			fi
+			shift
+
+		elif [[ `echo $1 | grep ^--filetype$` || `echo $1 | grep ^--ext$` ]] && [[ ! $ifFiletype ]]; then
+			ifFiletype=true
+			shift
+			if [[ $1 ]]; then
+				filetype=$1
+			else
+				echo >&2 "No argument was specified in --filetype option..."
+				exit 3
+			fi
+			shift
+		else
+			echo >&2 "Unrecognised long option..."
+			exit 4
+		fi
+	fi
+done
+
+
+
+### Query section ###
+
+function replaceSymbols {
+	modifiedString=$1
+	modifiedString=${modifiedString//%/%25}
+	modifiedString=${modifiedString//+/%2B}
+	modifiedString=${modifiedString//:/%3A}
+	modifiedString=${modifiedString//#/%23}
+	modifiedString=${modifiedString//&/%26}
+	modifiedString=${modifiedString//" "/%20}
+}
+
+
+first=true
+for i in $*; do
+	replaceSymbols $i
+
+	if [[ $first ]] && [[ $i == `echo $1 | awk '{print $1}'` ]]; then
+		address="$modifiedString"
+		first=""
+	else
+		address="$address+$modifiedString"
+	fi
+done
+
+
+if [[ $shortOption ]]; then
+	flag=false
+	
+	if [[ `echo $shortOption | grep q` ]]; then
+		address="\"$address\""
+		address=${address//'+OR+'/'"+OR+"'}
+		address=${address//'+|+'/'"+|+"'}
+		address=${address//'+AND+'/'"+AND+"'}
+		flag=true
+	fi
+
+	if [[ `echo $shortOption | grep w` ]]; then
+		if [[ `echo $BROWSER | grep firefox$` || `echo $BROWSER | grep google-chrome$` ]]; then
+			newWindow="--new-window"
+			flag=true
+		fi
+	fi
+
+	if [[ `echo $shortOption | grep g` || `echo $shortOption | grep i` ]]; then
+		address="$address&tbm=isch"
+		flag=true
+	
+	elif [[ `echo $shortOption | grep f` || `echo $shortOption | grep v` ]]; then
+		address="$address&tbm=vid"
+		flag=true
+	
+	elif [[ `echo $shortOption | grep m` ]]; then
+		$BROWSER https://www.google.com/maps/place/$address &
+		exit
+	fi
+	
+	if [[ $flag == false ]]; then
+		echo >&2 "Option was not recognised..."
+		exit 1
+	fi
+fi
+
+if [[ $ifFiletype ]]; then
+	address="filetype%3A$filetype+$address"
+fi
+
+if [[ $ifSite ]]; then
+	address="site%3A$site+$address"
+fi
+
+$BROWSER $newWindow https://www.google.com/search\?q=$address &

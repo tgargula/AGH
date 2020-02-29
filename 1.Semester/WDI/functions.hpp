@@ -2,6 +2,7 @@
 #include <math.h>
 #include <cstdlib>
 #include <time.h>
+#include <unistd.h>
 
 #ifndef functions_hpp
 #define functions_hpp
@@ -33,9 +34,9 @@ void TranslationStringInBigInteger() {
 
 }
 
-struct singleNodePointer {
+struct node {
     int value;
-    singleNodePointer *next;
+    node *next;
 };
 
 struct doubleNodePointer {
@@ -224,19 +225,37 @@ int RandomInteger(int min = 0, int max = 100) {
 }
 
 /* Input random integers in default range [0,99] to array */
-void RandomIntArray(int Array[], int range = 100) {
-    srand(time(NULL)); 
-    for(int i = 0; i < *(&Array + 1) - Array; i++) {
-        srand(rand());
+void RandomIntArray(int Array[], int arraySize, int range = 100) {
+    srand(time(NULL));
+    for(int i = 0; i < arraySize; i++) {
+        srand(rand()); 
         Array[i] = rand() % range;
     }
 }
+/*experimental*/
+void RandomIntArrayExperimental(int Array[], int range = 100) {
+    srand(time(NULL)); cout << *(&Array + 1) - Array <<endl;
+    for(int i = 0; i < *(&Array + 1) - Array; i++) {
+        srand(rand()); 
+        Array[i] = rand() % range;
+        cout << i << " ";
+    }
+    cout << endl;
+}
 
 /* Print array */
-void PrintIntArray(int Array[]) {
+void PrintIntArray(int Array[], int arraySize) {
+    for(int i = 0; i < arraySize; i++) {
+        cout << Array[i] << " ";
+    }
+    cout << endl;
+}
+/*experimental*/
+void PrintIntArrayExperimental(int Array[]) {
     for(int i = 0; i < *(&Array + 1) - Array; i++) {
         cout << Array[i] << " ";
     }
+    cout << endl;
 }
 
 /* Print Fibonacci number */
@@ -307,16 +326,19 @@ void EratostenesSieve(int range = 1000000) {
 
 /*One Direction Lists - no sentinel*/
 
-void insertFirst(singleNodePointer *&first, int val = RandomInteger()) {
-    singleNodePointer *newFirst = new singleNodePointer;
+void insertFirst(node *&first, int val) {
+    node *newFirst = new node;
     newFirst->value = val;
-    newFirst->next = first;
-    first = newFirst;
+    if(first == NULL) newFirst = first;
+    else {
+        newFirst->next = first;
+        first = newFirst;
+    }
 }
 
-void insertLast(singleNodePointer *&first, int val = RandomInteger()) {
-    singleNodePointer *newLast = new singleNodePointer;
-    singleNodePointer *currentLast = NULL, *nextCurrLast = first;
+void insertLast(node *&first, int val = RandomInteger()) {
+    node *newLast = new node;
+    node *currentLast = NULL, *nextCurrLast = first;
     newLast->value = val;
     newLast->next = NULL;
 
@@ -328,9 +350,9 @@ void insertLast(singleNodePointer *&first, int val = RandomInteger()) {
     else first = newLast;
 }
 
-void testInsertLast(singleNodePointer *&first, int val = RandomInteger()) {
-    singleNodePointer *newLast = new singleNodePointer;
-    singleNodePointer *currentLast = first;
+void testInsertLast(node *&first, int val = RandomInteger()) {
+    node *newLast = new node;
+    node *currentLast = first;
     newLast->value = val;
     newLast->next = NULL;
 
@@ -341,13 +363,13 @@ void testInsertLast(singleNodePointer *&first, int val = RandomInteger()) {
     currentLast->next = newLast;
 }
 
-void insertByOrder(singleNodePointer *first, int position, int val = RandomInteger()) { /*position=0 - 1st position*/
+void insertByOrder(node *first, int position, int val = RandomInteger()) { /*position=0 - 1st position*/
     if(position <= 0) {insertFirst(first, val); return;}
     int posFinder = 1;
     if(first->next == NULL and position == 1) {
         insertLast(first, val);
     } else {
-        singleNodePointer *prevElem = first, *nextElem = first->next;
+        node *prevElem = first, *nextElem = first->next;
         while(nextElem != NULL and posFinder < position) {
             prevElem = nextElem;
             nextElem = nextElem->next;
@@ -355,7 +377,7 @@ void insertByOrder(singleNodePointer *first, int position, int val = RandomInteg
         }
         if(posFinder < position) {insertLast(first, val); return;}
         if(posFinder == position) {
-            singleNodePointer *newElem = new singleNodePointer;
+            node *newElem = new node;
             newElem->value = val;
             newElem->next = prevElem->next;
             prevElem->next = newElem;
@@ -363,27 +385,27 @@ void insertByOrder(singleNodePointer *first, int position, int val = RandomInteg
     }
 }
 
-void deleteFirst(singleNodePointer *&first) {
+void deleteFirst(node *&first) {
     if(first == NULL) return;
     if(first->next == NULL) {
         delete first;
         first = NULL;
         return;
     } else {
-        singleNodePointer *temp = first;
+        node *temp = first;
         first = first->next;
         delete temp;
     }
 }
 
-void deleteLast(singleNodePointer *first) {
+void deleteLast(node *first) {
     if(first == NULL) return;
     if(first->next == NULL) {
         delete first;
         first = NULL;
         return;
     } else {
-        singleNodePointer *currentLast = first, *newLast = NULL;
+        node *currentLast = first, *newLast = NULL;
         while(currentLast->next != NULL) {
             newLast = currentLast;
             currentLast = currentLast->next;
@@ -393,18 +415,18 @@ void deleteLast(singleNodePointer *first) {
     }
 }
 
-void deleteByValue(singleNodePointer *first, int val) {
+void deleteByValue(node *first, int val) {
     if(first == NULL) return;
     if(first->next == NULL) {
         if(first->value == val) delete first;
     } else {
-        singleNodePointer *prevElem = first, *nextElem = first->next;
+        node *prevElem = first, *nextElem = first->next;
         while(nextElem->next != NULL and nextElem->value != val) {
             prevElem = nextElem;
             nextElem = nextElem->next;
         }
         if(nextElem->value == val) {
-            singleNodePointer *tmp = nextElem;
+            node *tmp = nextElem;
             nextElem = nextElem->next;
             prevElem->next = nextElem;
             delete tmp;
@@ -412,13 +434,13 @@ void deleteByValue(singleNodePointer *first, int val) {
     }
 }
 
-void deleteByOrder(singleNodePointer *first, int position) {
+void deleteByOrder(node *first, int position) {
     if(position <= 0) {deleteFirst(first); return;}
     int posFinder = 1;
     if(first->next == NULL and position == 1) {
         deleteLast(first);
     } else {
-        singleNodePointer *prevElem = first, *nextElem = first->next;
+        node *prevElem = first, *nextElem = first->next;
         while(nextElem != NULL and posFinder < position) {
             prevElem = nextElem;
             nextElem = nextElem->next;
@@ -426,7 +448,7 @@ void deleteByOrder(singleNodePointer *first, int position) {
         }
         if(posFinder < position) {deleteLast(first); return;}
         if(posFinder == position) {
-            singleNodePointer *tmp = nextElem;
+            node *tmp = nextElem;
             nextElem = nextElem->next;
             delete tmp;
             prevElem->next = nextElem;
@@ -434,7 +456,7 @@ void deleteByOrder(singleNodePointer *first, int position) {
     }
 }
 
-bool belong(singleNodePointer *first, int val) {
+bool belong(node *first, int val) {
     if(first == NULL) return false;
     if(first->next == NULL) if(first->value == val) return true;
     while(first->next != NULL) {
@@ -444,10 +466,10 @@ bool belong(singleNodePointer *first, int val) {
     return false;
 }
 
-singleNodePointer * listRverse(singleNodePointer *first) {
+node * listReverse(node *first) {
     if(first == NULL or first->next == NULL) return first;
 
-    singleNodePointer *prevElem = first, *currElem = first->next, *nextElem = first->next;
+    node *prevElem = first, *currElem = first->next, *nextElem = first->next;
     prevElem->next = NULL;
 
     while(currElem != NULL) {
@@ -460,8 +482,62 @@ singleNodePointer * listRverse(singleNodePointer *first) {
     return prevElem;
 }
 
-void connectLastElementToFirst(singleNodePointer *first) {
-    singleNodePointer *findLast = NULL, *help = first;
+bool hasListCycle(node *first) {
+    if(first == NULL) return false;
+    if(first->next == first) return true;
+    node *fasterFirst = first;
+    while(first->next != NULL and fasterFirst->next != NULL) {
+        first = first->next; fasterFirst = fasterFirst->next;
+        if(fasterFirst->next == NULL) return false;
+        else fasterFirst = fasterFirst->next;
+        if(first == fasterFirst) return true;
+    }
+    return false;
+}
+
+// bool isListCycle(node *first) {
+//     node *findLast = first;
+//     while(findLast->next != NULL) {
+//         if(findLast->next == first) return true;
+//         findLast = findLast->next;
+//     }
+//     return false;
+// }
+
+int listLength(node *first) {
+    if(hasListCycle(first)) {
+        cout << "cycle list" << endl; return 1234567;
+    }
+    if(first == NULL) return 0;
+    if(first->next == NULL) return 1;
+    int length = 1;
+    while(first->next != NULL) {
+        first = first->next;
+        length++;
+    }
+    return length;
+}
+
+void createRandomCycle(node *first, int startCycleElem) {
+    // if(listLength(first) < 2) return;
+    // cout << "start make cycle" << endl;
+    // usleep(1000000);
+    if(hasListCycle(first)){ return;}
+    node *lastElem = first, *startCycle = first;
+    while(startCycleElem > 0 and lastElem->next != NULL) {
+        // cout << lastElem->next << " last" << endl;
+        lastElem = lastElem->next; startCycle = startCycle->next; startCycleElem--;
+    }
+    while(lastElem->next != NULL) {
+        // cout << lastElem->next << " last" << endl;
+        lastElem = lastElem->next;
+    }
+    lastElem->next = startCycle; 
+    return;
+}
+
+void connectLastElementToFirst(node *first) {
+    node *findLast = NULL, *help = first;
     while(help != NULL) {
         findLast = help;
         help = help->next;
@@ -469,43 +545,8 @@ void connectLastElementToFirst(singleNodePointer *first) {
     if(findLast != NULL) findLast->next = first;
 }
 
-bool hasListCycle(singleNodePointer *first) {
-    singleNodePointer *findLast = first;
-    while(findLast->next != NULL) {
-        if(findLast->next == first) return true;
-        findLast = findLast->next;
-    }
-    return false;
-}
-
-void printListElements(singleNodePointer *first, bool addresses = false) {
-    if(first == NULL) return;
-
-    if(!hasListCycle(first)) {
-        if(addresses) cout << &first << "->";
-        while(first != NULL) {
-            cout << first->value << " ";
-            if(addresses and first->next != NULL) cout << first->next << "->";
-            first = first->next;
-        }
-        cout << endl;
-    } else {
-        singleNodePointer *goAlongList = first; 
-        if(addresses) cout << &first << "->";
-        cout << goAlongList->value << " ";
-        goAlongList = goAlongList->next;
-        if(addresses) cout << &first << "->";
-        while(goAlongList != first) {
-            cout << goAlongList->value << " ";
-            if(addresses and goAlongList->next != first) cout << goAlongList->next << "->";
-            goAlongList = goAlongList->next;
-        }
-        cout << endl;
-    }
-}
-
-singleNodePointer * createList(int numberOfElements = 10, bool regular = true, int range = 10000) {
-    singleNodePointer *first = new singleNodePointer;
+node * createList(int numberOfElements = 10, bool regular = true, int range = 10000) {
+    node *first = new node;
     if(regular) {
         first->value = numberOfElements;
         for(int i = 1; i < numberOfElements; i++) {
@@ -522,8 +563,8 @@ singleNodePointer * createList(int numberOfElements = 10, bool regular = true, i
     return first;
 }
 
-singleNodePointer * createCycleList(int numberOfElements = 10) {
-    singleNodePointer *first = new singleNodePointer;
+node * createCycleList(int numberOfElements = 10) {
+    node *first = new node;
     first->value = numberOfElements;
     for(int i = 1; i < numberOfElements; i++) {
         insertFirst(first, numberOfElements-i);
@@ -531,6 +572,109 @@ singleNodePointer * createCycleList(int numberOfElements = 10) {
     connectLastElementToFirst(first);
     return first;
 }
+
+node * createListWithCycle(int numberOfElements = 10, int startCycleElem = 0) {
+    node *first = new node;
+    first->value = numberOfElements;
+    for(int i = 1; i < numberOfElements; i++) {
+        insertFirst(first, numberOfElements-i);
+    }
+    cout << "OK 1" << endl;
+    if(startCycleElem == 0) startCycleElem = RandomInteger(0, listLength(first));
+    cout << startCycleElem << " " << "OK2 " << endl;
+    createRandomCycle(first, startCycleElem); cout << "OK3" << endl;
+    return first;
+}
+
+int countElemsInCycle(node *first) {
+    if(first == NULL) return 0;
+    if(first == first->next) return 1;
+    node *fasterFirst = first->next;
+    while(fasterFirst != NULL and fasterFirst != first) {
+        first = first->next; fasterFirst = fasterFirst->next;
+        if(fasterFirst != NULL) fasterFirst = fasterFirst->next;
+    }
+    if(fasterFirst == NULL) {
+        cout << "no cycle" << endl; return 0;
+    }
+
+    int length = 1; fasterFirst = first->next;
+    while(fasterFirst != first) {
+        fasterFirst = fasterFirst->next; length++;
+    }
+    return length; cout << length << " 2" << endl;
+
+    // else {
+    //     node *counter = first->next; int length = 1;
+    //     while(counter != first) {
+    //         counter = counter->next; cout << counter->value << " " << counter->next << endl;
+    //         usleep(2000000);
+    //         length++; cout << length << " " << endl;
+    //     } 
+    //     return length;
+    // }
+}
+
+int cycleListReverseWithCount(node *first) {
+    if(first == NULL or first->next == first) return 0;
+
+    node *prevElem = first, *currElem = first->next;
+    if(currElem->next == first) return 0;
+    if(currElem->next == currElem) return 1;
+
+    node *nextElem = first->next;
+    prevElem->next = NULL;
+
+    int result = 0;
+    while(currElem != NULL) {
+        nextElem = nextElem->next;
+        currElem->next = prevElem;
+        prevElem = currElem;
+        currElem = nextElem;
+        result++; // cout << result << endl;
+    }
+    
+    // while(nextElem != NULL) {
+    //     currElem->next == first;
+    //     first = currElem;
+    //     currElem = nextNode;
+    //     nextNode = nextNode->next;
+        
+    //     cout << "reversion" << endl;
+    // }
+    // currentNode->next = first;
+    return result; cout << result << "1 " << endl;
+}
+
+int countElemsBeforeCycle(node *first) {
+    int result = (0 - countElemsBeforeCycle(first) + cycleListReverseWithCount(first))/2;
+    cout << result << endl;
+    return result;
+}
+
+void printListElements(node *first, bool addresses = false) {       /*No cycle lists*/
+    if(first == NULL) return;
+    if(addresses) cout << &first << "->";
+    while(first != NULL) {
+        cout << first->value << " ";
+        if(addresses and first->next != NULL) cout << first->next << "->";
+        first = first->next;
+    }
+    cout << endl;
+    // node *goAlongList = first; 
+    // if(addresses) cout << &first << "->";
+    // cout << goAlongList->value << " ";
+    // goAlongList = goAlongList->next;
+    // if(addresses) cout << &first << "->";
+    // while(goAlongList != first) {
+    //     cout << goAlongList->value << " ";
+    //     if(addresses and goAlongList->next != first) cout << goAlongList->next << "->";
+    //     goAlongList = goAlongList->next;
+    // }
+    // cout << endl;
+}
+
+
 
 /*Two Direction Lists*/
 

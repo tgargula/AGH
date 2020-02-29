@@ -31,5 +31,8 @@
 *.out
 *.app
 
-#VSCode rubbish
+# VSCode rubbish
 .vscode/
+
+# Unix swap files
+*.swp

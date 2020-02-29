@@ -1,0 +1,12 @@
+Usage:	toCode [-h] [-v] [-?] [--help]
+
+Updates your git repository from GitHub and allow you to begin work with code
+Default configuration can be set in .toCode.config file.
+
+Options:
+ -h,-?,--help	display this help and exit
+ -v		run a script more verbosely
+
+Exit status:
+ 0	if OK
+ 1	if argument is not recognised

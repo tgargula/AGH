@@ -1,0 +1,78 @@
+#!/bin/bash
+
+function makeDirectory {
+	if [[ ! -d "$1" ]]; then
+		echo "Creating a repository in the following directory: " $1
+		mkdir -p $1
+	fi
+}
+
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+DIR=`cat $HOME/bin/.$SCRIPTNAME.config | grep DIR | awk '{print $3}'`
+ADDRESS=`cat $HOME/bin/.$SCRIPTNAME.config | grep ADDRESS | awk '{print $3}'`
+REPONAME=`echo $ADDRESS | awk -F/ '{print $NF}' | awk -F. '{print $1}'`
+BRANCHNAME=`cat $HOME/bin/.$SCRIPTNAME.config | grep BRANCHNAME | awk '{print $3}'`
+
+if [[ `echo $DIR | grep ^'$HOME'` ]] || [[ `echo $DIR | grep ^'~' ` ]]; then
+	DIR=`echo $DIR | awk -F '/' '{print $2}'`
+	DIR=$HOME/$DIR
+fi
+
+
+if (( $# == 0 )); then
+	makeDirectory $DIR
+	cd $DIR
+	git clone $ADDRESS 2>/dev/null
+	cd $REPONAME
+	git pull --no-edit origin $BRANCHNAME
+	git checkout $BRANCHNAME
+	code .
+	exit
+fi
+
+if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
+	cat ~/bin/.$SCRIPTNAME.help
+	exit
+fi
+
+if [[ $1 == '-v' ]]; then
+	echo -n "Input path to the chosen directory: "
+	read dir
+	if [[ $dir ]]; then
+		makeDirectory $dir
+	else
+		makeDirectory $DIR
+	fi
+	echo "Input an address to your repository in GitHub (or press Enter if default address)"
+	echo -n "https://github.com/"
+	read address
+
+	if [[ $address ]]; then
+		echo "Cloning repository from GitHub... "
+		git clone https://github.com/$address
+		reponame=`echo $address | awk -F/ '{print $2}' | awk -F "." '{print $1}'`
+		exit
+		cd $reponame
+	else
+		echo "Cloning repository from GitHub... "
+		git clone $ADDRESS 2>/dev/null
+		cd $REPONAME
+	fi
+
+	git pull --no-edit origin $BRANCHNAME
+
+	echo -n "Input a branch name (or press Enter if default): "
+	read branchName
+
+	if [[ $branchName ]]; then
+		git checkout $branchName
+	else
+		git checkout $BRANCHNAME
+	fi
+	code .
+	exit
+fi
+
+echo >&2 "The argument is not recognised."
+exit 1
