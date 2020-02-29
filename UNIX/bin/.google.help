@@ -14,6 +14,7 @@ Options:
  -h,-?,--help	display this help and exit
  -m		search in Google Maps
  -q		add quotemarks to search exact queries (can be combined with -i or -v)
+ -w		open browser in new window (works in Firefox and Google Chrome)
 
 Long options:
  --filetype	specify filetype of the query
@@ -25,6 +26,7 @@ Google apps:
  docs		Google Docs
  drive		Google Drive
  forms		Google Forms
+ mail		Google Mail (Gmail)
  maps		Google Maps 
  photos		Google Photos
  sheets		Google Sheets

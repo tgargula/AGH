@@ -35,7 +35,12 @@ elif (( $# == 1 )); then
 		$BROWSER https://docs.google.com/forms/u/0/ &
 		exit
 	fi
-	
+
+	if [[ $1 == 'mail' ]]; then
+		$BROWSER https://mail.google.com/mail/u/0/ &
+		exit
+	fi
+
 	if [[ $1 == 'maps' ]]; then
 		$BROWSER https://www.google.com/maps &
 		exit
@@ -46,7 +51,7 @@ elif (( $# == 1 )); then
 		exit
 	fi
 
-	if [[ $1 == 'sheet' ]]; then
+	if [[ $1 == 'sheets' ]]; then
 		$BROWSER https://docs.google.com/spreadsheets/u/0/ &
 		exit
 	fi
@@ -139,6 +144,13 @@ if [[ $shortOption ]]; then
 		flag=true
 	fi
 
+	if [[ `echo $shortOption | grep w` ]]; then
+		if [[ `echo $BROWSER | grep firefox$` || `echo $BROWSER | grep google-chrome$` ]]; then
+			newWindow="--new-window"
+			flag=true
+		fi
+	fi
+
 	if [[ `echo $shortOption | grep g` || `echo $shortOption | grep i` ]]; then
 		address="$address&tbm=isch"
 		flag=true
@@ -166,4 +178,4 @@ if [[ $ifSite ]]; then
 	address="site%3A$site+$address"
 fi
 
-$BROWSER https://www.google.com/search\?q=$address &
+$BROWSER $newWindow https://www.google.com/search\?q=$address &
