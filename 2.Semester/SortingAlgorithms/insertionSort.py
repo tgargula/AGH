@@ -4,7 +4,7 @@
 # It is a simple sorting algorithm that builds the final sorted array (or list) one item at a time.
 # 
 # COMPLEXITY
-# Time complexity: O(n^2)
+# Time complexity:  O(n^2)
 # Space complexity: O(1)
 
 def insertionSort (tab):

@@ -9,7 +9,7 @@
 # unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right. 
 # 
 # COMPLEXITY
-# Time complexity: O(n^2)
+# Time complexity:  O(n^2)
 # Space complexity: O(1)
 
 def selectionSort (tab):

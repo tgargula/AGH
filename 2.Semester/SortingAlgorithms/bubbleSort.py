@@ -5,18 +5,17 @@
 # The pass through the list is repeated until the list is sorted.
 # 
 # COMPLEXITY
-# Time complexity: O(n^2)
+# Time complexity:  O(n^2)
 # Space complexity: O(1)
 
 def bubbleSort (tab) :
     N = len (tab)
-    isSorted = False
-    while not isSorted :
-        isSorted = True
-        for i in range(N-1) :
+    end = N-1
+    while end > 0 :
+        for i in range(end) :
             if tab[i] > tab[i+1] :
                 tab[i], tab[i+1] = tab[i+1], tab[i]
-                isSorted = False
+        end -= 1
 
 table = [1,43,43,32,5,4,3,6,5,32,534,6,7,54,34,34]
 
