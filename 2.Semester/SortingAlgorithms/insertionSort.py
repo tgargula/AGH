@@ -1,3 +1,12 @@
+# Insertion sort algorithm
+# 
+# DESCRIPTION
+# It is a simple sorting algorithm that builds the final sorted array (or list) one item at a time.
+# 
+# COMPLEXITY
+# Time complexity: O(n^2)
+# Space complexity: O(1)
+
 def insertionSort (tab):
     N = len(tab)
     for i in range(N):
