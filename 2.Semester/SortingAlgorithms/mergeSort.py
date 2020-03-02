@@ -14,9 +14,7 @@ def mergeSort (L, begin, end):
         i = begin
         j = middlePoint + 1
         k = 0
-        tempTab = []
-        for l in range (end-begin+1):
-            tempTab.append(None)
+        tempTab = [None for l in range(end-begin+1)]
 
         while i <= middlePoint and j <= end:
             if L[i] <= L[j]:
