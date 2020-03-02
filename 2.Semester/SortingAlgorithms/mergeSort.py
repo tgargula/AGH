@@ -9,8 +9,6 @@
 # Time complexity:  O(n log n)
 # Space complexity: O(n)
 
-
-
 def mergeSort (L, begin, end):
     def merge (L, begin, middlePoint, end):
         i = begin
