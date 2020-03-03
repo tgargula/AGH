@@ -10,41 +10,45 @@ class maxHeap:
         self.heap.extend(table)
         self.buildHeap()
 
+    def size(self): return self.heap[0]
+    def sizePlusOne(self): self.heap[0]+=1
+    def sizeMinusOne(self): self.heap[0]-=1
+
     def heapify(self, i):
         l = left(i)
         r = right(i)
         M = i
-        if l <= self.heap[0] and self.heap[l] > self.heap[M]: M = l
-        if r <= self.heap[0] and self.heap[r] > self.heap[M]: M = r
+        if l <= self.size() and self.heap[l] > self.heap[M]: M = l
+        if r <= self.size() and self.heap[r] > self.heap[M]: M = r
         if M != i:
             self.heap[i], self.heap[M] = self.heap[M], self.heap[i]
             self.heapify(M)
 
     def buildHeap(self):
-        for i in range(self.heap[0]//2, 0, -1):
+        for i in range(self.size()//2, 0, -1):
             self.heapify(i)
 
     def heapSort(self):
         buildHeap(self)
-        for i in range(self.heap[0],1,-1):
+        for i in range(self.size(),1,-1):
             self.heap[i], self.heap[1] = self.heap[1], self.heap[i]
-            self.heap[0] -= 1
+            self.sizeMinusOne()
             self.heapify(1)
 
     def getMax(self):
-        if self.heap[0] == 0: sys.exit()
+        if self.size() == 0: sys.exit()
         result = self.heap[1]
-        self.heap[1] = self.heap[self.heap[0]]
-        self.heap[0] -= 1
+        self.heap[1] = self.heap[self.size()]
+        self.sizeMinusOne()
         self.heapify(1)
         return result
 
     def insert(self,value):
-        if self.heap[0] == len(self)-1: self.append(value)
+        if self.size() == len(self)-1: self.append(value)
         else:
-            self.heap[0] += 1
-            self.heap[self.heap[0]] = value
-            i = self.heap[0]
+            self.sizePlusOne()
+            self.heap[self.size()] = value
+            i = self.size()
             while i > 1 and self.heap[i] > self.heap[parent(i)]:
                 self.heap[i], self.heap[parent(i)] = self.heap[parent(i)], self.heap[i]
                 i = parent(i)
