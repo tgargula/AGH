@@ -44,14 +44,14 @@ class minHeap:
         return result
 
     def insert(self,value):
-        if self.size() == len(self)-1: self.append(value)
-        else:
-            self.sizePlusOne()
-            self.heap[self.size()] = value
-            i = self.size()
-            while i > 1 and self.heap[i] < self.heap[parent(i)]:
-                self.heap[i], self.heap[parent(i)] = self.heap[parent(i)], self.heap[i]
-                i = parent(i)
+        if self.size() == len(self.heap)-1: self.heap.append(value)
+
+        self.sizePlusOne()
+        self.heap[self.size()] = value
+        i = self.size()
+        while i > 1 and self.heap[i] > self.heap[parent(i)]:
+            self.heap[i], self.heap[parent(i)] = self.heap[parent(i)], self.heap[i]
+            i = parent(i)
 
 table = [2,3,4,234,32,3,543,532,3,24]
 heap = minHeap(table)
