@@ -10,12 +10,10 @@
 
 def bubbleSort (tab) :
     N = len (tab)
-    end = N-1
-    while end > 0 :
+    for end in range(N-1,0,-1):
         for i in range(end) :
             if tab[i] > tab[i+1] :
                 tab[i], tab[i+1] = tab[i+1], tab[i]
-        end -= 1
 
 table = [1,43,43,32,5,4,3,6,5,32,534,6,7,54,34,34]
 
