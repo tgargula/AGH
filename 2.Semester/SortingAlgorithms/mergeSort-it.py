@@ -1,3 +1,8 @@
+# Merge sort algorithm
+#
+# This merge sort uses naturally sorted fragments and merges each of two following fragments
+# It is done iteratively
+
 def mergeSort (table):
     def merge(tab1, tab2):
         i = j = 0
