@@ -56,7 +56,6 @@ class minmaxHeap:
             elif self.heap[M] > self.heap[i]:
                 self.heap[M], self.heap[i] = self.heap[i], self.heap[M]
     
-
     def heapifyMin(self, i):
         def indexOfTheSmallestChildOrGrandchild(i):
             m = i
@@ -82,15 +81,12 @@ class minmaxHeap:
         
         self.sizePlusOne()
         self.heap[self.size()] = value
-        #self.heapify(self.size())
-        self.buildHeap()    # It could be done easier 
-        # level = self.size()
-        # while level >= 4: level //= 4
-        # if level == 1:  # odd level
-        #     j = self.size()
-        #     while j > 3 and self.heap[j] < self.heap[parent(parent(j))]:
-        #         self.heap[i], self.heap[parent(parent(i))] = self.heap[parent(parent(i))], self.heap[i]
-        #         i = parent(parent(i))
+        
+        i = self.size()
+        while i > 1:
+            self.heapify(parent(i))
+            i = parent(i)
+
     
     def extractMin(self):
         self.heap[1], self.heap[self.size()] = self.heap[self.size()], self.heap[1]
