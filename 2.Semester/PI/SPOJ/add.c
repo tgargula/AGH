@@ -1,3 +1,4 @@
+//https://pl.spoj.com/problems/JSUMDUZE/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
