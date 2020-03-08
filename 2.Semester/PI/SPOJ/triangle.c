@@ -1,3 +1,4 @@
+//https://pl.spoj.com/problems/CANTOR/
 #include <stdio.h>
 
 void draw_triangle(int n){
