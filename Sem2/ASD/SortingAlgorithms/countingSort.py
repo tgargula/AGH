@@ -18,8 +18,8 @@ def countingSort(inputList):
         return maxNumber
 
     maxNumber = findMaxNumber(inputList)
-    sortedList = [None for i in range(len(inputList))]
-    tempList = [0 for i in range(maxNumber+1)]
+    sortedList = [None]*(len(inputList)-1)
+    tempList = [0]*maxNumber
     
     for j in range (len(inputList)):
         tempList[inputList[j]] += 1
