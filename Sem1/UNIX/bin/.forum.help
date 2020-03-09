@@ -1,13 +1,11 @@
 Usage: forum [-h] [-?] [--help] [SECTION]
-Opens forum of WIET using Firefox Browser (on the main page if no options or sections are specified)
+Opens forum of WIET using default browser (on the main page if no options or sections are specified)
 
 Options:
  -h, -?, --help		display this help and exit
 
 Sections:
- D17		Announcements for D17 building
- C2		Announcements for C2 building
- exam		Exam announcements
+ -a, -o		Announcements
 
 Exit status:
  0	if OK
