@@ -13,7 +13,14 @@
 # Space complexity: *depends on the implementation*
 # This one has space complexity O(1)
 
+from random import randint
+
 def quickSort(L, start, end):
+    def randPartition (L, start, end):
+        j = randint(start, end)
+        L[j], L[end] = L[end], L[j]
+        return partition(L,start,end)
+
     def partition (L, start, end):
         x = L[end]
         i = start-1
@@ -25,9 +32,9 @@ def quickSort(L, start, end):
         return i+1
 
     if start < end:
-        middle = partition(L,start,end)
-        quickSort(L, start, middle-1)
-        quickSort(L, middle+1, end)
+        pivot = randPartition(L,start,end)
+        quickSort(L, start, pivot-1)
+        quickSort(L, pivot+1, end)
 
 
 L = [3,5,2,10,8,4,7,6,1,9]
