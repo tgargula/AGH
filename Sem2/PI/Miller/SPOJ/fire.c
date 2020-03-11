@@ -1,3 +1,4 @@
+//https://pl.spoj.com/problems/ETI06F3/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
