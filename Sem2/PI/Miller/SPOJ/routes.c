@@ -1,8 +1,9 @@
+//https://pl.spoj.com/problems/HILLS2/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
-#define M_PI 3.14159265358979323846 //coz spoj is stoopid
+#define M_PI 3.14159265358979323846 //coz spoj is stoopid and can't read M_PI from math orz
 
 void distance(int n){
 	double x, y;
