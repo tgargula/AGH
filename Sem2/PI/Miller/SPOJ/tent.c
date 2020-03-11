@@ -1,3 +1,4 @@
+//https://pl.spoj.com/problems/ETI07F1/
 #include <stdio.h>
 #include <stdlib.h>
 
