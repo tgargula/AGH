@@ -10,26 +10,21 @@
 #                           where k is the maximum number in the list
 
 def countingSort(inputList):
-    def findMaxNumber(inputList):
-        maxNumber = 0
-        for i in range(len(inputList)):
-            if maxNumber < inputList[i]:
-                maxNumber = inputList[i]
-        return maxNumber
 
-    maxNumber = findMaxNumber(inputList)
-    sortedList = [None]*(len(inputList)-1)
-    tempList = [0]*maxNumber
+    n = len(inputList)
+    maxNumber = max(inputList)
+    sortedList = [None]*n
+    tempList = [0]*(maxNumber+1)
     
-    for j in range (len(inputList)):
+    for j in range (n):
         tempList[inputList[j]] += 1
     
     for i in range (1, maxNumber+1):
         tempList[i] += tempList[i-1]
     
-    for j in range (len(inputList)):
-        sortedList[tempList[inputList[j]]-1] = inputList[j]
+    for j in range (n-1, -1, -1):
         tempList[inputList[j]] -= 1
+        sortedList[tempList[inputList[j]]] = inputList[j]
     
     return sortedList
 
