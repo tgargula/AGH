@@ -1,3 +1,4 @@
+//https://pl.spoj.com/problems/KAMELNEO/
 #include <stdio.h>
 #include <stdlib.h>
 
