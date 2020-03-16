@@ -36,7 +36,7 @@ void encryptLetter (char *message, int i, int k) {
 
 void encrypt (char *message) {
 
-	int k = calculateShift(message);
+    int k = calculateShift(message);
 
     for (int i = 0; i < (int)strlen(message); i++) {
 
@@ -48,9 +48,9 @@ void encrypt (char *message) {
 
 int main (void) {
 
-	char message[N];
+    char message[N];
 
-	fgets(message, N, stdin);
+    fgets(message, N, stdin);
     removeEndline(message);
 
     encrypt(message);
