@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define N 11	//	100 chars + nullbyte
+#define N 101	//	100 chars + nullbyte
 
 void removeEndline (char *message) {
 
@@ -15,8 +15,11 @@ void removeEndline (char *message) {
 
 int calculateShift (char *message) {
 
-    int ctr = 0;
-    while (message[ctr] != ' ' && message[ctr] != '\0' && ctr < N-1) ctr++; // the message cannot be larger than N-1
+    int ctr = 0, i = 0;
+    
+    while (message[i] == ' ') i++; // skip space(s) at the beginning
+
+    while (message[i] != ' ' && message[i] != '\0') { i++; ctr++; }
 
     return ctr;
 
@@ -49,7 +52,7 @@ int main (void) {
 
 	fgets(message, N, stdin);
     removeEndline(message);
-	
+
     encrypt(message);
 
     printf("%s\n", message);
