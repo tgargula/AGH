@@ -15,24 +15,17 @@ def bucketSort (tab):
             A[k+1] = key
     
     N = 5 # should be propotional to len(tab)
-    buckets = [[] for _ in range(N)]
+    buckets = [[] for _ in range(N+1)] # subset of [0, M]
     M = max(tab)
 
     for num in tab:
-        if num == M: bi = N-1
-        else: bi = int(num / M * N)
+        bi = int(num / M * N)
         buckets[bi].append(num)
-    
-    print (buckets)
 
-    s = 0
     for A in buckets: insertionSort(A)
     
     output = []
-    
-    for A in buckets:
-        for j in range(len(A)):
-            output.append(A[j])
+    for A in buckets: output.extend(A)
 
     tab[:] = output
 
