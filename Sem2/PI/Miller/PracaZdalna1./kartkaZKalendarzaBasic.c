@@ -12,6 +12,7 @@ int monthDays(int month) {
 
 void printMonth(int month, int firstDay) {
     if(firstDay > 6) firstDay = firstDay % 7;
+    if(month > 12) month = month % 12 + 1;
     printf("Miesiac %d\n%s\n", month, "|Ni |Po |Wt |Sr |Cz |Pt |So |");
     for(int i = 0; i < firstDay; i++) printf("|   ");
     for(int day = 1; day <= monthDays(month); day++) {

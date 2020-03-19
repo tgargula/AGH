@@ -6,10 +6,7 @@ const int N = 100;
 
 void randomArray(int tab[]) {
     srand(time(0));
-    for(int j = 0; j < N; j += 1) {
-        srand(rand());
-        tab[j] = rand() % N;
-    }    
+    for(int j = 0; j < N; j += 1) tab[j] = rand() % N;
 }
 
 void swapp(int *a, int *b) {
