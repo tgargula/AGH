@@ -30,6 +30,10 @@
 #   3) Korzystam z tego, że może definiować funkcje wewnątrz funkcji
 #      – oczywiście tak nie trzeba robić (ale osobiście wydaje mi się to
 #      nieco czytelniejsze)
+#   4) reversed() – funkcja po prostu odwracająca kolejność.
+#      Przykład:
+#      for i in range(n-1, -1, -1) to to samo co: for i in reversed(range(n)),
+#      ale z reversed wygląda imho ładniej
 
 
 def sort_strings (tab):
@@ -44,9 +48,9 @@ def sort_strings (tab):
 
         for j in range(1, how_many_letters): temp_tab[j] += temp_tab[j-1]
 
-        for j in range(n-1, -1, -1):
-            temp_tab [ ord(tab[j][i]) - ord('a') ] -= 1
-            sorted_tab [ temp_tab [ ord(tab[j][i]) - ord('a') ] ] = tab[j]
+        for string in reversed(tab):
+            temp_tab [ ord(string[i]) - ord('a') ] -= 1
+            sorted_tab [ temp_tab [ ord(string[i]) - ord('a') ] ] = string
 
         return sorted_tab
 
@@ -69,7 +73,7 @@ def sort_strings (tab):
     d = len(max(tab, key=len))
     n = len(tab)
 
-    for i in range(d-1, -1, -1):
+    for i in reversed(range(d)):
         split_list = split_tab(tab, i)
         split_list[1] = counting_sort(split_list[1], i)
         tab = concatenate_tab(split_list[0], split_list[1])
