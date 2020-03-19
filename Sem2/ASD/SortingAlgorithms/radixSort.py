@@ -29,7 +29,7 @@ def radixSort(tab):
         for i in range (n-1, -1, -1):
             index = tab[i] // exp
             tempList [ index % 10 ] -= 1
-            sortedList[tempList [ index % 10 ]] = inputList[i]
+            sortedList [ tempList [ index % 10 ] ] = inputList[i]
         
         return sortedList
     

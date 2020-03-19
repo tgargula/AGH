@@ -1,4 +1,4 @@
-# Quick sort algorithm – iterative version
+# Quick sort algorithm – iterative version (stack)
 #
 # DESCRIPTION
 # Quicksort is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array
@@ -10,7 +10,7 @@
 # COMPLEXITY
 # Average time complexity:  O(n log n)
 # Pessimistic time complexity: O(n^2)
-# Space complexity: *depends on the implementation*
+# Space complexity: O(n)
 # This one has space complexity O(1)
 
 from random import randint

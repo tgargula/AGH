@@ -1,5 +1,3 @@
-import math
-
 def bucketSort (tab):
     
     def insertionSort (A):

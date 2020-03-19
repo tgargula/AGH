@@ -21,8 +21,12 @@ def insertionSort (tab):
 
 table = [32,4,54,3,23,5,6,76,54,3423,4,6]
 
+tab = [5,3,6]
+
 print(table)
 
 insertionSort(table)
+insertionSort(tab)
 
 print(table)
+print(tab)
