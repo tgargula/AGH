@@ -34,14 +34,6 @@
 
 def sort_strings (tab):
 
-    def find_max_length (tab):
-        max_length = 0
-        for string in tab:
-            if len(string) > max_length: max_length = len(string)
-
-        return max_length
-
-
     def counting_sort (tab, i):
         n = len(tab)
         sorted_tab = [None] * n
@@ -74,7 +66,7 @@ def sort_strings (tab):
         return tab
 
 
-    d = find_max_length(tab)
+    d = len(max(tab, key=len))
     n = len(tab)
 
     for i in range(d-1, -1, -1):
