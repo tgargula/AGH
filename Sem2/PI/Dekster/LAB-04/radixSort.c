@@ -13,9 +13,8 @@ void countingSortByPosition (char **A, int n, int k, int pos) {
 
     char **B;
     B = malloc (n * sizeof(char*));
-    for (int j = 0; j < n; j++) B[j] = malloc (k * sizeof(char));
     
-    int *C = malloc (10 * sizeof(int));
+    int C[10];
     for (int i = 0; i < 10; i++) C[i] = 0;
 
     for (int i = 0; i < n; i++) C[index(A, i, pos)]++;
@@ -25,9 +24,8 @@ void countingSortByPosition (char **A, int n, int k, int pos) {
     for (int i = n-1; i >= 0; i--) B[--C[index(A, i, pos)]] = A[i];
 
     for (int i = 0; i < n; i++) A[i] = B[i];
-    
+
     free(B);
-    free(C);
 
 }
 
