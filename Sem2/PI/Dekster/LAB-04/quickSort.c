@@ -79,7 +79,10 @@ int main(void) {
         getTab(tab, n);
         quickSort(tab, n);
         printTab(tab, n);
+        
+        free(tab);
     } 
 
     return 0;
+
 }
