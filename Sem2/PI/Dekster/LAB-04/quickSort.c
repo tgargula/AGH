@@ -39,7 +39,6 @@ int partition (int *tab, int start, int end) {
 
 int randPartition (int *tab, int start, int end) {
 
-    srand(time(NULL));
     int r = rand() % (end - start + 1) + start;
     swap (&tab[end], &tab[r]);
     return partition(tab, start, end);
@@ -67,6 +66,7 @@ void quickSort (int *tab, size_t n) {
 
 int main(void) {
 
+    srand(time(NULL));
     int Z;
     scanf("%d", &Z);
 
