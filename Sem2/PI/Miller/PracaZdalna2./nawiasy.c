@@ -32,9 +32,9 @@ void areBracketsCorrect(char chain[], int lastBracket, int *i, int *result, int 
         else if(chain[*i] == ')' && lastBracket != 0) { *result = 0; return; } // protect [(])
         else if(chain[*i] == ']' && lastBracket != 1) { *result = 0; return; } // protect {[}]
         else if(chain[*i] == '}' && lastBracket != 2) { *result = 0; return; } // protect ({)}
-        else if(chain[*i] == ')' && lastBracket == 0) { return; } // level down recursion
-        else if(chain[*i] == ']' && lastBracket == 1) { return; } // level down recursion
-        else if(chain[*i] == '}' && lastBracket == 2) { return; } // level down recursion
+        else if(chain[*i] == ')') { return; } // level down recursion
+        else if(chain[*i] == ']') { return; } // level down recursion
+        else if(chain[*i] == '}') { return; } // level down recursion
         *i += 1;
     }
 
@@ -61,7 +61,7 @@ void multiChainVersin() {
 
     for(int howMuch = 0; howMuch < N; howMuch += 1) {
         scanf("%s", multiChain[howMuch]);
-        if(multiChain[howMuch][0] == '~') {multiChain[howMuch][0] = '\0'; break;}       // ~ mens end of input next rows
+        if(multiChain[howMuch][0] == '~') {multiChain[howMuch][0] = '\0'; break;}       // ~ means end of input next rows
     }
 
     for(int howMuch = 0; multiChain[howMuch][0] != '\0'; howMuch += 1) {
