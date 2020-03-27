@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 const int N = 100;
 
@@ -16,11 +15,29 @@ void swapp(int *a, int *b) {
 }
 
 void bubbleSort(int tab[]) {
-    for(int i = 0; i < N; i += 1) for(int j = N-1; j > i; j -= 1) if(tab[j] < tab[j-1]) swapp(&tab[j], &tab[j-1]);
+    for(int i = 0; i < N; i += 1) {
+        int isSorted = 1;
+        for(int j = N-1; j > i; j -= 1) {
+            if(tab[j] < tab[j-1]) {
+                isSorted = 0; 
+                swapp(&tab[j], &tab[j-1]);
+            }
+        }
+        if(isSorted == 1) break;
+    }
 }
 
 void revBubbleSort(int tab[]) {
-    for(int i = 0; i < N; i += 1) for(int j = N-1; j > i; j -= 1) if(tab[j] > tab[j-1]) swapp(&tab[j], &tab[j-1]);
+    for(int i = 0; i < N; i += 1) {
+        int isSorted = 1;
+        for(int j = N-1; j > i; j -= 1) {
+            if(tab[j] > tab[j-1]) {
+                isSorted = 0;
+                swapp(&tab[j], &tab[j-1]);
+            }
+        }
+        if(isSorted == 1) break;
+    }
 }
 
 void printArray(int tab[]) {

@@ -62,7 +62,7 @@ void multiChainVersin() {
     for(int howMuch = 0; howMuch < N; howMuch += 1) {
         scanf("%s", multiChain[howMuch]);
         if(multiChain[howMuch][0] == '~') {multiChain[howMuch][0] = '\0'; break;}       // ~ means end of input next rows
-    }
+    }   
 
     for(int howMuch = 0; multiChain[howMuch][0] != '\0'; howMuch += 1) {
         *result = 1;                // res = 1 - it is assumed that chain is correct
