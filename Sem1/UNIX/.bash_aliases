@@ -5,6 +5,9 @@ alias shortcuts='clear && cat ~/bin/.listOfAliases.txt | less'
 alias f='echo "Launching Firefox..." && /usr/bin/firefox &'
 alias firefox='/usr/bin/firefox &'
 
+# alias for simple-scan
+alias scan='simple-scan || simple-scan &'
+
 # overloading spotify command
 alias spotify='/usr/bin/spotify &'
 
@@ -34,8 +37,10 @@ alias mail='$BROWSER https://poczta.agh.edu.pl &'
 alias maps='$BROWSER https://www.google.com/maps &'
 alias messenger='ms'
 alias ms='$BROWSER https://www.messenger.com &'
+alias oioioi='$BROWSER https://oioioi.ki.agh.edu.pl/c/19-20-s1-sem2-pi/p/ &'
 alias powerpoint='office powerpoint'
 alias udemy='$BROWSER https://www.udemy.com/ &'
+alias upel='$BROWSER https://upel2.cel.agh.edu.pl/wiet/ &'
 alias usos='$BROWSER https://web.usos.agh.edu.pl/kontroler.php?_action=dla_stud/studia/oceny/index &'
 alias wiki='$BROWSER https://wiki.iiet.pl/doku.php &'
 alias wolfram='$BROWSER https://wolframalpha.com &'

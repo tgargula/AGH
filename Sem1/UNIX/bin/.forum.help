@@ -6,6 +6,8 @@ Options:
 
 Sections:
  -a, -o		Announcements
+ -e		Exams
+ -k		"Studia podczas kwarantanny"
 
 Exit status:
  0	if OK
