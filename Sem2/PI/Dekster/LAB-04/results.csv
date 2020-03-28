@@ -1,209 +1,41 @@
-n;method;quick sort;time [s]
-10;Random (max = n/10);Classic quick sort;0.000005
-10;Random (max = n/10);Quick sort with randomization;0.000007
-10;Random (max = n/10);Median of three quick sort;0.000010
-10;Random (max = n/10);Median of three quick sort with insertion sort;0.000002
-10;Random (max = n/10);Built-in qsort;0.000004
-10;Random (max = n);Classic quick sort;0.000003
-10;Random (max = n);Quick sort with randomization;0.000003
-10;Random (max = n);Median of three quick sort;0.000003
-10;Random (max = n);Median of three quick sort with insertion sort;0.000002
-10;Random (max = n);Built-in qsort;0.000002
-10;Sorted;Classic quick sort;0.000001
-10;Sorted;Quick sort with randomization;0.000002
-10;Sorted;Median of three quick sort;0.000003
-10;Sorted;Median of three quick sort with insertion sort;0.000001
-10;Sorted;Built-in qsort;0.000002
-10;Almost sorted (distValue = .025);Classic quick sort;0.000001
-10;Almost sorted (distValue = .025);Quick sort with randomization;0.000002
-10;Almost sorted (distValue = .025);Median of three quick sort;0.000003
-10;Almost sorted (distValue = .025);Median of three quick sort with insertion sort;0.000001
-10;Almost sorted (distValue = .025);Built-in qsort;0.000002
-10;Almost sorted (distValue = .25);Classic quick sort;0.000001
-10;Almost sorted (distValue = .25);Quick sort with randomization;0.000001
-10;Almost sorted (distValue = .25);Median of three quick sort;0.000003
-10;Almost sorted (distValue = .25);Median of three quick sort with insertion sort;0.000001
-10;Almost sorted (distValue = .25);Built-in qsort;0.000003
-10;Almost sorted reversed (distValue = .25);Classic quick sort;0.000001
-10;Almost sorted reversed (distValue = .25);Quick sort with randomization;0.000003
-10;Almost sorted reversed (distValue = .25);Median of three quick sort;0.000003
-10;Almost sorted reversed (distValue = .25);Median of three quick sort with insertion sort;0.000001
-10;Almost sorted reversed (distValue = .25);Built-in qsort;0.000003
-10;Almost sorted reversed (distValue = .025);Classic quick sort;0.000002
-10;Almost sorted reversed (distValue = .025);Quick sort with randomization;0.000002
-10;Almost sorted reversed (distValue = .025);Median of three quick sort;0.000003
-10;Almost sorted reversed (distValue = .025);Median of three quick sort with insertion sort;0.000001
-10;Almost sorted reversed (distValue = .025);Built-in qsort;0.000002
-10;Sorted reversed;Classic quick sort;0.000002
-10;Sorted reversed;Quick sort with randomization;0.000003
-10;Sorted reversed;Median of three quick sort;0.000002
-10;Sorted reversed;Median of three quick sort with insertion sort;0.000001
-10;Sorted reversed;Built-in qsort;0.000002
-;;;
-n;method;quick sort;time [s]
-100;Random (max = n/10);Classic quick sort;0.000006
-100;Random (max = n/10);Quick sort with randomization;0.000008
-100;Random (max = n/10);Median of three quick sort;0.000015
-100;Random (max = n/10);Median of three quick sort with insertion sort;0.000006
-100;Random (max = n/10);Built-in qsort;0.000010
-100;Random (max = n);Classic quick sort;0.000007
-100;Random (max = n);Quick sort with randomization;0.000008
-100;Random (max = n);Median of three quick sort;0.000013
-100;Random (max = n);Median of three quick sort with insertion sort;0.000007
-100;Random (max = n);Built-in qsort;0.000014
-100;Sorted;Classic quick sort;0.000020
-100;Sorted;Quick sort with randomization;0.000016
-100;Sorted;Median of three quick sort;0.000020
-100;Sorted;Median of three quick sort with insertion sort;0.000021
-100;Sorted;Built-in qsort;0.000005
-100;Almost sorted (distValue = .025);Classic quick sort;0.000012
-100;Almost sorted (distValue = .025);Quick sort with randomization;0.000016
-100;Almost sorted (distValue = .025);Median of three quick sort;0.000022
-100;Almost sorted (distValue = .025);Median of three quick sort with insertion sort;0.000020
-100;Almost sorted (distValue = .025);Built-in qsort;0.000004
-100;Almost sorted (distValue = .25);Classic quick sort;0.000012
-100;Almost sorted (distValue = .25);Quick sort with randomization;0.000015
-100;Almost sorted (distValue = .25);Median of three quick sort;0.000019
-100;Almost sorted (distValue = .25);Median of three quick sort with insertion sort;0.000021
-100;Almost sorted (distValue = .25);Built-in qsort;0.000005
-100;Almost sorted reversed (distValue = .25);Classic quick sort;0.000006
-100;Almost sorted reversed (distValue = .25);Quick sort with randomization;0.000008
-100;Almost sorted reversed (distValue = .25);Median of three quick sort;0.000014
-100;Almost sorted reversed (distValue = .25);Median of three quick sort with insertion sort;0.000007
-100;Almost sorted reversed (distValue = .25);Built-in qsort;0.000009
-100;Almost sorted reversed (distValue = .025);Classic quick sort;0.000006
-100;Almost sorted reversed (distValue = .025);Quick sort with randomization;0.000007
-100;Almost sorted reversed (distValue = .025);Median of three quick sort;0.000011
-100;Almost sorted reversed (distValue = .025);Median of three quick sort with insertion sort;0.000006
-100;Almost sorted reversed (distValue = .025);Built-in qsort;0.000006
-100;Sorted reversed;Classic quick sort;0.000011
-100;Sorted reversed;Quick sort with randomization;0.000008
-100;Sorted reversed;Median of three quick sort;0.000011
-100;Sorted reversed;Median of three quick sort with insertion sort;0.000006
-100;Sorted reversed;Built-in qsort;0.000005
-;;;
-n;method;quick sort;time [s]
-1000;Random (max = n/10);Classic quick sort;0.000058
-1000;Random (max = n/10);Quick sort with randomization;0.000084
-1000;Random (max = n/10);Median of three quick sort;0.000127
-1000;Random (max = n/10);Median of three quick sort with insertion sort;0.000059
-1000;Random (max = n/10);Built-in qsort;0.000106
-1000;Random (max = n);Classic quick sort;0.000070
-1000;Random (max = n);Quick sort with randomization;0.000084
-1000;Random (max = n);Median of three quick sort;0.000124
-1000;Random (max = n);Median of three quick sort with insertion sort;0.000070
-1000;Random (max = n);Built-in qsort;0.000093
-1000;Sorted;Classic quick sort;0.000934
-1000;Sorted;Quick sort with randomization;0.000837
-1000;Sorted;Median of three quick sort;0.000807
-1000;Sorted;Median of three quick sort with insertion sort;0.000820
-1000;Sorted;Built-in qsort;0.000037
-1000;Almost sorted (distValue = .025);Classic quick sort;0.000777
-1000;Almost sorted (distValue = .025);Quick sort with randomization;0.000935
-1000;Almost sorted (distValue = .025);Median of three quick sort;0.001006
-1000;Almost sorted (distValue = .025);Median of three quick sort with insertion sort;0.001143
-1000;Almost sorted (distValue = .025);Built-in qsort;0.000039
-1000;Almost sorted (distValue = .25);Classic quick sort;0.001039
-1000;Almost sorted (distValue = .25);Quick sort with randomization;0.000770
-1000;Almost sorted (distValue = .25);Median of three quick sort;0.000824
-1000;Almost sorted (distValue = .25);Median of three quick sort with insertion sort;0.001197
-1000;Almost sorted (distValue = .25);Built-in qsort;0.000034
-1000;Almost sorted reversed (distValue = .25);Classic quick sort;0.000056
-1000;Almost sorted reversed (distValue = .25);Quick sort with randomization;0.000074
-1000;Almost sorted reversed (distValue = .25);Median of three quick sort;0.000109
-1000;Almost sorted reversed (distValue = .25);Median of three quick sort with insertion sort;0.000053
-1000;Almost sorted reversed (distValue = .25);Built-in qsort;0.000087
-1000;Almost sorted reversed (distValue = .025);Classic quick sort;0.000067
-1000;Almost sorted reversed (distValue = .025);Quick sort with randomization;0.000068
-1000;Almost sorted reversed (distValue = .025);Median of three quick sort;0.000104
-1000;Almost sorted reversed (distValue = .025);Median of three quick sort with insertion sort;0.000050
-1000;Almost sorted reversed (distValue = .025);Built-in qsort;0.000057
-1000;Sorted reversed;Classic quick sort;0.000618
-1000;Sorted reversed;Quick sort with randomization;0.000061
-1000;Sorted reversed;Median of three quick sort;0.000093
-1000;Sorted reversed;Median of three quick sort with insertion sort;0.000042
-1000;Sorted reversed;Built-in qsort;0.000039
-;;;
-n;method;quick sort;time [s]
-10000;Random (max = n/10);Classic quick sort;0.000812
-10000;Random (max = n/10);Quick sort with randomization;0.000857
-10000;Random (max = n/10);Median of three quick sort;0.001461
-10000;Random (max = n/10);Median of three quick sort with insertion sort;0.000813
-10000;Random (max = n/10);Built-in qsort;0.001245
-10000;Random (max = n);Classic quick sort;0.000673
-10000;Random (max = n);Quick sort with randomization;0.000829
-10000;Random (max = n);Median of three quick sort;0.001424
-10000;Random (max = n);Median of three quick sort with insertion sort;0.000864
-10000;Random (max = n);Built-in qsort;0.001203
-10000;Sorted;Classic quick sort;0.070038
-10000;Sorted;Quick sort with randomization;0.072068
-10000;Sorted;Median of three quick sort;0.075896
-10000;Sorted;Median of three quick sort with insertion sort;0.102962
-10000;Sorted;Built-in qsort;0.000421
-10000;Almost sorted (distValue = .025);Classic quick sort;0.091839
-10000;Almost sorted (distValue = .025);Quick sort with randomization;0.072464
-10000;Almost sorted (distValue = .025);Median of three quick sort;0.072241
-10000;Almost sorted (distValue = .025);Median of three quick sort with insertion sort;0.072020
-10000;Almost sorted (distValue = .025);Built-in qsort;0.000313
-10000;Almost sorted (distValue = .25);Classic quick sort;0.083875
-10000;Almost sorted (distValue = .25);Quick sort with randomization;0.088534
-10000;Almost sorted (distValue = .25);Median of three quick sort;0.078910
-10000;Almost sorted (distValue = .25);Median of three quick sort with insertion sort;0.084497
-10000;Almost sorted (distValue = .25);Built-in qsort;0.000325
-10000;Almost sorted reversed (distValue = .25);Classic quick sort;0.000611
-10000;Almost sorted reversed (distValue = .25);Quick sort with randomization;0.000883
-10000;Almost sorted reversed (distValue = .25);Median of three quick sort;0.001310
-10000;Almost sorted reversed (distValue = .25);Median of three quick sort with insertion sort;0.000707
-10000;Almost sorted reversed (distValue = .25);Built-in qsort;0.001685
-10000;Almost sorted reversed (distValue = .025);Classic quick sort;0.001064
-10000;Almost sorted reversed (distValue = .025);Quick sort with randomization;0.000768
-10000;Almost sorted reversed (distValue = .025);Median of three quick sort;0.001144
-10000;Almost sorted reversed (distValue = .025);Median of three quick sort with insertion sort;0.000506
-10000;Almost sorted reversed (distValue = .025);Built-in qsort;0.000660
-10000;Sorted reversed;Classic quick sort;0.071491
-10000;Sorted reversed;Quick sort with randomization;0.000658
-10000;Sorted reversed;Median of three quick sort;0.001016
-10000;Sorted reversed;Median of three quick sort with insertion sort;0.000422
-10000;Sorted reversed;Built-in qsort;0.000415
-;;;
-n;method;quick sort;time [s]
-100000;Random (max = n/10);Classic quick sort;0.009357
-100000;Random (max = n/10);Quick sort with randomization;0.011700
-100000;Random (max = n/10);Median of three quick sort;0.015645
-100000;Random (max = n/10);Median of three quick sort with insertion sort;0.008608
-100000;Random (max = n/10);Built-in qsort;0.012674
-100000;Random (max = n);Classic quick sort;0.008313
-100000;Random (max = n);Quick sort with randomization;0.009899
-100000;Random (max = n);Median of three quick sort;0.014520
-100000;Random (max = n);Median of three quick sort with insertion sort;0.009176
-100000;Random (max = n);Built-in qsort;0.013402
-100000;Sorted;Classic quick sort;7.317014
-100000;Sorted;Quick sort with randomization;7.310093
-100000;Sorted;Median of three quick sort;7.340090
-100000;Sorted;Median of three quick sort with insertion sort;7.680549
-100000;Sorted;Built-in qsort;0.003438
-100000;Almost sorted (distValue = .025);Classic quick sort;7.421814
-100000;Almost sorted (distValue = .025);Quick sort with randomization;7.064903
-100000;Almost sorted (distValue = .025);Median of three quick sort;7.143704
-100000;Almost sorted (distValue = .025);Median of three quick sort with insertion sort;7.138765
-100000;Almost sorted (distValue = .025);Built-in qsort;0.003722
-100000;Almost sorted (distValue = .25);Classic quick sort;7.113406
-100000;Almost sorted (distValue = .25);Quick sort with randomization;7.143085
-100000;Almost sorted (distValue = .25);Median of three quick sort;7.144975
-100000;Almost sorted (distValue = .25);Median of three quick sort with insertion sort;7.129553
-100000;Almost sorted (distValue = .25);Built-in qsort;0.003857
-100000;Almost sorted reversed (distValue = .25);Classic quick sort;0.006660
-100000;Almost sorted reversed (distValue = .25);Quick sort with randomization;0.008178
-100000;Almost sorted reversed (distValue = .25);Median of three quick sort;0.011244
-100000;Almost sorted reversed (distValue = .25);Median of three quick sort with insertion sort;0.007366
-100000;Almost sorted reversed (distValue = .25);Built-in qsort;0.009069
-100000;Almost sorted reversed (distValue = .025);Classic quick sort;0.007643
-100000;Almost sorted reversed (distValue = .025);Quick sort with randomization;0.006275
-100000;Almost sorted reversed (distValue = .025);Median of three quick sort;0.009426
-100000;Almost sorted reversed (distValue = .025);Median of three quick sort with insertion sort;0.004774
-100000;Almost sorted reversed (distValue = .025);Built-in qsort;0.008511
-100000;Sorted reversed;Classic quick sort;5.892446
-100000;Sorted reversed;Quick sort with randomization;0.005860
-100000;Sorted reversed;Median of three quick sort;0.008669
-100000;Sorted reversed;Median of three quick sort with insertion sort;0.004431
-100000;Sorted reversed;Built-in qsort;0.004499
+generation method;n;Classic quick sort;Quick sort with randomization;Median of three quick sort;Median of three quick sort with insertion sort;Built-in qsort
+Random (max = n/10);10;0.000003;0.000004;0.000005;0.000002;0.000003;
+Random (max = n/10);100;0.000008;0.000011;0.000020;0.000007;0.000010;
+Random (max = n/10);1000;0.000076;0.000100;0.000158;0.000071;0.000106;
+Random (max = n/10);10000;0.000820;0.000956;0.001697;0.000834;0.001222;
+Random (max = n/10);100000;0.008210;0.009717;0.016238;0.007864;0.012362;
+Random (max = n*10);10;0.000001;0.000001;0.000002;0.000001;0.000001;
+Random (max = n*10);100;0.000005;0.000008;0.000011;0.000006;0.000010;
+Random (max = n*10);1000;0.000064;0.000068;0.000118;0.000066;0.000103;
+Random (max = n*10);10000;0.000872;0.000914;0.001349;0.000855;0.001273;
+Random (max = n*10);100000;0.007809;0.009389;0.012153;0.008257;0.017175;
+Sorted;10;0.000001;0.000001;0.000002;0.000001;0.000001;
+Sorted;100;0.000013;0.000015;0.000021;0.000023;0.000005;
+Sorted;1000;0.001074;0.001075;0.000880;0.001191;0.000035;
+Sorted;10000;0.082774;0.071017;0.068535;0.069552;0.000472;
+Sorted;100000;6.759702;6.612314;6.607027;6.601731;0.003835;
+Almost sorted (distValue = .025);10;0.000001;0.000002;0.000002;0.000002;0.000001;
+Almost sorted (distValue = .025);100;0.000012;0.000017;0.000021;0.000018;0.000006;
+Almost sorted (distValue = .025);1000;0.000752;0.000696;0.001205;0.001176;0.000036;
+Almost sorted (distValue = .025);10000;0.070944;0.068788;0.068922;0.068991;0.000333;
+Almost sorted (distValue = .025);100000;6.650635;6.580545;6.584737;6.598766;0.004166;
+Almost sorted (distValue = .25);10;0.000002;0.000002;0.000003;0.000001;0.000002;
+Almost sorted (distValue = .25);100;0.000013;0.000014;0.000021;0.000020;0.000005;
+Almost sorted (distValue = .25);1000;0.001119;0.000936;0.000727;0.001164;0.000036;
+Almost sorted (distValue = .25);10000;0.074659;0.069032;0.072845;0.068422;0.000390;
+Almost sorted (distValue = .25);100000;6.589561;6.620882;6.630162;6.616638;0.003609;
+Almost sorted reversed (distValue = .25);10;0.000002;0.000001;0.000002;0.000001;0.000002;
+Almost sorted reversed (distValue = .25);100;0.000006;0.000007;0.000010;0.000005;0.000008;
+Almost sorted reversed (distValue = .25);1000;0.000057;0.000075;0.000115;0.000065;0.000066;
+Almost sorted reversed (distValue = .25);10000;0.000739;0.000927;0.001277;0.000735;0.000934;
+Almost sorted reversed (distValue = .25);100000;0.007261;0.008891;0.011885;0.007732;0.008524;
+Almost sorted reversed (distValue = .025);10;0.000002;0.000001;0.000003;0.000003;0.000002;
+Almost sorted reversed (distValue = .025);100;0.000008;0.000008;0.000011;0.000006;0.000007;
+Almost sorted reversed (distValue = .025);1000;0.000108;0.000061;0.000097;0.000046;0.000054;
+Almost sorted reversed (distValue = .025);10000;0.001094;0.000760;0.001050;0.000519;0.000431;
+Almost sorted reversed (distValue = .025);100000;0.009514;0.006031;0.009740;0.005828;0.007445;
+Sorted reversed;10;0.000001;0.000002;0.000002;0.000001;0.000002;
+Sorted reversed;100;0.000011;0.000008;0.000021;0.000006;0.000005;
+Sorted reversed;1000;0.001010;0.000060;0.000095;0.000040;0.000039;
+Sorted reversed;10000;0.078332;0.000671;0.000840;0.000332;0.000451;
+Sorted reversed;100000;6.004930;0.005755;0.008089;0.004021;0.003450;

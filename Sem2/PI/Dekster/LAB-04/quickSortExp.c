@@ -3,31 +3,32 @@
 #include <stdlib.h>
 #include <time.h>
 
-inline void getTab (int *tab, size_t n) {
+#define FILENAME "results.csv"
 
-    for (int i = 0; i < n; i++) scanf("%d", &tab[i]);
+char *quickSortTypeDescription[5] = {
+    "Classic quick sort",
+    "Quick sort with randomization", 
+    "Median of three quick sort",
+    "Median of three quick sort with insertion sort",
+    "Built-in qsort"
+};
 
-}
-
-inline void printTab (int *tab, size_t n) {
-    
-    for (int i = 0; i < n; i++) printf("%d\n", tab[i]);
-
-}
+char *generateMethodDescription[8] = {
+    "Random (max = n/10)",
+    "Random (max = n*10)",
+    "Sorted",
+    "Almost sorted (distValue = .025)",
+    "Almost sorted (distValue = .25)",
+    "Almost sorted reversed (distValue = .25)",
+    "Almost sorted reversed (distValue = .025)",
+    "Sorted reversed"
+};
 
 inline void swap (int *a, int *b) {
     
     int tmp = *a;
     *a = *b;
     *b = tmp;
-
-}
-
-inline int pow (int a, int b) {
-
-    int res = a;
-    for (int i = 1; i < b; i++) res *= a;
-    return res; 
 
 }
 
@@ -38,6 +39,9 @@ int qsortCompare (const void *a, const void *b) {   // inner function of qsort
     return _a == _b ? 0 : _a < _b ? 1 : -1;
 
 }
+
+
+/* Array generators */
 
 void generateRandom (int *tab, size_t n, int maxValue) {
 
@@ -82,6 +86,40 @@ void generateAlmostSortedReverse (int *tab, size_t n, double distValue) {
     makeDistortions(tab, n, distValue);
 
 }
+
+void generate (int *tab, int n, int genType) {
+
+    switch (genType) {
+        case 0:
+            generateRandom(tab, n, n/10);
+            break;
+        case 1:
+            generateRandom(tab, n, n*10);
+            break;
+        case 2:
+            generateSorted(tab, n);
+            break;
+        case 3:
+            generateAlmostSorted(tab, n, 0.025);
+            break;
+        case 4:
+            generateAlmostSorted(tab, n, 0.25);
+            break;
+        case 5:
+            generateAlmostSortedReverse(tab, n, 0.25);
+            break;
+        case 6:
+            generateAlmostSortedReverse(tab, n, 0.025);
+            break;
+        case 7:
+            generateSortedReverse(tab, n);
+            break;
+    }
+
+}
+
+
+/* Quick sort functions */
 
 int partition (int *tab, int start, int end) {
 
@@ -219,6 +257,9 @@ void quickSort (int *tab, size_t n, int type) {
     
 }
 
+
+/* Time tester */
+
 double timeTest (int *tab, size_t n, int type) {
 
     clock_t t0; clock_t t1;
@@ -234,105 +275,73 @@ double timeTest (int *tab, size_t n, int type) {
 
 }
 
-inline void saveNumberOfElements (int n) {
+
+/* Save functions */
+
+void saveHeadline() {
 
     FILE *fp;
-    if ((fp = fopen("results.csv", "a")) == NULL) {
-        printf("It is not possible to write this file");
+    if ((fp = fopen(FILENAME, "a")) == NULL) {
+        printf("File open error");
         exit(1);
     }
-    fprintf(fp, ";;;\nn;method;quick sort;time [s]\n");
+
+    fprintf(fp, "generation method;n");
+    for (int i = 0; i < 5; i++) fprintf(fp, ";%s", quickSortTypeDescription[i]);
+    fclose(fp);
+
+}
+
+void saveDescription(int genType, int n) {
+
+    FILE *fp;
+    if ((fp = fopen(FILENAME, "a")) == NULL) {
+        printf("File open error");
+        exit(1);
+    }
+    
+    fprintf(fp, "\n%s;%d;", generateMethodDescription[genType], n);
     fclose(fp);
 
 }
 
 void saveResults (double sec, int n, int qsortType, int genType) {
 
-    char *quickSortTypeDescription[5] = {
-        "Classic quick sort",
-        "Quick sort with randomization", 
-        "Median of three quick sort",
-        "Median of three quick sort with insertion sort",
-        "Built-in qsort"
-    };
-
-    char *generateMethodDescription[8] = {
-        "Random (max = n/10)",
-        "Random (max = n)",
-        "Sorted",
-        "Almost sorted (distValue = .025)",
-        "Almost sorted (distValue = .25)",
-        "Almost sorted reversed (distValue = .25)",
-        "Almost sorted reversed (distValue = .025)",
-        "Sorted reversed"
-    };
-
     FILE *fp;
-    if ((fp=fopen("results.csv", "a")) == NULL) {
-        printf("It is not possible to write this file");
+    if ((fp=fopen(FILENAME, "a")) == NULL) {
+        printf("File open error");
         exit(1);
     }
 
-
-    fprintf(fp, "%d;%s;%s;%lf\n", n, generateMethodDescription[genType], quickSortTypeDescription[qsortType], sec);
-
+    fprintf(fp, "%lf;", sec);
     fclose(fp);
 
 }
 
-void saveToFile (int *tab, size_t n, int genType) { /* TO-DO – change name */ 
+void saveToFile () {
 
-    int *currTab = malloc (n * sizeof(int));
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < n; j++) currTab[j] = tab[j];
-        saveResults(timeTest(currTab, n, i), n, i, genType);
+    saveHeadline();
+
+    for (int genType = 0; genType < 8; genType++) {
+        for (int n = 10; n <= 100000; n *= 10) {
+            int *tab = malloc (n * sizeof(int));
+            
+            saveDescription(genType, n);
+
+            for (int qsortType = 0; qsortType < 5; qsortType++) {
+                generate(tab, n, genType);
+                saveResults(timeTest(tab, n, qsortType), n, qsortType, genType);
+            }
+            
+            free(tab);
+        }
     }
-
-    free(currTab);
 
 }
 
 int main (void) {
 
-    for (int i = 1; i < 6; i++) {
-        int n = pow(10, i);
-
-        int *tab0 = malloc (n * sizeof(int));
-        int *tab1 = malloc (n * sizeof(int));
-        int *tab2 = malloc (n * sizeof(int));
-        int *tab3 = malloc (n * sizeof(int));
-        int *tab4 = malloc (n * sizeof(int));
-        int *tab5 = malloc (n * sizeof(int));
-        int *tab6 = malloc (n * sizeof(int));
-        int *tab7 = malloc (n * sizeof(int));
-
-        generateRandom(tab0, n, n/10);
-        generateRandom(tab1, n, n);
-        generateSorted(tab2, n);
-        generateAlmostSorted(tab3, n, 0.025);
-        generateAlmostSorted(tab4, n, 0.25);
-        generateAlmostSortedReverse(tab5, n, 0.25);
-        generateAlmostSortedReverse(tab6, n, 0.025);
-        generateSortedReverse(tab7, n);
-
-        saveNumberOfElements(n);
-        saveToFile(tab0, n, 0);
-        saveToFile(tab1, n, 1);
-        saveToFile(tab2, n, 2);
-        saveToFile(tab3, n, 3);
-        saveToFile(tab4, n, 4);
-        saveToFile(tab5, n, 5);
-        saveToFile(tab6, n, 6);
-        saveToFile(tab7, n, 7);
-
-        free(tab1);
-        free(tab2);
-        free(tab3);
-        free(tab4);
-        free(tab5);
-        free(tab6);
-        free(tab7);
-    }
+    saveToFile();
 
     return 0;
 
