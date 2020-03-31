@@ -15,7 +15,9 @@ W tych wersjach pojawia się pojęcie VLA - Variable Length Array. Taka możliwo
 
 Zadanie nr 6. Suma wektorów
 
-W segmencie głównym są tworzone dwie pary tablic 1-wymiarowych (dwie pary wektorów, w sumie 4 tablice, np. dwie o rozmiarze 5 i dwie o rozmiarze 8). Rozmiary tych tablic są ustalone w czasie pisania programu. Najpierw jest wywoływana funkcja, która obliczy sumę pierwszej pary wektorów. Po powrocie do maina są wyprowadzane na ekran 3 tablice (wektory) - składniki i suma.
+W segmencie głównym są tworzone dwie pary tablic 1-wymiarowych (dwie pary wektorów, w sumie 4 tablice, np. dwie o rozmiarze 5 i dwie o rozmiarze 8). 
+Rozmiary tych tablic są ustalone w czasie pisania programu. Najpierw jest wywoływana funkcja, która obliczy sumę pierwszej pary wektorów. 
+Po powrocie do maina są wyprowadzane na ekran 3 tablice (wektory) - składniki i suma.
 Następnie wywoływana jest ta sama funkcja dla drugiej pary tablic i po powrocie wyprowadzane 3 tablice (składniki i suma).
 
 Uwaga: Gdzie powinna być zdefiniowana tablica dla sumy - w main czy w funkcji?. 
@@ -29,7 +31,8 @@ Rada dla wahających się: j.w.
 
 Zadanie nr 7. Max i min w tablicy
 
-W main tworzymy tablicę 1-wymiarową - rozmiar musi być ustalony, ale w tym zadaniu nie jest istotny. Wywołujemy (tylko raz) funkcję (uniwersalną jak w zadaniu 6), która szuka wartości maksymalnej i minimalnej. Znalezione wartości są wyprowadzane przez maina.
+W main tworzymy tablicę 1-wymiarową - rozmiar musi być ustalony, ale w tym zadaniu nie jest istotny. 
+Wywołujemy (tylko raz) funkcję (uniwersalną jak w zadaniu 6), która szuka wartości maksymalnej i minimalnej. Znalezione wartości są wyprowadzane przez maina.
 Wskazówki:
 - Oczywiste jest użycie pętli - dobrze byłoby, aby to była tylko jedna pętla. Oczywiście - jeżeli ktoś ma z tym problem, niech najpierw napisze dwie petle, ale później pomyśli jak (w oszczędny sposób, tzn. bez zbędnych operacji) zrealizować oba poszukiwania w jednej pętli.
 - Zwykle algorytm porównuje każdy element z najlepszym dotychczas znalezionym. Jaką jego wartość przewidzieć przed rozpoczęciem pętli - bezpiecznie, ale także oszczędnie.  
@@ -38,11 +41,14 @@ Wskazówki:
 
 Zadanie nr 8. Suma macierzy
 
-Zadanie analogiczne do zadania 6, ale operacja dodawania jest wykonywana na tablicach 2-wymiarowych. Główny problem - jak przekazać informacje o tablicach do funkcji.
+Zadanie analogiczne do zadania 6, ale operacja dodawania jest wykonywana na tablicach 2-wymiarowych. 
+Główny problem - jak przekazać informacje o tablicach do funkcji.
 Wersje:
-A. Funkcja nie jest uniwersalna - działa tylko na tablicach o ustalonym (w czasie pisania programu) rozmiarze, tzn. rozmiar dodawanych w funkcji macierzy jest stałą.
+A. Funkcja nie jest uniwersalna - działa tylko na tablicach o ustalonym (w czasie pisania programu) rozmiarze, 
+tzn. rozmiar dodawanych w funkcji macierzy jest stałą.
 B. Funkcja uniwersalna - z wykorzystaniem VLA.
-C. Funkcja uniwersalna - bez korzystania z VLA - kompilowana w standardzie C90 (chociaż niektóre kompilatory C90 tolerują VLA). W tej wersji proszę zwrócić uwagę na "elegancki" sposób zapisu argumentów aktualnych wywołania funkcji.
+C. Funkcja uniwersalna - bez korzystania z VLA - kompilowana w standardzie C90 (chociaż niektóre kompilatory C90 tolerują VLA). 
+W tej wersji proszę zwrócić uwagę na "elegancki" sposób zapisu argumentów aktualnych wywołania funkcji.
 
 
 Zadanie nr 9. Tablica wskaźników
@@ -53,5 +59,4 @@ Jeżeli są wątpliwości, to proszę sobie napisać programik testujący oba pr
 - znakowa tablica 2-wymiarowa zawierająca nazwy miesięcy (bez polskich znaków),
 - tablica wskaźników do łańcuchów, w których są zapisane nazwy miesięcy (j.w.).
 W main jest wywoływana funkcja, która oblicza liczbę liter 'a' w nazwach wszystkich miesięcy. Czy ta sama funkcja może być użyta dla obu tablic?
-
 
