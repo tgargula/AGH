@@ -1,0 +1,20 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+mounted=`cat /proc/mounts | grep "/dev/sda3"`
+
+if (( $# == 0 )); then
+	echo >&2 "Too few arguments..."
+	exit 1
+fi
+
+if [[ ! $mounted ]]; then
+	windows -m
+fi
+
+echo "Copying to Windows..."
+cp -v $* /media/$USER/Windows/Users/tomas/Desktop/
+
+if [[ ! $mounted ]]; then
+	windows -u
+fi

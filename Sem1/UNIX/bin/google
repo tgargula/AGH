@@ -179,3 +179,5 @@ if [[ $ifSite ]]; then
 fi
 
 $BROWSER $newWindow https://www.google.com/search\?q=$address &
+
+exit
