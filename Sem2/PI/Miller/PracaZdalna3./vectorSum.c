@@ -1,9 +1,3 @@
-// Pytania: 
-// - Jaka jest minimalna liczba parametrów tej funkcji (czyli - jaką najmniejszą informacji koniecznie trzeba przekazać do funkcji)?
-// Odp.: Wystarczy jeden - tablica z pierwszym elementem jako rozmiar wektora
-// - Czy w funkcji, dla rozpoznania długości tablicy, można użyć operatora sizeof?
-// Odp.: 
-
 #include <stdio.h>
 
 void vectorsSum(int toSum[]) {

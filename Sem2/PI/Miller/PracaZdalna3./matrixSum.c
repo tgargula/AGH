@@ -24,6 +24,5 @@ int main() {        // zakładam, że na macierzach da się wykonać operacje do
         for(int j = 0; j < (*(&matrix2[0] + 1) - matrix2[0]); j += 1) printf("%d ", matrix2[i][j]);
         printf("\n");
     }
-    // printf("%d\n", matrixSize);
     return 0;
 }
