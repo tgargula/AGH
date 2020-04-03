@@ -95,6 +95,8 @@ void scanAndExecuteCommands (int **tab, int n, int k) {
             checkNeighbors(queue, curr, tab, n);
         }
 
+        free(queue);
+
     }
 
 }
