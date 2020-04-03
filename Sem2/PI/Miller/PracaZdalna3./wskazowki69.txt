@@ -1,0 +1,46 @@
+Wskazówki do zadañ 6 - 9
+
+Zadanie 6 Suma wektorów:
+
+Doprecyzujê pytanie o minimaln¹ liczbê parametrów: 
+Czy w wywo³aniu funkcji, która ma mieæ dostêp do wszystkich elementów tablicy wystarczy wpisaæ w parametrach aktualnych tylko nazwê tablicy (i pomin¹æ jej rozmiar)? 
+
+Zadanie 7 Max min w tablicy:
+
+1. Aby funkcja wywo³ywana mog³a przekazaæ informacjê do funkcji wywo³uj¹cej, mo¿na przekazaæ jej (przez parametry) ADRESY obiektów - np. zmiennych - do których ta informacja ma byæ wpisana. Nale¿y odpowiednio u¿yæ operatorów referencji i dereferncji.
+
+2. Znajdowanie max i min: Jako wartoœci pocz¹tkowe zmiennych pamiêtaj¹cych znalezione w dotychczasowych iteracjach wartoœci max i min najbardziej osczêdne czasowo jest u¿ycie wartoœci zerowego elementu tablicy. Jest niebezpieczeñstwo, ¿e tablica ma d³ugoœæ 0 (a szczególnie w przypadku VLA mo¿e to siê zdarzyæ). To jest przypadek "chory", a jak odzyskam dostêp do standardu jêzyka C, to sprawdzê legalnoœæ (mój kompilator nie zg³asza nawet ostrze¿enia).
+
+3. Jeszcze jeden drobiazg w pêtli. Czy zawsze musz¹ byæ wykonywane obydwa ify?
+  
+
+Zadnie 8: Suma macierzy:
+
+1. W przypadku C przewidywa³em, ¿e funkcja wywo³ywana potraktuje obszar pamiêci tablicy 2-wymiarowej jako tablicê jednowymiarow¹ (W jakiej kolejnoœci s¹ zapisywane w pamiêci kolejne wiersze tablicy 2-wymiarowej?).
+
+2. W jêzyku C w³aœciwie s¹ tylko tablice 1-wymiarowe, a pod skrótowym okreœleniem "tablica dwuwymiarowa" kryje siê tak naprawdê tablica (1-wymiarowa) wierszy (czyli tablic te¿ jednowymiarowych).
+
+3. Za³ó¿my, ¿e jest definicja tablicy 
+   int tablica2[10][20]; 
+Jaki jest zatem typ wyra¿enia: tablica2 ?
+To jest adres pocz¹tkowego elementu tablicy wierszy, czyli adres tablicy tablic 20 elementowych. Jest to typ wskaŸnikowy do/na tablicê 20-elementow¹ (a nie do/na int!!!).
+Funkcja - je¿eli ma traktowaæ obszar tablicy jako obszar tablicy jednowymiarowej, to spodziewa typu wskaŸnika do/na int.
+Tu czêsto pojawia siê niezgodnoœæ typów - wprawdzie nie jest traktowana jako b³¹d, a tylko ostrze¿eñ, ale program powinien byæ skompilowany elegancko - BEZ OSTRZE¯EN!!!!!!!!
+
+Zadanie 9: Tablica wskaŸników:
+
+1. Proszê zwróciæ uwagê na ró¿nicê miêdzy 2-wymiarow¹ tablic¹ znakow¹,a 1-wymiarow¹ tablic¹ wskaŸników na znaki. 
+Co zawiera pamiêæ w obszarze przydzielonym tym tablicom?
+W pierwszym przypadku s¹ tam tyko znaki, a w drugim - adresy. A pomimo tego ta sama funkcja obs³uguje prawid³owo jedn¹, jak i drug¹ tablicê.
+
+2. Proszê zwróciæ uwagê na typ parametru, którym przekazywana jest informacja do funkcji - podobnie jak w zadaniu 8. 
+Nawiasem mówi¹c pewnym zaskoczeniem dla mnie jest to, ¿e spotykam w Pañstwa programach (choæ tylko bardzo niewielk¹ ich liczbê zd¹¿y³em zobaczyæ) poprawne wywo³anie w zadanu 9, a niepoprawne w zadaniu 8. 
+
+_____________________________
+
+Drugi etap pisania tych programów koñczy siê 9 kwietnia.
+Harmonogram przysy³ania zadañ jest na stronie home.agh.edu.pl/~miller/
+
+W przypadku niejasnoœci, w¹tpliwoœci itp. - proszê o wiadomoœæ (z zanaczeniem - "Pytanie").
+
+Janusz Miller
