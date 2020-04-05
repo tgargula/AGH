@@ -16,7 +16,7 @@ W programie przechowywane są informacje o książce:
 - cena w PLN. 
 Na zewnątrz funkcji należy umieścić deklarację struktury dla opisu książki.
 W segmencie głównym należy zdefiniować zmienną tego typu i zainicjować przykładowymi danymi
-i wywołać funkcję, która wszystkie informacje zapisane w strukturze wyoisze na ekran.
+i wywołać funkcję, która wszystkie informacje zapisane w strukturze wypisze na ekran.
 
 
 Zadnie 11: Książka z funkcją
