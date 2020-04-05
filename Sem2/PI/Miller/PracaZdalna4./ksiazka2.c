@@ -13,7 +13,7 @@ typedef struct {
 
 book inputBookData() {
     char *bookName[AUTOR_MAX], *bookTitle[TYTUL_MAX];
-    book book1 = {"adf", "va", 0, 0.0};
+    book book1;
     fgets(bookName, AUTOR_MAX, stdin); fgets(bookTitle, TYTUL_MAX, stdin);
     book1.name = bookName; book1.title = bookTitle;
     scanf("%d %lf", &(book1.yearOfPublication), &(book1.price));
