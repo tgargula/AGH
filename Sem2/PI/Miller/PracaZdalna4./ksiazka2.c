@@ -33,7 +33,7 @@ void printBookInfo(Book book1) {
 }
 
 int main() {
-    Book book1 = inputBookData(); // {"J. R. R. Tolkien", "The Lord of the Rings: The Fellowship of the Ring", 1954, 71.99};
+    Book book1 = inputBookData();
     printBookInfo(book1);
     Book book2;
     inputBookDataV2(&book2);
