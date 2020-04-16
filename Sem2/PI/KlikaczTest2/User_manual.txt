@@ -1,0 +1,14 @@
+USER MANUAL FOR UI TESTS WITH SELENIUM, GECKODRIVER AND FIREFOX
+
+FOR LINUX
+1. use pip3 to install selenium package: sudo pip3 install selenium
+2. download firefox webdriver: https://github.com/mozilla/geckodriver/releases (in assets)
+3. put driver to any directory (for me it was: /home/mrrys00/Documents/Tests/WebDriversForUITests/firefoxDriver )
+4. set driver location as $PATH variable: 
+    4a. edit .bashrc in your home directory (for example: nano .bashrc)
+    4b. add a line with your geckodriver location directory:  (for me it was: export PATH=$PATH:"/home/mrrys00/Documents/Tests/WebDriversForUITests/firefoxDriver" )
+    4c. save .bashrc (click: Ctrl + S) and exit (Ctrl + X)
+    4d. close all your terminals (exit command)
+5. start your tests using nosetests
+
+Note: location include in $PATH variable does not have to be location of gecodriver file used in tests
