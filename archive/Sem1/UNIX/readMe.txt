@@ -3,8 +3,6 @@ W folderze ./bin umieściłem skrypty w bashu, które napisałem w tym semestrze
 Niektóre z nich wymagają do poprawnego działania zmiany w plikach konfiguracyjnych
 (to są te z rozszerzeniem *.config). Niektórych jednak do końca nie dopracowałem,
 więc tam trzeba będzie zmienić kilka rzeczy w skrypcie, żeby działało.
-Dla przykładu nie wprowadziłem jeszcze opcji wyboru domyślnej wyszukiwarki
-i wszystko działa pod Firefoxem.
 
 Do każdego skryptu dodałem pomoc tj. krótkie wyjaśnienie konstrukcji skryptu
 i za co odpowiadają poszczególne opcje.
@@ -34,6 +32,6 @@ trzeba ten plik umieścić w folderze domowym na Waszym Linuksie.
 Jak macie jakieś pytania/pomysły, chcielibyście mnie poprawić w czymś (też w angielskim xd),
 to piszcie.
 
-Te skrypty pisałem bardziej dla zabawy :) Pozwalam Wam mówić, że jestem dziwny.
+Te skrypty pisałem bardziej dla zabawy :)
 
 Miłego przeglądania!
