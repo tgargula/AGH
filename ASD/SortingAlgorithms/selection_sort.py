@@ -10,31 +10,15 @@
 # 
 # COMPLEXITY
 # Time complexity:  O(n^2)
-# Space complexity: O(1)
 
-def selectionSort (tab):
-    N = len(tab)
-    indeks = 0
-    for i in range(N-1):
-        indeks = i
-        mini = tab[i]
-        acct = tab[i]
-        for j in range (i+1, N):
-            if tab[j] < mini:
-                mini = tab[j]
-                indeks = j
-            if j == N-1 and mini != indeks:
-                tab[i] = mini
-                tab[indeks] = acct
-    return tab
+def selection_sort(A):
+    n = len(A)
+    for i in range(n-1):
+        m = i
+        for j in range(i+1, n):
+            if A[j] < A[m]: m = j
+        A[i], A[m] = A[m], A[i]
 
-
-size = int(input())
-t = []
-
-for i in range(size):
-    t.append(int(input()))
-
-tab = selectionSort(t)
-
-print(tab)
+A = [1,4,3,54,34,23,3,56,43,9]
+selection_sort(A)
+print(A)

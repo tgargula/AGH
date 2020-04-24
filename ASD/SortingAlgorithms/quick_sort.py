@@ -15,32 +15,26 @@
 
 from random import randint
 
-def quickSort(L, start, end):
-    def randPartition (L, start, end):
-        j = randint(start, end)
-        L[j], L[end] = L[end], L[j]
-        return partition(L,start,end)
+def rand_partition(A, p, r):
+    j = randint(p, r)
+    A[j], A[r] = A[r], A[j]
+    return partition(A, p, r)
 
-    def partition (L, start, end):
-        x = L[end]
-        i = start-1
-        for j in range(start, end):
-            if L[j] <= x:
-                i += 1
-                L[i], L[j] = L[j], L[i]
-        L[i+1], L[end] = L[end], L[i+1]
-        return i+1
+def partition(A, p, r):
+    j = p
+    for i in range(p, r):
+        if A[i] < A[r]:
+            A[i], A[j] = A[j], A[i]    
+            j += 1
+    A[j], A[r] = A[r], A[j]
+    return j
 
-    if start < end:
-        pivot = randPartition(L,start,end)
-        quickSort(L, start, pivot-1)
-        quickSort(L, pivot+1, end)
+def quick_sort(A, p, r):
+    if p < r:
+        q = rand_partition(A, p, r)
+        quick_sort(A, p, q-1)
+        quick_sort(A, q+1, r)
 
-
-L = [3,5,2,10,8,4,7,6,1,9]
-
-print(L)
-
-quickSort(L, 0, len(L)-1)
-
-print(L)
+A = [324,34,4523,4,53,23,4,3,423]
+quick_sort(A, 0, len(A)-1)
+print(A)
