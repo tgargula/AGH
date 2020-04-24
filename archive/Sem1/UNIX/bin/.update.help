@@ -1,0 +1,14 @@
+Usage:	update [-h] [-i] [-y] [-?] [--help] [--no-dist]
+
+Makes complete update. Requires root privileges.
+
+Options:
+ -h,-?,--help	display this help and exit
+ -i		make an update interactively
+ -m, --menu	open GUI Update Menu
+ -y		make an update with no questions (default)
+ --no-dist	make an upgrade using: apt-get upgrade, not apt-get dist-upgrade
+
+Exit status:
+ 0	if OK
+ 1	if the argument is not recognised

@@ -1,0 +1,15 @@
+Usage:	youtube [-h] [-s] [-?] [--help] [--history] [--library] [--liked] [--subscriptions] [--trending] [--wish-list] [SEARCH]
+
+Open YouTube site using Firefox Browser on the main page (if no options nor search key is specified)
+
+Options:
+ -h, -?, --help		display this help and exit
+ --history		open YouTube history page
+ --library		your YouTube library
+ --liked		your liked videos on YouTube
+ -s, --subscriptions	your YouTube subscriptions
+ --trending		trending videos on YouTube
+ --wish-list		your watch-later-playlist
+
+Exit status:
+ 0	always

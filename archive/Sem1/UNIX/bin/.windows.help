@@ -1,0 +1,16 @@
+Usage: windows [-m] [-u] [-i] [-info] [-h] [-?] [--help]
+
+Mounts or unmounts Windows. By default: mounts if Windows is not mounted or unmounts otherwise
+
+Options:
+ -h,-?,--help	display this help and exit
+ -i, --info     show if Windows is mounted or not	
+ -m		mount Windows
+ --short-info	show if Windows is mounted as value (0/1)
+ -u		unmount Windows
+
+Exit status:
+ 0	if OK
+ 1	if the argument is not recognised
+ 2	if -m option is used while Windows is already mounted
+ 3	if -u option is used while Windows is already unmounted or was not mounted at all

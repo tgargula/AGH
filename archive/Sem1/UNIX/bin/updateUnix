@@ -1,0 +1,33 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+DIR=`cat $HOME/bin/.$SCRIPTNAME.config | grep DIR | awk '{print $3}' | cut -d/ -f 2-`
+REPONAME=`cat $HOME/bin/.$SCRIPTNAME.config | grep ADDRESS | awk '{print $3}' | awk -F/ '{print $NF}' | awk -F. '{print $1}'`
+BRANCHNAME=`cat $HOME/bin/.$SCRIPTNAME.config | grep BRANCHNAME | awk '{print $3}'`
+
+if (( $# == 0 )); then
+	cp -vr $HOME/bin/ $HOME/.bash_aliases $HOME/$DIR/$REPONAME/Sem1/UNIX
+	cd $HOME/$DIR/$REPONAME/Sem1/UNIX
+	git add ./* ./.bash_aliases
+	git status
+	echo -n "Commit? [y/N] "
+	read answer
+	if [[ $answer == 'y' || $answer == 'Y' ]]; then
+		git commit
+		echo -n "Push? [y/N] "
+		read answer
+		if [[ $answer == 'y' || $answer == 'Y' ]]; then
+			git pull origin $BRANCHNAME
+			git push origin $BRANCHNAME
+		fi
+	fi
+	exit
+fi
+
+if [[ $1 == '--help' ]]; then
+	cat .$SCRIPTNAME.help
+	exit
+fi
+
+echo >&2 "The argument is not recognised."
+exit 1
