@@ -1,0 +1,18 @@
+Usage: backup [-h] [-?] [-i] [--help]
+
+Creates backup of your home directory (by default) and stores it on external drive.
+THE EXTERNAL DRIVE HAS TO BE CONNECTED!
+
+Options:
+ -h,-?,--help	display this help and exit
+ --linux	Linux backup (default option)
+ --linux-full	Linux full backup (with all hidden directories in the home folder)
+ -w, --windows	Windows backup
+
+While doing backup interactively, there is a possibility to save last backup (it is by default overwritten)
+and choose directories for backup.
+
+Exit status:
+ 0	if OK
+ 1	when external drive is not detected
+ 2	other errors

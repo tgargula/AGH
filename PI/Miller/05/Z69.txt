@@ -1,0 +1,62 @@
+Temat 5. Tablice 1- i 2-wymiarowe, wskaźniki
+
+WAŻNA UWAGA: Każdy z poniższych programów składa się z segmentu main i OBOWIĄZKOWO funkcji, która realizuje zadany algorytm.
+ 
+1. Funkcja ta powinna być uniwersalna w tym sensie, że można ją prawidłowo (zgodnie ze standardem języka C) wywołać dla wykonania operacji na tablicy o rónych rozmiarach (np. funkcja obliczająca sumę macierzy może być wywołana dla sumowania macierzy 4X5 i 10X100 i dowolnych innych (rozsądnej wielkości - nie chodzi mi tu o szukanie warunków maksymalnej wielkości tablicy). 
+
+2. W funkcji nie należy prowadzić komunikacji z użytkownikiem. Elementy tablicy mają przypiywane wartości (przez inicjowanie, podstawienie lub wczytanie z klawiatury) w segmencie main. Wynik operacji realizowanej w funkcji jest przekazywany do main i dopiero z niego wyprowadzany na ekran (nie z funkcji).
+Dlaczego? Bo głównym celem tego ćwiczenia jest przekazywanie danych do i z funkcji.
+
+3. W zadaniu 8 sś przewidziane różne wersje programów. Jeżeli ktoś potrafi napisać prawidłowo program w ostatniej wersji, to nie musi pisać wcześniejszych.
+W tych wersjach pojawia się pojęcie VLA - Variable Length Array. Taka możliwość pojawiła się w standardzie C99, ale ma swoje wady, o czym była mowa na wykładzie - polecam przypomnieć sobie wykład albo poszukać w literaturze. Dlatego widzę sens rozróniania przypadkow: z VLA i bez VLA.
+
+4. W tych zadaniach nie przewiduję dynamicznego przydziału pamięci (funkcji malloc i podobnych). 
+
+
+Zadanie nr 6. Suma wektorów
+
+W segmencie głównym są tworzone dwie pary tablic 1-wymiarowych (dwie pary wektorów, w sumie 4 tablice, np. dwie o rozmiarze 5 i dwie o rozmiarze 8). 
+Rozmiary tych tablic są ustalone w czasie pisania programu. Najpierw jest wywoływana funkcja, która obliczy sumę pierwszej pary wektorów. 
+Po powrocie do maina są wyprowadzane na ekran 3 tablice (wektory) - składniki i suma.
+Następnie wywoływana jest ta sama funkcja dla drugiej pary tablic i po powrocie wyprowadzane 3 tablice (składniki i suma).
+
+Uwaga: Gdzie powinna być zdefiniowana tablica dla sumy - w main czy w funkcji?. 
+Rada dla wahających się: Zrobić eksperymenty dla obu przypadków.
+
+Pytania: 
+- Jaka jest minimalna liczba parametrów tej funkcji (czyli - jaką najmniejszą informacji koniecznie trzeba przekazać do funkcji)?
+- Czy w funkcji, dla rozpoznania długości tablicy, można użyć operatora sizeof?
+Rada dla wahających się: j.w. 
+
+
+Zadanie nr 7. Max i min w tablicy
+
+W main tworzymy tablicę 1-wymiarową - rozmiar musi być ustalony, ale w tym zadaniu nie jest istotny. 
+Wywołujemy (tylko raz) funkcję (uniwersalną jak w zadaniu 6), która szuka wartości maksymalnej i minimalnej. Znalezione wartości są wyprowadzane przez maina.
+Wskazówki:
+- Oczywiste jest użycie pętli - dobrze byłoby, aby to była tylko jedna pętla. Oczywiście - jeżeli ktoś ma z tym problem, niech najpierw napisze dwie petle, ale później pomyśli jak (w oszczędny sposób, tzn. bez zbędnych operacji) zrealizować oba poszukiwania w jednej pętli.
+- Zwykle algorytm porównuje każdy element z najlepszym dotychczas znalezionym. Jaką jego wartość przewidzieć przed rozpoczęciem pętli - bezpiecznie, ale także oszczędnie.  
+- Najważniejsze: Jak przekazać informacje o znalezionych wartościach z funkcji do maina? Nie polecam tu dwuelementowej tablicy ani struktury.
+
+
+Zadanie nr 8. Suma macierzy
+
+Zadanie analogiczne do zadania 6, ale operacja dodawania jest wykonywana na tablicach 2-wymiarowych. 
+Główny problem - jak przekazać informacje o tablicach do funkcji.
+Wersje:
+A. Funkcja nie jest uniwersalna - działa tylko na tablicach o ustalonym (w czasie pisania programu) rozmiarze, 
+tzn. rozmiar dodawanych w funkcji macierzy jest stałą.
+B. Funkcja uniwersalna - z wykorzystaniem VLA.
+C. Funkcja uniwersalna - bez korzystania z VLA - kompilowana w standardzie C90 (chociaż niektóre kompilatory C90 tolerują VLA). 
+W tej wersji proszę zwrócić uwagę na "elegancki" sposób zapisu argumentów aktualnych wywołania funkcji.
+
+
+Zadanie nr 9. Tablica wskaźników
+
+1. Jak utworzyć (zdefiniować) tablicę wskaźników, a jak wskaźnik do tablicy?
+Jeżeli są wątpliwości, to proszę sobie napisać programik testujący oba przypadki.
+2. Proszę napisać program, w którym są zdefiniowane (w main) dwie tablice
+- znakowa tablica 2-wymiarowa zawierająca nazwy miesięcy (bez polskich znaków),
+- tablica wskaźników do łańcuchów, w których są zapisane nazwy miesięcy (j.w.).
+W main jest wywoływana funkcja, która oblicza liczbę liter 'a' w nazwach wszystkich miesięcy. Czy ta sama funkcja może być użyta dla obu tablic?
+

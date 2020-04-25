@@ -1,0 +1,31 @@
+Wskaz�wki do rekurencji
+
+To, co tu napisz� prosz� traktowa� lu�no, nie jest to precyzyjny opis rekursji, raczej podej�cie przemawiaj�ce - by� mo�e - do intuicji.
+
+1. Rekurencja przypomina p�tl� - dla wykonania kolejnej "iteracji" ponownie wywo�uje si� t� sam� funkcj�. Ale na to wywo�anie trzeba popatrze� jak na now� funkcj� ("nowy egzemplarz"), ale to samo "robi�c�" - tyle, �e ze swoimi (nowymi) danymi (na wyk�adzie by�a mowa o tworzeniu stosu).   
+
+2. Jakie - wydaje mi si� - mog� pojawia� si� trudno�ci:
+Je�eli jest to robienie czego� w k�lko, to jest problem podobny do: co by�o pierwsze - jajko czy kura. Czyli, kt�re dzia�anie ma by� wykonywane w funkcji jako pierwsze. Czym si� kierowa�?
+A. pierwszym wywo�anien (z zewn�trz, np. z maina) - jak� informacj� wst�pn� trzeba wygenerowa�, �eby mo�na by�o uruchomi� "obroty". 
+B. ustawieniem kolejno�ci:
+  * realizacji algorytmu (zrobi� to co funkcja ma robi�),
+  * powt�rne wywo�anie,
+  * return.
+ Jest tu konkretna zasada (by�a mowa na wyk��dzie): Zanim ponownie wywo�amy, konieczne jest sprawdzenie, czy nie zako�czy� rekursji - dopiero po takim sprawdzeniu albo wyj�� (wr�ci� na ni�szy poziom) czy wywo�a� funkcj� (wej�� na wy�szy poziom). Wywo�anie albo return przed tym sprawdzeniem sko�czy si� ieograniczonym przechodzeniem na wy�szy poziom albo natychmiastowym wyj�ciem 
+
+ad A. W zadaniu 4 trzeba dostarczy� przybli�enie ca�ki na ca�ym przedziale, a w funkcji obliczy� dwie ca�ki na mniejszych podprzedzia�ach �eby por�wna�.
+
+
+Troch� inaczej jest w 
+Zadanie 5 Nawiasy.
+
+Wersja czytania ci�gu znak�w z klawiatury mia�a zasugerowa� taki spos�b myslenia:
+czytam kolejne znaki, 
+je�eli nie nawias, to lekcewa��, 
+na jaki znak powinienem zreagowa�? i jak zreagowa�?
+
+Czy mo�na napisa� funkcj� rekursywn�, kt�ra reaguje (czeka) na okre�lony znak. Jak reaguje? - w zale�no�ci od tego na co czeka i jaki odczytuje np. je�eli czeka na koniec linii i taki odczytuje to OK. A je�eli czeka na koniec linii i odczyta nawias? Zale�y od tego, na kt�ry nawias czeka i kt�ry odczyta. 
+Nie chc� pozbawia� nikogo satysfakcji z napisania w sumie kr�tkiego programu, kt�ry to zadanie zrealizuje. 
+Mo�e dobrze by�oby zacz�� od wykrywania tylko jednego rodzaju nawias�w np. okr�g�ych. 
+
+ 
