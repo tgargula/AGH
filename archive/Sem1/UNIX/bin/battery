@@ -1,0 +1,37 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+
+if (( $# == 0 )); then
+	when=$(date +"%y/%m/%d %H:%M")
+	
+	if [[ ! -d $HOME/log ]]; then
+		mkdir -p $HOME/log
+	fi
+	
+	if [[ ! -f $HOME/log/battery.log ]]; then
+		echo "  DATA   HOUR  %BAT   REM   CHAR/DISCHAR" > $HOME/log/battery.log
+	fi
+
+	file="$HOME/log/battery.log"
+
+	echo -n $when >>$file
+	echo -n " " >>$file
+	acpi | awk '{print $4$5,$3}' | awk -F, '{print $1,$2,$3}' >>$file
+	exit
+fi
+
+if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
+	cat ~/bin/.$SCRIPTNAME.help
+	exit
+fi
+
+if [[ $1 == '-i' || $1 == '--info' ]]; then
+	echo "Current battery status:"; echo
+	echo "%BAT	REM	 STATUS"
+	acpi | awk '{print $4$5,$3}' | awk -F, '{print ($1"\t"$2"\t"$3)}'; echo
+	exit
+fi
+
+echo >&2 "The argument is not recognised"
+exit 1

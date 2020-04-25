@@ -1,0 +1,11 @@
+Usage:	open [ FILE | DIRECTORY ]
+
+Opens file or directory (or current directory if no options are specified)
+using default application specified in file: ~/bin/.open.config
+
+You can add more extentions to .open.config file.
+
+Exit code:
+ 0 	if OK
+ 1	if argument is not a file nor a directory
+ 2	if the extension is not recognised

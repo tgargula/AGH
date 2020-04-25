@@ -1,83 +1,75 @@
-# PROGRAMOWANIE
-**Nasze kody na WDI i MD** :heart:
+# AGH Computer Science
 
-## Zasada nazywania plików
-Egzekwowane od zestawu nr 4 
-c[numer_zestawu]z[numer_zadania]{f,k,m,s,t}.[rozszerzenie]
+## Rules
+1. The repository is publicly available. If you want to be able to commit [contact me](https://www.messenger.com/t/tomasz.gargula.12).
 
-Przykład: zadanie 2 z zestawu 4 zrobione przez Szymona w C++ powinno mieć nazwę: c04z02s.cpp
+2. If you use this repo, give a star :star:
 
-## Potrzebne oprogramowanie
-* [VS Code](https://code.visualstudio.com/download)
-* [Git](https://git-scm.com/downloads)
+3. We work on the branch *toCode*. We clean code there. Every once in a while we merge it into master.
 
-## Potrzebne komendy 
+4. If you would like to improve code that was written by someone else, use comments or review in pull request.
 
-### Git Bash (lub terminal dla Linux)
+5. The code and commit messages can be written both in English and in Polish. We just try to use the same language in one file.
+
+6. Rules can be changed.
+
+## Tips
+
+### Git
+Clone repository:
 ```sh
-$ git status #status wprowadzonych zmian; branch na, na którym aktualnie jesteśmy; ...
-$ git clone https://github.com/mrrys00/WDI.git #pobieranie repozytorium
-$ git checkout *branchName* #zmień edytowany branch
-$ git checkout -b *branchName* #dodaj branch
-$ git add [--all] #dodajemy pliki - wybieramy które lub wszystkie
-$ git commit -m "description" #opisujemy którko wprowadzone zmiany - po polsku lub angielsku jak, kto woli
-$ git push origin *branchName* #wysyłamy zmiany na GitHub
-$ git pull #pobierz ostatnią wersję repozytorium
-$ git merge #zrób merge branchy
+git clone https://github.com/tgargula/AGH.git
 ```
-
-[więcej poleceń](https://rogerdudler.github.io/git-guide/index.pl.html)
-
-### VS Code
-```sh 
-$ code . #otwórz VS Code
-$ g++ Cwiczenia4/c04z02s.cpp -o Cwiczenia4/c04z02s.out #skompiluj plik c04z02s.cpp do pliku c04z02s.out
-$ ./Cwiczenia4/c04z02s.out #odpal plik zeby go sprawdzic - nie jestem pewny czy tak to ma wygladac :)
+Download current repository from a branch:
+```sh
+git pull origin toCode
 ```
+Change branch or add it if it doesn't exist:
+```sh
+git checkout toCode
+```
+Check git status:
+```sh
+git status
+```
+Add to commit:
+```sh
+git add <filename>
+```
+Commit with message:
+```sh
+git commit -m "Commit message"
+```
+Update branch on GitHub:
+```sh
+git push origin toCode
+```
+PS. I have changed username recently, so if old settings does not work, go to your local repository and type:
+```sh
+git remote set-url origin https://github.com/tgargula/AGH.git
+```
+More commands you could find eg. [on this page](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html).
 
-## Zalecany scenariusz korzystania
+### Software
+It completely does not matter, which software you use, but here are some recommendations:
+* [VS Code](https://code.visualstudio.com/) – C/C++, Python, other
+* [Jupyter Notebook](https://jupyter.org/try) – Python, C/C++, R, Julia, other
+* Vim – Python, bash, other
+* JetBrains:
+    * [PyCharm](https://www.jetbrains.com/pycharm/) – Python
+    * [IntelliJ](https://www.jetbrains.com/idea/) – Java, Kotlin
+    * [Other](https://www.jetbrains.com)
 
-*Hint. Warto znać swoje login i hasło na Github*
-*Hint2. Github i Git czasem działać inaczej niż opisałem - wtedy ratuje nas umiejętność czytania i myślenia*
-
-### Pierwsze pobieranie
-
-1. Git otwieramy w folderze do którego chcemy skopiować nasze repozytorium.
-* Linux - wchodzimy terminalem do docelowego folderu
-* Windows - wchodzimy do docelowego folderu, klikamy w folderze prawy klawisz myszy i wybieramy Git Bash Here (lub coś takiego)
-
-2. Pobieramy nasze repozytorium poleceniem ```$ git clone *URL*```
-
-3. Zmieniamy branch na inny niż master - ```$ git checkout *branchName*``` (lub tworzymy nowy branch w przypadku gdy takiego niema ```$ git checkout -b *branchName*```)
-
-### Update istniejącego lokalnie repo
-
-1. (tak samo jak wyżej)
-
-2. Aktualizujemy repozytorium używając ```$ git pull``` 
-
-3. Przechodzimy na inny niż master branch ```$ git checkout *branchName*``` (lub tworzymy nowy branch w przypadku gdy takiego niema ```$ git checkout -b *branchName*``` i w tym scenariuszu to koniec zabawy)
-
-4. Branch, na którego przeszliśmy musimy **bezstratnie** (dla nas i dla wersji pobranej) scalić z pobranymi zmianami. GitHub zapisuje pobrane zmiany w branchu origin/*branchName* a my mamy nasze ewentualne lokalne zmiany na branchu *branchName*. Scalamy je ze sobą poleceniem ```$ git merge origin/*branchName*```.  :exclamation: Nie bawić się z tym na branchu master  :exclamation:
-
-### Wysyłanie zmian na GitHub
-
-*Hint. Przed wysłaniem warto upewnić się czy ktoś nie dodał swoich zmian na Github żeby nie usunąć jego zmian. Jeśli nie mamy najnowszej wersji trzeba zrobić Update repo opisany powyżej*
-
-1. Dodajemy nasze ostatnie zmiany do repozytorium poleceniem ```$ git add [--all]``` (wybieramy pliki lub dodajemy wszystkie)
-
-2. Opisujemy zmiany ```$ git commit -m "description"``` 
-
-3. Wysyłamy nasze repozytorium na branch inny niż master ```$ git push origin *branchName*``` (ostatni taki branch nazywa się "toCoding")
-
-## Dodatkowe informacje
-
-* pliki z rozszerzeniami .exe, .out, .app, ... (są zapisane w pliku [.gitignore](https://github.com/mrrys00/WDI/blob/master/.gitignore)) nie są wysyłane do repozytorium żeby nie robić śmietnika
-* od czasu do czasu trzeba będzie zrobić merge *branch* -> master - będziemy się umawiać kiedy
-* **UWAGA!** jeśli ktoś robi coś na github w tym samym czasie co my to musimy ustalić kto pierwszy dodaje swoje zmiany (w przypadku dodawanie poleceniem *git push* - druga osoba musi wtedy pobrać repozytorium ze zmianami, dodać swoje zmiany i wysłać na GitHub
-* jest opcja dodawania przez stronę internetową *jak ktoś umie niech napisze jak się to robi :smile: *
-
-#### Fajne tutoriale edycji tego pliku .md
-* https://dillinger.io/
-* https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
-* https://www.webfx.com/tools/emoji-cheat-sheet/
+### C/C++ compilation
+To compile C file with all warnings, use:
+```sh
+gcc -std=c11 -O2 -Wall -Werror=implicit-function-declaration -o [filenameWithoutExtention].out [filename] -lm
+```
+To compile C++ file with all warnings, use:
+```sh
+g++ -std=c++17 -O2 -Wall -o [filenameWithoutExtention].out [filename] -lm
+```
+To check possible memory leaks, run:
+```sh
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes [program].out
+```

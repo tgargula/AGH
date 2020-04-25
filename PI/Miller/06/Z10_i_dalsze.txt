@@ -1,0 +1,57 @@
+Temat: Struktury, unie, typ wyliczeniowy 
+
+Ogólnie:
+
+- Nie przewiduję dynamicznego przydziału pamięci (ten temat pojawi się wkrótce) - ale nie jest zabronione.
+- Zadania 10 - 12 tworzę "ciąg" - sugeruję tą kolejność.
+- Jeżeli w temacie są podane wskazówki dotyczące struktury programu, to należy je uwzględnić.
+- do wczytywania danych takich jak autor, tytuł należy rozważyć użycie funkcji scanf (z konwersją %S) oraz funkcją fgets.
+
+Zadanie 10: Książka
+
+W programie przechowywane są informacje o książce:
+- imiona i nazwisko autora (w jednej tablicy znakowej albo łańcuchu) - znaków nie więcej niż AUTOR_MAX,
+- tytuł - jak wyżej, znaków nie więcej niż TYTUL_MAX,
+- rok wydania (wydawnictwo, liczbą stron itd. - pominiemy),
+- cena w PLN. 
+Na zewnątrz funkcji należy umieścić deklarację struktury dla opisu książki.
+W segmencie głównym należy zdefiniować zmienną tego typu i zainicjować przykładowymi danymi
+i wywołać funkcję, która wszystkie informacje zapisane w strukturze wypisze na ekran.
+
+
+Zadnie 11: Książka z funkcją
+
+Deklaracja struktury - jak w zadaniu 10.
+Zamiast inicjowania, wczytywanie danych jest realizowane w funkcji.
+Wyprowadzenie danych - jak w zadaniu 10.
+
+Program należy napisać w 2 wersjach (jeżeli to jest możliwe), z dwoma sposobami przekazania informacji do/z funkcji:
+A. przez wartość, 
+B. przez adres.
+
+
+Zadanie 12: Tablica struktur dla kilku książek 
+
+Program najpierw wczytuje liczbę książek, których dane będą wczytane.
+Do wczytania danych program używa funkcji, która - i tu znów 2 wersje:
+A. wczytuje dane tylko jednej książki,
+B. raz wywołana - wczytuje dane wszystkich książek. 
+
+Uwaga: VLA jest dozwolone.
+
+
+Zadanie 13: Pojazd - Struktura z unią i selektorem typu wyliczeniowego  
+
+Program gromadzi dane o pojazdach rónych typów. 
+Informacje o poszczególnych typów pojazdów są innego rodzaju. Dla:
+- osobowych: liczba miejsc, rodzaj napędu (spalinowy, elektryczny, hybrydowy)
+- autobusów: liczba miejsc siedzących, liczba miejsc stojących,
+- ciężarowych: ładowność (w tonach), liczba osi.
+Należy:
+- napisać deklarację struktury wspólnej dla wszystkich ww. pojazdów uwzględniając:
+  + dla rodzaju napędu należy przewidzieć pole typu wyliczeniowego,
+  + każdy pojazd jest określonego jednego (nie innego) typu, zatem należy przewidzieć unię,
+  + w strukturze należy przewidzieć pole selektora (wyboru z unii) - najlepiej typu wyliczeniowego,   
+- zdefiniować zmienną typu tej struktury,
+- wczytać - prowadząc "konwersację" z użytkownikiem - przykładowe dane do takiej zmiennej (wskazane użycie funkcji), 
+- wypisać dane z struktury na ekran. 

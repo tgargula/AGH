@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+BROWSER=`cat $HOME/bin/.browser.config | grep BROWSER | awk '{print $3}'`
+
+if (( $# == 0 )); then
+	$BROWSER https://forum.iiet.pl/index.php &
+	exit
+elif [[ $1 == '-h' || $1 == '--help' || $1 == '-?' ]]; then
+        cat ~/bin/.$SCRIPTNAME.help
+        exit
+elif [[ `echo $1 | grep a` || `echo $1 | grep o` ]]; then
+	$BROWSER https://forum.iiet.pl/viewtopic.php\?f=578\&t=30657 &
+	exit
+elif [[ `echo $1 | grep k` ]]; then
+	echo "Opening \"Studia podczas kwarantanny\""
+	$BROWSER https://forum.iiet.pl/viewtopic.php\?f=578\&t=30950 &
+elif [[ `echo $1 | grep e` ]]; then
+	echo "Opening \"Egzaminy\""
+	$BROWSER https://forum.iiet.pl/viewtopic.php\?f=578\&t=30949 &
+else
+	echo >&2 "An error occurred. Use -h, -? or --help option for help"
+	exit 1
+fi

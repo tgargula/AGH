@@ -1,0 +1,30 @@
+#!/bin/bash
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+BROWSER=`cat $HOME/bin/.browser.config | grep BROWSER | awk '{print $3}'`
+
+if (( $# == 0 )); then
+	$BROWSER https://www.office.com/\?omkt\=pl-pl\&auth\=1 &
+	exit
+fi
+
+if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
+	cat $HOME/bin/.$SCRIPTNAME.help
+	exit
+fi
+
+if [[ $1 == 'word' ]]; then
+	$BROWSER https://www.office.com/launch/word/?omkt\=pl-pl\&auth\=1 &
+	exit
+fi
+if [[ $1 == 'power' || $1 == 'powerpoint' ]]; then
+	$BROWSER https://www.office.com/launch/powerpoint\?omkt\=pl-pl\&auth\=1 &
+	exit
+fi
+if [[ $1 == 'excel' ]]; then
+	$BROWSER https://www.office.com/launch/excel\?omkt\=pl-pl\&auth\=1 &
+	exit
+fi
+
+echo >&2 "Argument not recognised."
+exit 1

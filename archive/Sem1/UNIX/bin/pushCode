@@ -1,0 +1,73 @@
+#!/bin/bash
+
+function displayOptions {
+	echo; echo; echo "Options:"
+	echo " -a	- add all files"
+	echo " -c	- add all *.c *.h files"
+	echo " -cpp	- add all *.cpp *.hpp files"
+	echo " -p	- add all *.py files"
+	echo " -pdf	- add all *.pdf files"
+	echo "Options can be combined."
+	echo; echo "Input which files you want to add to git or use options: "
+}
+
+function gitAdd {
+	options=$1
+	if [[ `echo $options | grep '\-'` ]]; then
+		if [[ `echo $options | grep '\-a'` ]]; then
+	                git add --all
+		else 
+			if [[ `echo $options | grep '\-c'` ]]; then
+	              		git add *.c *.h
+	        	fi
+	        	if [[ `echo $options | grep '\-cpp'` ]]; then
+				git add *.cpp *.hpp
+			fi
+			if [[ `echo $options | grep '\-p'` ]]; then
+				git add *.py
+			fi
+			if [[ `echo $options | grep '\-pdf'` ]]; then
+				git add *.pdf
+			fi
+		fi
+	else
+		git add $options
+	fi
+}
+
+SCRIPTNAME=`echo $0 | awk -F/ '{print $NF}'`
+DIR=`cat $HOME/bin/.$SCRIPTNAME.config | grep DIR | awk '{print $3}'`
+REPONAME=`cat $HOME/bin/.$SCRIPTNAME.config | grep ADDRESS | awk '{print $3}' | awk -F/ '{print $NF}' | awk -F. '{print $1}'`
+BRANCHNAME=`cat $HOME/bin/.$SCRIPTNAME.config | grep BRANCHNAME | awk '{print $3}'`
+
+if [[ `echo $DIR | grep ^'$HOME'` ]] || [[ `echo $DIR | grep ^'~' ` ]]; then
+        DIR=`echo $DIR | awk -F '/' '{print $2}'`
+        DIR=$HOME/$DIR
+fi
+
+REPODIR=$DIR/$REPONAME
+
+
+if (( $# == 0 )); then
+	cd $REPODIR
+	git pull origin $BRANCHNAME
+	git status
+	displayOptions
+	read options
+	gitAdd $options
+	git status
+	echo -n "Type a message: "
+	read message
+	git commit -m "$message"
+	git pull origin $BRANCHNAME
+	git push origin $BRANCHNAME
+	exit
+fi
+
+if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then
+	cat $HOME/bin/.$SCRIPTNAME.help
+	exit
+fi
+
+echo >&2 "Argument was not recognised."
+exit 1

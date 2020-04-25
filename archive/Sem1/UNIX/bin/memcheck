@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [[ $# == 0 ]]; then
+	echo >&2 "No argument was specified..."
+	exit 1
+elif [[ $# > 1 ]]; then
+	echo >&2 "There are too many arguments..."
+	exit 2
+elif [[ ! -f $1 ]]; then
+	echo >&2 "The argument is not a file..."
+	exit 3
+elif [[ ! -x $1 ]]; then
+	echo >&2 "The file is not executable..."
+	echo "Try: chmod +x $1"
+	exit 4
+fi
+
+FILENAMEWITHOUTEXTENTION=`echo $1 | rev | cut -d. -f 2- | rev`
+LOGFILENAME="$FILENAMEWITHOUTEXTENTION.log"
+LOGDIRECTORY="$HOME/log/valgrind/"
+mkdir -p $LOGDIRECTORY
+LOGFILE="$LOGDIRECTORY/$LOGFILENAME"
+
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=$LOGFILE ./$1 && cat $LOGFILE || echo >&2 "An error occurred..."
