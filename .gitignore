@@ -36,3 +36,6 @@
 
 # Unix swap files
 *.swp
+
+# log files
+*.log

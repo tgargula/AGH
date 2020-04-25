@@ -18,38 +18,42 @@
 ### Git
 Clone repository:
 ```sh
-$ git clone https://github.com/tgargula/AGH.git
+git clone https://github.com/tgargula/AGH.git
 ```
 Download current repository from a branch:
 ```sh
-$ git pull origin toCode
+git pull origin toCode
 ```
 Change branch or add it if it doesn't exist:
 ```sh
-$ git checkout toCode
+git checkout toCode
 ```
 Check git status:
 ```sh
-$ git status
+git status
 ```
 Add to commit:
 ```sh
-$ git add <filename>
+git add <filename>
 ```
 Commit with message:
 ```sh
-$ git commit -m "Commit message"
+git commit -m "Commit message"
 ```
 Update branch on GitHub:
 ```sh
-$ git push origin toCode
+git push origin toCode
+```
+PS. I have changed username recently, so if old settings does not work, go to your local repository and type:
+```sh
+git remote set-url origin https://github.com/tgargula/AGH.git
 ```
 More commands you could find eg. [on this page](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html).
 
 ### Software
 It completely does not matter, which software you use, but here are some recommendations:
 * [VS Code](https://code.visualstudio.com/) – C/C++, Python, other
-* [Jupyter Notebook](https://mybinder.org/v2/gh/ipython/ipython-in-depth/master?filepath=binder/Index.ipynb) – Python, C/C++, R, Julia, other
+* [Jupyter Notebook](https://jupyter.org/try) – Python, C/C++, R, Julia, other
 * Vim – Python, bash, other
 * JetBrains:
     * [PyCharm](https://www.jetbrains.com/pycharm/) – Python
