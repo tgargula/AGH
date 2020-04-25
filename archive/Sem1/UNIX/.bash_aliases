@@ -1,9 +1,18 @@
 # lists all text shortcuts (scripts & aliases)
 alias shortcuts='clear && cat ~/bin/.listOfAliases.txt | less'
 
+# alias for easier cd
+alias cd..="cd .."
+
 # alias for Firefox
 alias f='echo "Launching Firefox..." && /usr/bin/firefox &'
 alias firefox='/usr/bin/firefox &'
+
+# alias for IntelliJ Idea
+alias idea='/opt/idea-IE-193.6494.68/bin/idea.sh'
+
+# alias for LaTeX editor
+alias latex='/usr/bin/texmaker &'
 
 # alias for simple-scan
 alias scan='simple-scan || simple-scan &'
@@ -11,11 +20,8 @@ alias scan='simple-scan || simple-scan &'
 # overloading spotify command
 alias spotify='/usr/bin/spotify &'
 
-# alias for LaTeX editor
-alias latex='/usr/bin/gummi &'
-
 # overloading steam command
-alias steam='steam &'
+# alias steam='steam &'
 
 # alias for Mozilla Thunderbird
 alias thunderbird='/usr/bin/thunderbird 2>/dev/null 1>/dev/null &'

@@ -1,13 +1,12 @@
 #!/bin/bash
 
 if (( $# == 0 )) || [[ $1 == '-y' ]]; then
-	sudo apt-get update
-	sudo apt-get -y dist-upgrade
-	sudo apt-get -y autoremove
-	echo -n "Updating database..."
-	sudo updatedb
-	echo
-	exit
+    sudo apt-get update
+    sudo apt-get -y dist-upgrade
+    sudo apt-get -y autoremove
+    echo -n "Updating database..."
+    sudo updatedb && echo " Done" || echo >&2 "An error has occured"
+    exit
 fi
 
 if [[ $1 == '-h' || $1 == '-?' || $1 == '--help' ]]; then

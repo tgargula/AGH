@@ -6,8 +6,8 @@ REPONAME=`cat $HOME/bin/.$SCRIPTNAME.config | grep ADDRESS | awk '{print $3}' | 
 BRANCHNAME=`cat $HOME/bin/.$SCRIPTNAME.config | grep BRANCHNAME | awk '{print $3}'`
 
 if (( $# == 0 )); then
-	cp -vr $HOME/bin/ $HOME/.bash_aliases $HOME/$DIR/$REPONAME/Sem1/UNIX
-	cd $HOME/$DIR/$REPONAME/Sem1/UNIX
+	cp -vr $HOME/bin/ $HOME/.bash_aliases $HOME/$DIR/$REPONAME/archive/Sem1/UNIX
+	cd $HOME/$DIR/$REPONAME/archive/Sem1/UNIX
 	git add ./* ./.bash_aliases
 	git status
 	echo -n "Commit? [y/N] "

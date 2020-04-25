@@ -1,0 +1,24 @@
+#!/bin/bash
+
+criticalBatteryLevel=30
+
+# DO NOT CHANGE
+
+export XDG_RUNTIME_DIR="/run/user/1000"
+BATTERY_LEVEL=`/usr/bin/acpi | /usr/bin/awk '{print $4}' | /usr/bin/awk -F% '{print $1}'`
+
+if [[ $BATTERY_LEVEL -le $criticalBatteryLevel ]]; then
+	BATTERY_STATUS=`/usr/bin/acpi | /usr/bin/awk '{print $3}' | /usr/bin/awk -F, '{print $1}'`
+	if [[ $BATTERY_STATUS == "Discharging" ]]; then
+		USER=$(whoami)
+		SUMMARY="Niski poziom baterii"
+		MESSAGE="Poziom naładowania baterii wynosi $BATTERY_LEVEL%\nPodłącz laptop do źródła zasilania!"
+		sudo -u $USER DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send -i /usr/share/icons/Mint\-Y/panel/24/battery-low.svg -u CRITICAL "$SUMMARY" "$MESSAGE"
+		paplay /usr/share/sounds/linuxmint-logout.wav
+		cd /home/$USER/.scripts/checkBattery
+		paplay message1.ogg
+		paplay $BATTERY_LEVEL.ogg
+		paplay procent.ogg
+		paplay message2.ogg
+	fi
+fi
