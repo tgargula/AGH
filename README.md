@@ -32,7 +32,7 @@ Check git status:
 ```sh
 git status
 ```
-Add to commit:
+Add to staging area:
 ```sh
 git add <filename>
 ```
@@ -44,7 +44,7 @@ Update branch on GitHub:
 ```sh
 git push origin toCode
 ```
-PS. I have changed username recently, so if old settings does not work, go to your local repository and type:
+PS. I have changed username recently, so if old settings do not work anymore, go to your local repository and type:
 ```sh
 git remote set-url origin https://github.com/tgargula/AGH.git
 ```
