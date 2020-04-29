@@ -1,0 +1,40 @@
+1. *p = tab;
+wskaźnik na pierwszy element tablicy tab
+2. q = &tab;
+adres pierwszego elementu tablicy tab
+3. a = *tab;
+wartość zerowego elementu w tablicy tab, long int
+4. b = *(&a + 1);
+nie można zmienić tablic na liczbę
+5. p = tab + 8;
+ósmy element tablicy – nieprzypisany, jednak zainicjalizowany więc domyślnie tab[8] = 0
+6. q = ++tab;
+wyrażenie bezsensowne, zwraca różne dane
+7. a = *(tab + 8);
+to samo co tab[8] czyli 0
+8. a = *(p + 16);
+wyjście poza tablicę – nie istnieje tab[16]
+9. ++p;
+p to wartość od p + rozmiar typu(long int)
+10. p++;
+jak powyżej (9.) tylko najpierw jest tworzona kopia p,  zwiększana wartość, p jest zwracane jako wartość
+11. q = p++;
+q = p jak powyżej (10.)
+12. q = 2 + p++;
+q wskazuje na tab[2], p jak w 10.
+13. i = q – p;
+błąd kompilacji, int != pointer, dodatkowo odwołwanie do nieokreślonego miejsca w pamięci
+14. i = ++p - tab;
+pierwszy element poza tablicą - ostatni element tablicy = 1
+15. q = tab + p;
+nieokreślony obszar w pamięci
+16. *tab + 4;
+wskaźnik na 4-ty element poza tablicą
+17. a = *(tab+4);
+*(tab+4) = tab[4]
+18. *(tab+2) = a++;
+przypisanie do tab[2] wartości a++ czyli 26
+19. *p++ = b;
+nieokreślony obszar w pamięci
+20. *++p = b;
+p to wskaźnik na adres b
