@@ -1,5 +1,3 @@
-import sys
-
 class Node:
     def __init__(self, value):
         self.value = value
@@ -26,9 +24,8 @@ def topological_sorting(G, V):
 def DFS(G, L, u):
     u.color = "grey"
     for v in G.neighbors(u):
-        if v.color == "grey":   # CYCLE
-            print("Graph is not a DAG")
-            sys.exit()
+        if v.color == "grey":
+            raise Exception("Graph is not a DAG")
         if v.color == "white":
             DFS(G, L, v)
     L.append(u.value)
