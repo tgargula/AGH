@@ -33,6 +33,7 @@
 
 # VSCode rubbish
 .vscode/
+.vs/
 
 # Unix swap files
 *.swp
