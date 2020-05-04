@@ -5,7 +5,9 @@
 #define LEVEL_MAX 10
 
 /*
-komentarz na potrzeby zadania delete comments
+komentarz na potrzeby zadania zwiazanego z usuwaniem komentarzy
+Ala ma kota
+Ola ma psa
 */
 
 double oblicz_rek(double (*funkcja)(double), double a, double fa, double c, double fc, double b, double fb, double Q, double tol, int poziom) {
