@@ -8,9 +8,6 @@ alias cd..="cd .."
 alias f='echo "Launching Firefox..." && /usr/bin/firefox &'
 alias firefox='/usr/bin/firefox &'
 
-# alias for IntelliJ Idea
-alias idea='/opt/idea-IE-193.6494.68/bin/idea.sh'
-
 # alias for LaTeX editor
 alias latex='/usr/bin/texmaker &'
 
