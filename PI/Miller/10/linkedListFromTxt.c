@@ -99,7 +99,6 @@ Node* processFile(Node* first) {                        // przetwarzanie pliku
     }
 
     fclose(txtfile);
-    free(inputFileName);
     return first;
 }
 
