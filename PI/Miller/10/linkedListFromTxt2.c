@@ -2,37 +2,42 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAXCHAR 1000
+#define MAXCHAR 1001
+#define MAXWORDCHAR 101
 
-typedef struct node {
-    char* word;
+typedef struct Node {
+    char word[MAXWORDCHAR];
     int counter;
-    struct node* next;
-} node;
+    struct Node* next;
+} Node;
 
 
-node* insertWord(node* first, char* word) {
+Node* insertWord(Node* first, char word[]) {     // wstawianie do listy w odpowiednim miejscu
     if(first == NULL) {
-        first = (node*) malloc(sizeof(node));
-        first->word = word;
+        first = (Node*) malloc(sizeof(Node));
+        memset(first->word, '\0', sizeof(first->word));
+        strcpy(first->word, word);
         first->counter = 1;
         first->next = NULL;
         return first;
     }
     
-    node* listIterator = first;
-    node* previous = NULL;
+    Node* listIterator = first;
+    Node* previous = NULL;
 
     while(listIterator != NULL && strcmp(word, listIterator->word) > 0) {
-        previous = listIterator; listIterator = listIterator->next;
+        previous = listIterator; 
+        listIterator = listIterator->next;
     }
     
     if(listIterator != NULL && strcmp(word, listIterator->word) == 0) {
-        listIterator->counter += 1; return first;
+        listIterator->counter += 1; 
+        return first;
     }
 
-    node* newNode = (node*) malloc(sizeof(node));
-    newNode->word = word;
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    memset(newNode->word, '\0', sizeof(newNode->word));
+    strcpy(newNode->word, word);
     newNode->counter = 1;
     newNode->next = listIterator;
     
@@ -53,9 +58,8 @@ int isValidCharacter(char character) {
     else return 0;
 }
 
-void processSingleWord(char* word, node** list) {
+void processSingleWord(char word[], Node** list) {       // przetwarzanie pojedynczego wyrazu
     int i2 = 0;
-    
     for (int i = 0; word[i] != '\0'; i++) { 
         if (65 <= word[i] && word[i] <= 90) {
             word[i] += 32;
@@ -67,22 +71,22 @@ void processSingleWord(char* word, node** list) {
     
     word[i2] = '\0';
     if (isLetter(word[0]) == 0) return; 
-    char *s = (char*)malloc(strlen(word) * sizeof(char));
+    char s[MAXWORDCHAR]; // = (char*)malloc(strlen(word) * sizeof(char));
     strcpy(s, word);
     *list = insertWord(*list, s);
 }
 
-void processLine(char* line, node** list) {
-   char *token;
-   token = strtok(line, " /");
+void processLine(char line[], Node** list) {             // przetwarzanie pojedynczej linii 
+   char* token = strtok(line, " /");
    while( token != NULL ) {
        processSingleWord(token, list);
        token = strtok(NULL, " /");
    }
+   free(token);
 }
 
-node* processFile(node* first) {
-    char* inputFileName = "./tekst.txt";
+Node* processFile(Node* first) {
+    char inputFileName[] = "./tekst.txt";
     FILE * txtfile = fopen(inputFileName, "r");
     char str[MAXCHAR];
     if (txtfile == NULL) {
@@ -96,18 +100,19 @@ node* processFile(node* first) {
     fclose(txtfile);
 
 
-    char* outputFileName = "./dictionary.txt";
+    char outputFileName[] = "./dictionary.txt";
     FILE *listTxt = fopen(outputFileName, "w");
-    node* listIterator = first;
+    Node* listIterator = first;
     
     while (listIterator != NULL) {
         char* integer = malloc(sizeof(char)*3), *text = "";
         snprintf(integer, 3, "%d", listIterator->counter);
         text = strcat(strcat(listIterator->word, "\n"), strcat(integer, "\n"));
         fprintf(listTxt, "%s", text);
-        node* previous = listIterator; 
+        Node* previous = listIterator; 
         listIterator = listIterator->next;
         free(previous);
+        free(integer);
     }
     free(listIterator);
     fclose(listTxt);
@@ -115,32 +120,29 @@ node* processFile(node* first) {
     return first;
 }
 
-void enddelchar(char* str, const char ch) {       // usuwanie ostatniego znaku - potrzebne ponieważ znak ostatni wczytany z tekstu to \n
-  int len = strlen(str);
-  char* ptr = str + (len-1);
-
-  while (*ptr == ch)
-    *ptr-- = '\0';
+void enddelchar(char str[], const char ch) {       // usuwanie ostatniego znaku - potrzebne ponieważ znak ostatni wczytany z tekstu to \n
+    int len = strlen(str);
+    str[len - 1] = '\0';
 }
 
-void checkWord(node* first) {
-    char str[50];
+void checkWord(Node* first) {
+    char str[MAXWORDCHAR];
     printf("Type the word you would like to check: ");
     scanf("%s", str);
 
-    char* inputFileName = "./dictionary.txt";
+    char inputFileName[] = "./dictionary.txt";
     FILE * txtfile = fopen(inputFileName, "r");
     if (txtfile == NULL) {
         printf("Can not open txtfile %s\n", inputFileName); 
         return;
     }
     
-    char str2[50];
+    char str2[MAXWORDCHAR];
     int flag = 0;
-    while (fgets(str2, 50, txtfile) != NULL) {
+    while (fgets(str2, MAXWORDCHAR, txtfile) != NULL) {
         enddelchar(str2, '\n');
         if (strcmp(str, str2) == 0) {
-            printf("Number of word '%s' occurences: %s\n", str, fgets(str2, 50, txtfile)); flag = 1; break;
+            printf("Number of word '%s' occurences: %s\n", str, fgets(str2, MAXWORDCHAR, txtfile)); flag = 1; break;
         } 
     }
     if (flag == 0) {
@@ -150,8 +152,8 @@ void checkWord(node* first) {
     fclose(txtfile);
 }
 
-int main() {
-    node* first = NULL;
+int main(void) {
+    Node* first = NULL;
     
     first = processFile(first);
     if(first == NULL) return 0;

@@ -2,37 +2,42 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAXCHAR 1000
+#define MAXCHAR 1001
+#define MAXWORDCHAR 101
 
-typedef struct node {
-    char* word;
+typedef struct Node {
+    char word[MAXWORDCHAR];
     int counter;
-    struct node* next;
-} node;
+    struct Node* next;
+} Node;
 
 
-node* insertWord(node* first, char* word) {     // wstawianie do listy w odpowiednim miejscu
+Node* insertWord(Node* first, char word[]) {     // wstawianie do listy w odpowiednim miejscu
     if(first == NULL) {
-        first = (node*) malloc(sizeof(node));
-        first->word = word;
+        first = (Node*) malloc(sizeof(Node));
+        memset(first->word, '\0', sizeof(first->word));
+        strcpy(first->word, word);
         first->counter = 1;
         first->next = NULL;
         return first;
     }
     
-    node* listIterator = first;
-    node* previous = NULL;
+    Node* listIterator = first;
+    Node* previous = NULL;
 
     while(listIterator != NULL && strcmp(word, listIterator->word) > 0) {
-        previous = listIterator; listIterator = listIterator->next;
+        previous = listIterator; 
+        listIterator = listIterator->next;
     }
     
     if(listIterator != NULL && strcmp(word, listIterator->word) == 0) {
-        listIterator->counter += 1; return first;
+        listIterator->counter += 1; 
+        return first;
     }
 
-    node* newNode = (node*) malloc(sizeof(node));
-    newNode->word = word;
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    memset(newNode->word, '\0', sizeof(newNode->word));
+    strcpy(newNode->word, word);
     newNode->counter = 1;
     newNode->next = listIterator;
     
@@ -53,9 +58,8 @@ int isValidCharacter(char character) {      // określnie czy to znak zgodny z w
     else return 0;
 }
 
-void processSingleWord(char* word, node** list) {       // przetwarzanie pojedynczego wyrazu
+void processSingleWord(char word[], Node** list) {       // przetwarzanie pojedynczego wyrazu
     int i2 = 0;
-    
     for (int i = 0; word[i] != '\0'; i++) { 
         if (65 <= word[i] && word[i] <= 90) {
             word[i] += 32;
@@ -67,21 +71,21 @@ void processSingleWord(char* word, node** list) {       // przetwarzanie pojedyn
     
     word[i2] = '\0';
     if (isLetter(word[0]) == 0) return; 
-    char *s = (char*)malloc(strlen(word) * sizeof(char));
+    char s[MAXWORDCHAR]; // = (char*)malloc(strlen(word) * sizeof(char));
     strcpy(s, word);
     *list = insertWord(*list, s);
 }
 
-void processLine(char* line, node** list) {             // przetwarzanie pojedynczej linii 
-   char *token;
-   token = strtok(line, " /");
+void processLine(char line[], Node** list) {             // przetwarzanie pojedynczej linii 
+   char* token = strtok(line, " /");
    while( token != NULL ) {
        processSingleWord(token, list);
        token = strtok(NULL, " /");
    }
+   free(token);
 }
 
-node* processFile(node* first) {                        // przetwarzanie pliku
+Node* processFile(Node* first) {                        // przetwarzanie pliku
     char* inputFileName = "./tekst.txt";
     FILE * txtfile = fopen(inputFileName, "r");
     char str[MAXCHAR];
@@ -95,10 +99,11 @@ node* processFile(node* first) {                        // przetwarzanie pliku
     }
 
     fclose(txtfile);
+    free(inputFileName);
     return first;
 }
 
-void printList(node* first) {                           // wypisanie listy
+void printList(Node* first) {                           // wypisanie listy
     int nodde = 0;
     while(first != NULL) {
         printf("Node order number: %d\t, Number of word occurences: %d\t, Word: %s\n\n", nodde, first->counter, first->word);
@@ -107,7 +112,7 @@ void printList(node* first) {                           // wypisanie listy
     }
 }
 
-void checkWord(node* first) {                           // sprawdzenie czy słowo się pojawiło
+void checkWord(Node* first) {                           // sprawdzenie czy słowo się pojawiło
     if(first == NULL) {
         printf("Nothing to print - list is empty\n"); return;
     }
@@ -129,8 +134,8 @@ void checkWord(node* first) {                           // sprawdzenie czy słow
     printf("Number of word occurences: %d\n", first->counter);
 }
 
-int main() {
-    node* first = NULL;
+int main(void) {
+    Node* first = NULL;
     
     first = processFile(first);
     if(first == NULL) return 0;
@@ -138,7 +143,7 @@ int main() {
     checkWord(first);
 
     while (first != NULL) {
-        node* previous = first;
+        Node* previous = first;
         first = first->next;
         free(previous);
     }
