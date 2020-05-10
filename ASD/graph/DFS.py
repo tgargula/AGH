@@ -39,13 +39,9 @@ def DFSvisit(G, u, time):
 n = 5
 V = [Node(i) for i in range(n)]
 G = AdjacencyList(n)
-G.add(V[0], V[1])
-G.add(V[1], V[2])
-G.add(V[0], V[2])
-G.add(V[4], V[1])
-G.add(V[3], V[4])
-G.add(V[0], V[3])
-G.add(V[2], V[3])
+E = [ (0, 1), (1, 2), (0, 2), (4, 1), (3, 4), (0, 3), (2, 3) ]
+for e in E:
+    G.add(V[e[0]], V[e[1]])
 DFS(G, V)
 for v in V:
     print("Value:", v.value)
