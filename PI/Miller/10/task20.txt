@@ -1,0 +1,8 @@
+Zadanie nie jest obowiązkowe.
+
+Należy rozszerzyć program z zadanie nr 19 o możliwość zapisania do pliku informacji o słowach zawartej w węzłach listy. Program główny
+
+    Tworzy listę dokładnie tak jak w zadaniu 19..
+    Zapisuje informacje o słowach do pliku i zwalnia pamięć przydzieloną do węzłów listy.
+    Tworzy ponownie listę czerpiąc informację jedynie z pliku wcześniej utworzonego (a nie z tekst.txt).
+    Wywołuje funkcję odczytującą z węzła listy informację o krotności zadanego słowa (napisanie tej funkcji było częścią zadania nr 19).

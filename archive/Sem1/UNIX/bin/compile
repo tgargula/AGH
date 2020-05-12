@@ -39,9 +39,9 @@ else
 fi
 
 if [[ $LANGUAGE == "cpp" ]]; then
-	g++ -std=c++11 -O2 -Wall -o $PROGRAM.out $FILE -lm
+	g++ -std=c++11 -O2 -Wall -Wextra -Wpedantic -ftrapv -ggdb3 -o $PROGRAM.out $FILE -lm
 elif [[ $LANGUAGE == "c" ]]; then
-	gcc -std=c11 -O2 -Wall -Werror=implicit-function-declaration -o $PROGRAM.out $FILE -lm
+	gcc -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror=implicit-function-declaration -ftrapv -ggdb3 -o $PROGRAM.out $FILE -lm
 else
 	echo >&2 "The language is not recognised"
 	exit 5

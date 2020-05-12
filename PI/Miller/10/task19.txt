@@ -1,0 +1,28 @@
+Należy napisać program, który czyta plik tekstowy tekst.txt i tworzy jednokierunkową listę, której elementy zawierają słowa (odczytane z pliku) oraz ich krotności.
+
+Dla ustalenia terminologii: Listę tworzy korzeń (głowa) listy oraz węzły. Lista jest pusta gdy w korzeniu jest wpisany adres zerowy (NULL).
+
+Wymagania szczegółowe:
+
+    Korzeniem listy jest pojedyncza zmienna typu wskaźnikowego zawierająca adres pierwszego węzła albo NULL.
+    W  każdym węźle jest informacja o słowie odczytanym z pliku oraz liczba powtórzeń tego słowa.
+    W słabszej wersji programu słowo jest zapisane w węźle.
+    W lepszej wersji - w węźle jest adres pamięci, pod którym to słowo jest pamiętane.
+    Co należy rozumieć pod pojęciem słowa (tylko w zadaniu nr 19): ciąg znaków (także pojedyncza litera) oddzielony w pliku znakami białymi lub ukośnikiem. Ale:
+    - Z takiego ciągu znaków należy usunąć znaki interpunkcyjne (,.:;?!), nawiasy, ukośniki i cudzysłowy.
+    - Zatem będzie to ciąg znaków takich jak: litera, cyfra, minus, apostrof.
+    - Pierwszym znakiem musi być litera.
+    Na przykład:
+    - ciągi znaków, które są pojedynczymi słowami: TI-89  let's 
+    - ciąg znaków, który zawiera dwa słowa: I/O  (słowo I i słowo O)
+    - ciągi znaków, które nie są słowami 80g68000
+    Wielkie i małe litery nie są rozróżniane.
+    Do wczytywania słów z pliku można użyć funkcji fsanf z konwersją %s lub funkcję fgets, ale w drugim przypadku ostrzegam, że pojedyncze wiersze pliku tekst.txt mają długość 1000 znaków.
+    Lista jest uporządkowana alfabetycznie -- także w czasie jej tworzenia, tzn. nowe węzły są dodawane z zachowaniem porządku. Należy ten fakt wykorzystać w procedurach przeszukiwania listy.
+    Jeżeli porządek alfabetyczny rozszerzamy także na cyfry, to przyjmujemy, że cyfry poprzedzają litery.
+    W programie preferowane są standardowe funkcje biblioteczne (zamiast własnych), ale nie używamy funkcji bibliotecznych nie należących do standardu języka C.
+    Należy napisać funkcję wstawiającą węzeł do listy w porządku alfabetycznym - funkcja powinna być uniwersalna, tzn. działać poprawnie w każdym przypadku:
+    - lista jest pusta (gdy w korzeniu jest NULL),
+    - dopisywany węzeł ma być na pierwszym / pośrednim / ostatnim węzłem.
+    Inna funkcja odczytuje z listy liczbę powtórzeń zadanego (np. wczytanego z klawiatury) słowa oraz numer węzła, w którym dane słowo jest zapisane.
+    Trzecia funkcja odczytuje informacje (słowo i krotność) z wszystkich węzłów.

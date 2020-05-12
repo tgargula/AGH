@@ -32,7 +32,7 @@ Check git status:
 ```sh
 git status
 ```
-Add to commit:
+Add to staging area:
 ```sh
 git add <filename>
 ```
@@ -44,7 +44,7 @@ Update branch on GitHub:
 ```sh
 git push origin toCode
 ```
-PS. I have changed username recently, so if old settings does not work, go to your local repository and type:
+PS. I have changed username recently, so if old settings do not work anymore, go to your local repository and type:
 ```sh
 git remote set-url origin https://github.com/tgargula/AGH.git
 ```
@@ -63,13 +63,14 @@ It completely does not matter, which software you use, but here are some recomme
 ### C/C++ compilation
 To compile C file with all warnings, use:
 ```sh
-gcc -std=c11 -O2 -Wall -Werror=implicit-function-declaration -o [filenameWithoutExtention].out [filename] -lm
+gcc -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror=implicit-function-declaration -ftrapv -ggdb3 -o [filenameWithoutExtention].out [filename] -lm
 ```
 To compile C++ file with all warnings, use:
 ```sh
-g++ -std=c++17 -O2 -Wall -o [filenameWithoutExtention].out [filename] -lm
+g++ -std=c++11 -O2 -Wall -Wextra -Wpedantic -ftrapv -ggdb3 -o [filenameWithoutExtention].out [filename] -lm
 ```
 To check possible memory leaks, run:
 ```sh
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes [program].out
 ```
+You can also use compile and memcheck scripts located in: ./archive/Sem1/UNIX or write your own script
